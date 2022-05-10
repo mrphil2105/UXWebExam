@@ -1,0 +1,13 @@
+# Auto detect text files and perform LF normalization
+*           text=auto
+
+*.cs        text eol=crlf diff=csharp
+*.cshtml    text eol=crlf diff=cshtml
+*.ts        text eol=crlf diff=typescript
+*.tsx       text eol=crlf diff=typescript
+*.scss      text eol=crlf diff=sass
+*.csproj    text eol=crlf merge=union
+*.sln       text eol=crlf merge=union
+
+*.jpg       binary
+*.png       binary
