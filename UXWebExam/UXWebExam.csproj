@@ -4,6 +4,13 @@
     <TargetFramework>net6.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <IsPackable>false</IsPackable>
+    <SpaRoot>ClientApp/</SpaRoot>
+    <TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
+    <TypeScriptToolsVersion>Latest</TypeScriptToolsVersion>
+    <DefaultItemExcludes>$(DefaultItemExcludes);$(SpaRoot)node_modules/**</DefaultItemExcludes>
+    <SpaProxyServerUrl>https://localhost:44429</SpaProxyServerUrl>
+    <SpaProxyLaunchCommand>npm start</SpaProxyLaunchCommand>
   </PropertyGroup>
 
   <ItemGroup>
@@ -24,9 +31,16 @@
     </PackageReference>
   </ItemGroup>
 
-  <Target Name="Install NPM Modules" BeforeTargets="Build" Inputs="package-lock.json" Outputs="node_modules/.install-stamp">
-    <Exec Command="npm ci" />
-    <Touch Files="node_modules/.install-stamp" AlwaysCreate="true" />
+  <ItemGroup>
+    <Content Remove="$(SpaRoot)**" />
+    <Content Include="ClientApp\tsconfig.json" />
+    <None Remove="$(SpaRoot)**" />
+    <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules/**" />
+  </ItemGroup>
+
+  <Target Name="Install NPM Modules" BeforeTargets="Build" Inputs="package-lock.json" Outputs="$(SpaRoot)node_modules/.install-stamp">
+    <Exec WorkingDirectory="$(SpaRoot)" Command="npm ci" />
+    <Touch Files="$(SpaRoot)node_modules/.install-stamp" AlwaysCreate="true" />
   </Target>
 
 </Project>
