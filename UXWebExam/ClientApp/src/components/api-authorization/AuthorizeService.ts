@@ -13,8 +13,8 @@ export interface AuthenticationResult {
 }
 
 export enum AuthenticationResultStatus {
-    Redirect = "redirect",
     Success = "success",
+    Redirect = "redirect",
     Fail = "fail"
 }
 
@@ -127,16 +127,16 @@ export class AuthorizeService {
         return { useReplaceToNavigate: true, data: state };
     }
 
-    private error(message: string) {
-        return { status: AuthenticationResultStatus.Fail, message } as AuthenticationResult;
-    }
-
     private success(state: any) {
         return { status: AuthenticationResultStatus.Success, state } as AuthenticationResult;
     }
 
     private redirect() {
         return { status: AuthenticationResultStatus.Redirect } as AuthenticationResult;
+    }
+
+    private error(message: string) {
+        return { status: AuthenticationResultStatus.Fail, message } as AuthenticationResult;
     }
 
     private async ensureUserManagerInitialized() {
