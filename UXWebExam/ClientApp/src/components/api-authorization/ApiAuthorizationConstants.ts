@@ -19,20 +19,19 @@ export enum LoginAction {
     Profile = "profile"
 }
 
-const prefix = "/authentication";
+const prefix = "authentication";
 
 export const ApplicationPath = {
     ApiAuthorizationPrefix: prefix,
-    DefaultLoginRedirectPath: "/",
     ApiAuthorizationClientConfigurationUrl: `_configuration/${ApplicationName}`,
-    Login: `${prefix}/${LoginAction.Login}`,
-    LoginCallback: `${prefix}/${LoginAction.LoginCallback}`,
-    LoginFailed: `${prefix}/${LoginAction.LoginFailed}`,
-    Register: `${prefix}/${LoginAction.Register}`,
-    Profile: `${prefix}/${LoginAction.Profile}`,
-    Logout: `${prefix}/${LogoutAction.Logout}`,
-    LogoutCallback: `${prefix}/${LogoutAction.LogoutCallback}`,
-    LoggedOut: `${prefix}/${LogoutAction.LoggedOut}`,
+    Login: LoginAction.Login,
+    LoginCallback: LoginAction.LoginCallback,
+    LoginFailed: LoginAction.LoginFailed,
+    Register: LoginAction.Register,
+    Profile: LoginAction.Profile,
+    Logout: LogoutAction.Logout,
+    LogoutCallback: LogoutAction.LogoutCallback,
+    LoggedOut: LogoutAction.LoggedOut,
     IdentityRegisterPath: "Identity/Account/Register",
     IdentityManagePath: "Identity/Account/Manage"
 };
