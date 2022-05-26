@@ -48,18 +48,18 @@ export class AuthorizeService {
     public async signIn(state: any) {
         await this.ensureUserManagerInitialized();
         try {
-            const silentUser = await this.userManager.signinSilent(this.createArguments());
+            const silentUser = await this.userManager.signinSilent(AuthorizeService.createArguments());
             this.updateState(silentUser);
-            return this.success(state);
+            return AuthorizeService.success(state);
         } catch (silentError) {
             console.log("Silent authentication error: ", silentError);
 
             try {
-                await this.userManager.signinRedirect(this.createArguments(state));
-                return this.redirect();
+                await this.userManager.signinRedirect(AuthorizeService.createArguments(state));
+                return AuthorizeService.redirect();
             } catch (redirectError) {
                 console.log("Redirect authentication error: ", redirectError);
-                return this.error(redirectError);
+                return AuthorizeService.error(redirectError);
             }
         }
     }
@@ -69,10 +69,10 @@ export class AuthorizeService {
             await this.ensureUserManagerInitialized();
             const user = await this.userManager.signinCallback(url);
             this.updateState(user);
-            return this.success(user && user.state);
+            return AuthorizeService.success(user && user.state);
         } catch (error) {
             console.log("There was an error signing in: ", error);
-            return this.error("There was an error signing in.");
+            return AuthorizeService.error("There was an error signing in.");
         }
     }
 
@@ -80,11 +80,11 @@ export class AuthorizeService {
         await this.ensureUserManagerInitialized();
 
         try {
-            await this.userManager.signoutRedirect(this.createArguments(state));
-            return this.redirect();
+            await this.userManager.signoutRedirect(AuthorizeService.createArguments(state));
+            return AuthorizeService.redirect();
         } catch (redirectSignOutError) {
             console.log("Redirect sign out error: ", redirectSignOutError);
-            return this.error(redirectSignOutError);
+            return AuthorizeService.error(redirectSignOutError);
         }
     }
 
@@ -94,10 +94,10 @@ export class AuthorizeService {
         try {
             const response = await this.userManager.signoutCallback(url);
             this.updateState(null);
-            return this.success(response && response.state);
+            return AuthorizeService.success(response && response.state);
         } catch (error) {
             console.log(`There was an error trying to log out '${error}'.`);
-            return this.error(error);
+            return AuthorizeService.error(error);
         }
     }
 
@@ -123,19 +123,19 @@ export class AuthorizeService {
         this.notifySubscribers();
     }
 
-    private createArguments(state?: any) {
+    private static createArguments(state?: any) {
         return { useReplaceToNavigate: true, data: state };
     }
 
-    private success(state: any) {
+    private static success(state: any) {
         return { status: AuthenticationResultStatus.Success, state } as AuthenticationResult;
     }
 
-    private redirect() {
+    private static redirect() {
         return { status: AuthenticationResultStatus.Redirect } as AuthenticationResult;
     }
 
-    private error(message: string) {
+    private static error(message: string) {
         return { status: AuthenticationResultStatus.Fail, message } as AuthenticationResult;
     }
 
