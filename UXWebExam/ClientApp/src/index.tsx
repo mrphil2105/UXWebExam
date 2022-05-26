@@ -1,14 +1,14 @@
-import * as React from "react";
-import * as ReactDOM from "react-dom";
+import React from "react";
+import { createRoot } from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 import App from "./App"
 
 const baseUrl = document.getElementsByTagName("base")[0].getAttribute("href") as string;
-const rootElement = document.getElementById("root");
+const container = document.getElementById("app");
+const root = createRoot(container!);
 
-ReactDOM.render(
+root.render(
     <BrowserRouter basename={baseUrl}>
         <App />
-    </BrowserRouter>,
-    rootElement
+    </BrowserRouter>
 );
