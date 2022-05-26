@@ -6,6 +6,18 @@ interface Callback {
     subscriptionId: number;
 }
 
+export interface AuthenticationResult {
+    status: AuthenticationResultStatus;
+    state: any;
+    message: string;
+}
+
+export enum AuthenticationResultStatus {
+    Redirect = "redirect",
+    Success = "success",
+    Fail = "fail"
+}
+
 export class AuthorizeService {
     private callbacks: Callback[] = [];
     private nextSubscriptionId = 0;
@@ -116,15 +128,15 @@ export class AuthorizeService {
     }
 
     private error(message: string) {
-        return { status: AuthenticationResultStatus.Fail, message };
+        return { status: AuthenticationResultStatus.Fail, message } as AuthenticationResult;
     }
 
     private success(state: any) {
-        return { status: AuthenticationResultStatus.Success, state };
+        return { status: AuthenticationResultStatus.Success, state } as AuthenticationResult;
     }
 
     private redirect() {
-        return { status: AuthenticationResultStatus.Redirect };
+        return { status: AuthenticationResultStatus.Redirect } as AuthenticationResult;
     }
 
     private async ensureUserManagerInitialized() {
@@ -135,7 +147,7 @@ export class AuthorizeService {
         const response = await fetch(ApplicationPath.ApiAuthorizationClientConfigurationUrl);
 
         if (!response.ok) {
-            throw new Error(`Could not load settings for '${ApplicationName}'`);
+            throw new Error(`Could not load settings for '${ApplicationName}'.`);
         }
 
         const settings = await response.json();
@@ -157,9 +169,3 @@ export class AuthorizeService {
 const authService = new AuthorizeService();
 
 export default authService;
-
-export enum AuthenticationResultStatus {
-    Redirect = "redirect",
-    Success = "success",
-    Fail = "fail"
-}
