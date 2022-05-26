@@ -6,8 +6,8 @@ export enum QueryParameterName {
 }
 
 export enum LogoutAction {
-    LogoutCallback = "logout-callback",
     Logout = "logout",
+    LogoutCallback = "logout-callback",
     LoggedOut = "logged-out"
 }
 
@@ -15,24 +15,24 @@ export enum LoginAction {
     Login = "login",
     LoginCallback = "login-callback",
     LoginFailed = "login-failed",
-    Profile = "profile",
-    Register = "register"
+    Register = "register",
+    Profile = "profile"
 }
 
 const prefix = "/authentication";
 
 export const ApplicationPath = {
+    ApiAuthorizationPrefix: prefix,
     DefaultLoginRedirectPath: "/",
     ApiAuthorizationClientConfigurationUrl: `_configuration/${ApplicationName}`,
-    ApiAuthorizationPrefix: prefix,
     Login: `${prefix}/${LoginAction.Login}`,
-    LoginFailed: `${prefix}/${LoginAction.LoginFailed}`,
     LoginCallback: `${prefix}/${LoginAction.LoginCallback}`,
+    LoginFailed: `${prefix}/${LoginAction.LoginFailed}`,
     Register: `${prefix}/${LoginAction.Register}`,
     Profile: `${prefix}/${LoginAction.Profile}`,
     Logout: `${prefix}/${LogoutAction.Logout}`,
-    LoggedOut: `${prefix}/${LogoutAction.LoggedOut}`,
     LogoutCallback: `${prefix}/${LogoutAction.LogoutCallback}`,
+    LoggedOut: `${prefix}/${LogoutAction.LoggedOut}`,
     IdentityRegisterPath: "Identity/Account/Register",
     IdentityManagePath: "Identity/Account/Manage"
 };
