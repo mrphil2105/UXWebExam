@@ -3,6 +3,7 @@
     "target": "ES5",
     "module": "CommonJS",
     "moduleResolution": "node",
+    "esModuleInterop": true,
     "jsx": "react",
     "sourceMap": true,
     "alwaysStrict": true,
