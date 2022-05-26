@@ -158,8 +158,8 @@ const authService = new AuthorizeService();
 
 export default authService;
 
-export const AuthenticationResultStatus = {
-    Redirect: "redirect",
-    Success: "success",
-    Fail: "fail"
-};
+export enum AuthenticationResultStatus {
+    Redirect = "redirect",
+    Success = "success",
+    Fail = "fail"
+}
