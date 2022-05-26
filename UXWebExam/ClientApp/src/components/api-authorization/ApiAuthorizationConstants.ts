@@ -1,17 +1,17 @@
 export const ApplicationName = "WebApplication2";
 
-export enum QueryParameterNames {
+export enum QueryParameterName {
     ReturnUrl = "returnUrl",
     Message = "message"
 }
 
-export enum LogoutActions {
+export enum LogoutAction {
     LogoutCallback = "logout-callback",
     Logout = "logout",
     LoggedOut = "logged-out"
 }
 
-export enum LoginActions {
+export enum LoginAction {
     Login = "login",
     LoginCallback = "login-callback",
     LoginFailed = "login-failed",
@@ -21,18 +21,18 @@ export enum LoginActions {
 
 const prefix = "/authentication";
 
-export const ApplicationPaths = {
+export const ApplicationPath = {
     DefaultLoginRedirectPath: "/",
     ApiAuthorizationClientConfigurationUrl: `_configuration/${ApplicationName}`,
     ApiAuthorizationPrefix: prefix,
-    Login: `${prefix}/${LoginActions.Login}`,
-    LoginFailed: `${prefix}/${LoginActions.LoginFailed}`,
-    LoginCallback: `${prefix}/${LoginActions.LoginCallback}`,
-    Register: `${prefix}/${LoginActions.Register}`,
-    Profile: `${prefix}/${LoginActions.Profile}`,
-    LogOut: `${prefix}/${LogoutActions.Logout}`,
-    LoggedOut: `${prefix}/${LogoutActions.LoggedOut}`,
-    LogOutCallback: `${prefix}/${LogoutActions.LogoutCallback}`,
+    Login: `${prefix}/${LoginAction.Login}`,
+    LoginFailed: `${prefix}/${LoginAction.LoginFailed}`,
+    LoginCallback: `${prefix}/${LoginAction.LoginCallback}`,
+    Register: `${prefix}/${LoginAction.Register}`,
+    Profile: `${prefix}/${LoginAction.Profile}`,
+    LogOut: `${prefix}/${LogoutAction.Logout}`,
+    LoggedOut: `${prefix}/${LogoutAction.LoggedOut}`,
+    LogOutCallback: `${prefix}/${LogoutAction.LogoutCallback}`,
     IdentityRegisterPath: "Identity/Account/Register",
     IdentityManagePath: "Identity/Account/Manage"
 };

@@ -1,5 +1,5 @@
 import { User, UserManager, WebStorageStateStore } from "oidc-client";
-import { ApplicationPaths, ApplicationName } from "./ApiAuthorizationConstants";
+import { ApplicationPath, ApplicationName } from "./ApiAuthorizationConstants";
 
 interface Callback {
     callback: () => void;
@@ -132,7 +132,7 @@ export class AuthorizeService {
             return;
         }
 
-        const response = await fetch(ApplicationPaths.ApiAuthorizationClientConfigurationUrl);
+        const response = await fetch(ApplicationPath.ApiAuthorizationClientConfigurationUrl);
 
         if (!response.ok) {
             throw new Error(`Could not load settings for '${ApplicationName}'`);
