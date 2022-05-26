@@ -35,6 +35,7 @@ public class Startup
         services.ConfigureApplicationCookie(o => o.LoginPath = "/Account/Login");
 
         services.AddControllersWithViews();
+        services.AddRazorPages();
     }
 
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -58,6 +59,11 @@ public class Startup
         app.UseIdentityServer();
         app.UseAuthorization();
 
-        app.UseEndpoints(b => b.MapControllerRoute("default", "{controller}/{action=Index}/{id?}"));
+        app.UseEndpoints(b =>
+        {
+            b.MapControllerRoute("default", "{controller}/{action=Index}/{id?}");
+            b.MapRazorPages();
+            b.MapFallbackToFile("index.html");
+        });
     }
 }
