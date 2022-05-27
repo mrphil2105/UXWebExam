@@ -32,7 +32,7 @@ public class Startup
         services.AddAuthentication()
             .AddIdentityServerJwt();
 
-        services.ConfigureApplicationCookie(o => o.LoginPath = "/Account/Login");
+        services.ConfigureApplicationCookie(o => o.LoginPath = "/Identity/Account/Login");
 
         services.AddControllersWithViews();
         services.AddRazorPages();
