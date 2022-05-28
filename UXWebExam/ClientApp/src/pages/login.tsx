@@ -8,7 +8,7 @@ function Login() {
             </head>
             <div>Here you can log in</div>;
         </>
-    );
+    )
 }
 
 export default Login;

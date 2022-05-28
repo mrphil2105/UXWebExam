@@ -1,7 +1,12 @@
 import React from "react";
+import { Typography } from "@mui/material";
 
 function Register() {
-  return <div>Here you can Register</div>;
+    return (
+        <div>
+            <Typography> Here you can Register</Typography>
+        </div>
+    );
 }
 
 export default Register;
