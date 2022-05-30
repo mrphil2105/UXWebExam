@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <title>@ViewData["Title"] - UXWebExam</title>
+
+    <environment include="Development">
+        <link rel="stylesheet" href="~/css/site.css" />
+    </environment>
+    <environment exclude="Development">
+        <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    </environment>
+</head>
+<body>
+<header>
+    <a href="~/">Go to homepage</a>
+</header>
+
+<main role="main">
+    @RenderBody()
+</main>
+
+<footer>
+    &copy; 2022 - UXWebExam
+</footer>
+
+@await RenderSectionAsync("Scripts", false)
+</body>
+</html>

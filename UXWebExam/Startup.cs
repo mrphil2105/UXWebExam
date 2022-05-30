@@ -7,10 +7,12 @@ namespace UXWebExam;
 public class Startup
 {
     private readonly IConfiguration _configuration;
+    private readonly IWebHostEnvironment _environment;
 
-    public Startup(IConfiguration configuration)
+    public Startup(IConfiguration configuration, IWebHostEnvironment environment)
     {
         _configuration = configuration;
+        _environment = environment;
     }
 
     public void ConfigureServices(IServiceCollection services)
@@ -32,9 +34,16 @@ public class Startup
         services.AddAuthentication()
             .AddIdentityServerJwt();
 
-        services.ConfigureApplicationCookie(o => o.LoginPath = "/Account/Login");
+        services.ConfigureApplicationCookie(o => o.LoginPath = "/Identity/Account/Login");
 
-        services.AddControllersWithViews();
+        var controllersBuilder = services.AddControllersWithViews();
+        var razorPagesBuilder = services.AddRazorPages();
+
+        if (_environment.IsDevelopment())
+        {
+            controllersBuilder.AddRazorRuntimeCompilation();
+            razorPagesBuilder.AddRazorRuntimeCompilation();
+        }
     }
 
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -58,6 +67,11 @@ public class Startup
         app.UseIdentityServer();
         app.UseAuthorization();
 
-        app.UseEndpoints(b => b.MapControllerRoute("default", "{controller}/{action=Index}/{id?}"));
+        app.UseEndpoints(b =>
+        {
+            b.MapControllerRoute("default", "{controller}/{action=Index}/{id?}");
+            b.MapRazorPages();
+            b.MapFallbackToFile("index.html");
+        });
     }
 }
