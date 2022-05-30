@@ -4,7 +4,7 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
-import { Car } from './Car';
+import { Car } from '../../classes/Car';
 
 
 export default function CarCard({car}:any) {
@@ -17,7 +17,7 @@ export default function CarCard({car}:any) {
         <CardMedia
           component="img"
           height="300"
-          image={require('../images/toyota.png')}
+          image={car.imageURL}
           alt={car.imageURL}
         />
         <CardContent>

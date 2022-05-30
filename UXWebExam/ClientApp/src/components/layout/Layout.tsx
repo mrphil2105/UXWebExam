@@ -2,7 +2,7 @@ import React from "react";
 import AppBarResponsive from "./AppBarResponsive";
 import { Container } from "@mui/material";
 import CarBook from "../../pages/CarBook";
-import { Car, Type } from "../Car";
+import { Car, Type } from "../../classes/Car";
 
 
 function Layout(props: any) {
