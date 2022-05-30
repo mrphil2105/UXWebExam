@@ -23,6 +23,7 @@ const pages = [
     { name: "Login", link: "/login" },
     { name: "Overview", link: "/overview" },
     { name: "My Reservations", link: "/MyReservations" },
+    { name: "Help", link: "/Help" },
 ];
 const settings = ["Profile", "Account", "Logout"];
 

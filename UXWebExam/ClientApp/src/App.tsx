@@ -7,6 +7,7 @@ import Map from "./pages/mapPage";
 import Overview from "./pages/overview";
 import Profile from "./pages/profile";
 import MyReservations from "./pages/MyReservations";
+import SystemExplained from "./pages/SystemExplained";
 
 function App() {
     return (
@@ -18,6 +19,7 @@ function App() {
                 <Route path="/overview" element={<Overview />} />
                 <Route path="profile" element={<Profile />} />
                 <Route path="/MyReservations" element={<MyReservations />} />
+                <Route path="/Help" element={<SystemExplained />} />
             </Routes>
         </Layout>
     );
