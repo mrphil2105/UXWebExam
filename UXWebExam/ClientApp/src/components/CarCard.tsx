@@ -11,6 +11,9 @@ export default function CarCard({car}:any) {
   return (
     <Card sx={{}}>
       <CardActionArea>
+      <Typography gutterBottom variant="h4" component="div" padding={1}>
+            {car.name}
+      </Typography>
         <CardMedia
           component="img"
           height="300"
@@ -18,12 +21,9 @@ export default function CarCard({car}:any) {
           alt={car.imageURL}
         />
         <CardContent>
-          <Typography gutterBottom variant="h5" component="div">
-            {car.name}
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
+          <Typography variant="body1" color="text.secondary">
             {car.type}
-            <br></br>
+            <br/>
             {car.price} kr./dagen
           </Typography>
         </CardContent>

@@ -8,7 +8,6 @@ function CarBook({car}:any) {
         
         <div style={{display: 'flex',  justifyContent:'center'}}>
             <Stack spacing={3} sx={{ width: '600px' }}>
-            <p style={{fontSize: 30}}>Book Car</p>
             <CarCard car={car} />
             <br/>
             <div style={{display: 'flex',  justifyContent:'center'}}> 
