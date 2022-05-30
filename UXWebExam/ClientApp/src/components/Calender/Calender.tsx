@@ -4,6 +4,7 @@ import { useState } from 'react'
 import React from 'react'
 import AdapterDateFns from '@mui/lab/AdapterDateFns'
 
+var selectedDateTime: { toDateString: () => any; toTimeString: () => any } | null;
 const Calender = ({name}:any) => {
   const [selectedDateTime, setSelectedDateTime] = useState<Date | null>(null)
   return (
@@ -20,4 +21,12 @@ const Calender = ({name}:any) => {
   );
 }
 export default Calender;
+
+const getDateTime = () => {
+  if (selectedDateTime !=null)
+  return (
+    selectedDateTime.toDateString() + selectedDateTime.toTimeString()
+  );
+  return null;
+}
 

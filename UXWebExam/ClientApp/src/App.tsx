@@ -6,6 +6,7 @@ import Register from "./pages/register";
 import Map from "./pages/mapPage";
 import Overview from "./pages/overview";
 import Profile from "./pages/profile";
+import MyReservations from "./pages/MyReservations";
 
 function App() {
     return (
@@ -16,6 +17,7 @@ function App() {
                 <Route path="/register" element={<Register />} />
                 <Route path="/overview" element={<Overview />} />
                 <Route path="profile" element={<Profile />} />
+                <Route path="/MyReservations" element={<MyReservations />} />
             </Routes>
         </Layout>
     );
