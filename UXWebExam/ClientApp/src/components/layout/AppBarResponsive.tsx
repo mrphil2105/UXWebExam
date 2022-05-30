@@ -22,6 +22,7 @@ const pages = [
     { name: "Register", link: "/register" },
     { name: "Login", link: "/login" },
     { name: "Overview", link: "/overview" },
+    { name: "My Reservations", link: "/MyReservations" },
 ];
 const settings = ["Profile", "Account", "Logout"];
 
