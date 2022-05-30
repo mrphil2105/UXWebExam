@@ -1,25 +1,25 @@
-import React, { useState } from 'react';
-import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
-import { DatePicker } from '@mui/x-date-pickers/DatePicker'
-import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker'
-import LocalizationProvider from '@material-ui/lab/LocalizationProvider';
-import { TextField } from '@mui/material';
+import { Stack, TextField } from '@mui/material'
+import { DatePicker, TimePicker, DateTimePicker, LocalizationProvider } from '@mui/lab'
+import { useState } from 'react'
+import React from 'react'
+import AdapterDateFns from '@mui/lab/AdapterDateFns'
 
-export default function Calender() {
-    
-
-    return (
-        <LocalizationProvider dateAdapter={AdapterDateFns}>
-        <DateTimePicker
-          renderInput={(props) => <TextField {...props} />}
-          label="DateTimePicker"
-          value={true}
-          onChange={(newValue) => {
-            
-          }}
-        />
-      </LocalizationProvider>
-    );
+const Calender = () => {
+  const [selectedDateTime, setSelectedDateTime] = useState<Date | null>(null)
+  return (
+    <LocalizationProvider dateAdapter={AdapterDateFns}>
+    <Stack spacing={4} sx={{ width: '250px' }}>
+      <DateTimePicker
+        label='Start Time'
+        value={selectedDateTime}
+        onChange={newValue => {
+          setSelectedDateTime(newValue)
+        }}
+        renderInput={params => <TextField {...params} />}
+      />
+    </Stack>
+    </LocalizationProvider>
+  );
 }
-
+export default Calender;
 
