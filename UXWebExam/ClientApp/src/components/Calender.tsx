@@ -4,20 +4,18 @@ import { useState } from 'react'
 import React from 'react'
 import AdapterDateFns from '@mui/lab/AdapterDateFns'
 
-const Calender = () => {
+const Calender = ({name}:any) => {
   const [selectedDateTime, setSelectedDateTime] = useState<Date | null>(null)
   return (
     <LocalizationProvider dateAdapter={AdapterDateFns}>
-    <Stack spacing={4} sx={{ width: '250px' }}>
       <DateTimePicker
-        label='Start Time'
+        label={name}
         value={selectedDateTime}
         onChange={newValue => {
           setSelectedDateTime(newValue)
         }}
         renderInput={params => <TextField {...params} />}
       />
-    </Stack>
     </LocalizationProvider>
   );
 }

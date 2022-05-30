@@ -9,12 +9,12 @@ import { Car } from './Car';
 
 export default function CarCard({car}:any) {
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card sx={{}}>
       <CardActionArea>
         <CardMedia
           component="img"
-          height="200"
-          image={car.imageURL}
+          height="300"
+          image={require('../images/toyota.png')}
           alt={car.imageURL}
         />
         <CardContent>
@@ -24,7 +24,7 @@ export default function CarCard({car}:any) {
           <Typography variant="body2" color="text.secondary">
             {car.type}
             <br></br>
-            {car.price}kr./dagen
+            {car.price} kr./dagen
           </Typography>
         </CardContent>
       </CardActionArea>
