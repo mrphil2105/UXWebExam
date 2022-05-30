@@ -6,7 +6,6 @@ import { Car, Type } from "../../classes/Car";
 
 
 function Layout(props: any) {
-    const toyta = new Car("Toyota",130,Type.Electric,'C:/Users/Albert/Documents/GitHub/UXWebExam/UXWebExamClientApp/src/components/toyota.png');
     return (
        
         <div>
