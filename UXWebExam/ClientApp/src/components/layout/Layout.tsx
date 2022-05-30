@@ -11,7 +11,7 @@ function Layout(props: any) {
        
         <div>
             <AppBarResponsive />
-            <CarBook car={toyta} />
+            <main>{props.children} </main>
         
         </div>
     );
