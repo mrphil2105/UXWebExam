@@ -24,9 +24,9 @@ public class Car
 
     public double Latitude { get; set; }
 
-    public DateTimeOffset? RentDate;
+    public DateTimeOffset? RentDate { get; set; }
 
-    public DateTimeOffset? RentEnd;
+    public DateTimeOffset? RentEnd { get; set; }
 
     // Navigation properties
 
