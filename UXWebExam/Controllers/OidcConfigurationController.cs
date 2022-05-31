@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.ApiAuthorization.IdentityServer;
 
 namespace UXWebExam.Controllers;
 
+[ApiController]
 public class OidcConfigurationController : Controller
 {
     private readonly IClientRequestParametersProvider _clientRequestParametersProvider;
