@@ -6,6 +6,7 @@ import Overview from "./pages/overview";
 import Profile from "./pages/profile";
 import { ApplicationPath } from "./components/api-authorization/ApiAuthorizationConstants";
 import ApiAuthorizationRoutes from "./components/api-authorization/ApiAuthorizationRoutes";
+import CreateCar from "./pages/createCar";
 
 function App() {
     return (
@@ -13,6 +14,7 @@ function App() {
             <Routes>
                 <Route path="/map" element={<Map />} />
                 <Route path="/overview" element={<Overview />} />
+                <Route path="/create-car" element={<CreateCar />} />
                 <Route path="profile" element={<Profile />} />
                 <Route path={`${ApplicationPath.ApiAuthorizationPrefix}/*`} element={<ApiAuthorizationRoutes />} />
             </Routes>
