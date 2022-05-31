@@ -14,7 +14,7 @@ function MyReservations() {
             <Stack spacing={3} sx={{ width: '600px' }}>
             <h1>Reservations</h1>
             <h3>Active</h3>
-            <ReservationCard reservation={new Reservation(new Car("yo",200,Type.Electric,"idk"),"hey","yo")} />
+            <ReservationCard reservation={new Reservation(new Car("yo",200,Type.Electric,"idk","testvej","22","0000","testby"),"hey","yo")} />
             <h3>Future</h3>
             </Stack>
         </div>

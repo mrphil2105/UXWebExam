@@ -3,14 +3,14 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import { CardActionArea } from '@mui/material';
+import { Button, CardActionArea } from '@mui/material';
 import { Car } from '../../classes/Car';
 
 
 export default function ReservationCard({reservation}:any) {
   return (
     <Card sx={{}}>
-      <CardActionArea>
+      
       <Typography gutterBottom variant="h4" component="div" padding={1}>
             {reservation.car.name}
       </Typography>
@@ -22,14 +22,19 @@ export default function ReservationCard({reservation}:any) {
         />
         <CardContent>
           <Typography variant="body1" color="text.secondary">
-            {reservation.car.type}
+          <br/>
+          {reservation.car.street} {reservation.car.houseNumber}, {reservation.car.postcode} {reservation.car.city}
+          <br/>
+          {reservation.car.type}
             <br/>
             StartDate - {reservation.start}
             <br/>
             StartDate - {reservation.end}
           </Typography>
+          <br/>
+          <Button variant="contained">Deliver</Button>
         </CardContent>
-      </CardActionArea>
+     
     </Card>
   );
 }

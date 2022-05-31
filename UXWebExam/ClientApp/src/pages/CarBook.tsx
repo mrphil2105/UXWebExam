@@ -3,7 +3,10 @@ import React from "react";
 import Calender from "../components/Calender/Calender";
 import CarCard from "../components/Cards/CarCard";
 
+
+
 function CarBook({car}:any) {
+   var startdate=<Calender name="Start Time"/> ;
     return (
         
         <div style={{display: 'flex',  justifyContent:'center'}}>
@@ -25,3 +28,7 @@ function CarBook({car}:any) {
 
 
 export default CarBook;
+
+export function calculatePrice(price:number, ){
+
+}

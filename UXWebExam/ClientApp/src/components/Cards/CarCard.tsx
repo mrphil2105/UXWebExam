@@ -5,12 +5,13 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
 import { Car } from '../../classes/Car';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
 
 export default function CarCard({car}:any) {
   return (
     <Card sx={{}}>
-      <CardActionArea>
+      <ArrowBackIcon/>
       <Typography gutterBottom variant="h4" component="div" padding={1}>
             {car.name}
       </Typography>
@@ -22,12 +23,14 @@ export default function CarCard({car}:any) {
         />
         <CardContent>
           <Typography variant="body1" color="text.secondary">
+          <br/>
+          {car.street} {car.houseNumber}, {car.postcode} {car.city} 
+          <br/>
             {car.type}
             <br/>
             {car.price} kr./dagen
           </Typography>
         </CardContent>
-      </CardActionArea>
     </Card>
   );
 }
