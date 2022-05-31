@@ -75,7 +75,7 @@ export default () => {
 
     return (
         <Container>
-            <ul>
+            <ul style={{ margin: "1rem", padding: "0", listStyle: "none", color: "red", fontFamily: "Roboto" }}>
                 {errors.map((e, i) => (<li key={i}>{e}</li>))}
             </ul>
             {nameInput}
