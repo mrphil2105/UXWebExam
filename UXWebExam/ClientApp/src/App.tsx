@@ -11,6 +11,7 @@ function App() {
     return (
         <Layout>
             <Routes>
+                <Route path="/" element={<Map />} />
                 <Route path="/map" element={<Map />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register />} />
