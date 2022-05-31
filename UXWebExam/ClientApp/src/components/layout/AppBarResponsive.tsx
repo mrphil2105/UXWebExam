@@ -16,11 +16,10 @@ import { Link } from "react-router-dom";
 
 import MenuIcon from "@mui/icons-material/Menu";
 import DirectionsCarIcon from "@mui/icons-material/DirectionsCar";
+import { LoginMenu } from "../api-authorization/LoginMenu";
 
 const pages = [
     { name: "Map", link: "/map" },
-    { name: "Register", link: "/register" },
-    { name: "Login", link: "/login" },
     { name: "Overview", link: "/overview" },
 ];
 const settings = ["Profile", "Account", "Logout"];
@@ -137,6 +136,7 @@ const ResponsiveAppBar = () => {
                                         </MenuItem>
                                     </Link>
                                 ))}
+                                <LoginMenu isMobile={true} />
                             </Menu>
                         </Box>
                         <DirectionsCarIcon
@@ -184,6 +184,7 @@ const ResponsiveAppBar = () => {
                                     </Button>
                                 </Link>
                             ))}
+                            <LoginMenu isMobile={false} />
                         </Box>
 
                         <Box sx={{ flexGrow: 0 }}>

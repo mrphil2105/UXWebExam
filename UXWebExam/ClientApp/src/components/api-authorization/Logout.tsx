@@ -28,7 +28,7 @@ export default class Logout extends Component<Props, State> {
 
         switch (action) {
             case LogoutAction.Logout:
-                if (!!window.history.state.state.local) {
+                if (!!window.history.state.usr.local) {
                     this.logout(Logout.getReturnUrl());
                 } else {
                     this.setState({ isReady: true, message: "The logout was not initiated from within the page." });
