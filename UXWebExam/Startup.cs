@@ -76,5 +76,10 @@ public class Startup
             b.MapRazorPages();
             b.MapFallbackToFile("index.html");
         });
+
+        using var scope = app.ApplicationServices.CreateScope();
+
+        var dbContext = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+        dbContext.Database.Migrate();
     }
 }
