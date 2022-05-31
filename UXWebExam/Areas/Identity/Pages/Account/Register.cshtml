@@ -13,6 +13,16 @@
     <!-- TODO: Add a red color to the validation summary and validation spans -->
     <div asp-validation-summary="ModelOnly"></div>
     <div>
+        <label asp-for="Input.FirstName"></label>
+        <input asp-for="Input.FirstName" />
+        <span asp-validation-for="Input.FirstName"></span>
+    </div>
+    <div>
+        <label asp-for="Input.LastName"></label>
+        <input asp-for="Input.LastName" />
+        <span asp-validation-for="Input.LastName"></span>
+    </div>
+    <div>
         <label asp-for="Input.Email"></label>
         <input asp-for="Input.Email" />
         <span asp-validation-for="Input.Email"></span>
