@@ -3,7 +3,7 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import { CardActionArea } from '@mui/material';
+import { Button, CardActionArea } from '@mui/material';
 import { Car } from '../../classes/Car';
 
 
@@ -27,7 +27,10 @@ export default function ReservationCard({reservation}:any) {
             StartDate - {reservation.start}
             <br/>
             StartDate - {reservation.end}
+            <br/>
           </Typography>
+          <br/>
+          <Button variant="contained">Deliver</Button>
         </CardContent>
       </CardActionArea>
     </Card>
