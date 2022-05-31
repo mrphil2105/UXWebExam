@@ -50,7 +50,7 @@ public class CarService : ICarService
     {
         string imageUrl = carModel.ImageUrl!;
 
-        if (!imageUrl.StartsWith(ImagesPath))
+        if (!string.IsNullOrWhiteSpace(imageUrl) && !imageUrl.StartsWith(ImagesPath))
         {
             imageUrl = ImagesPath + imageUrl;
         }
