@@ -1,6 +1,19 @@
 import React, { MouseEventHandler, useEffect, useState } from "react";
-import { useTextAreaInput, useTextInput, useNumberInput, useSelectInput, ValidationFailure } from "../formControls";
-import { Box, Button, Container, Typography } from "@mui/material";
+import {
+    useTextAreaInput,
+    useTextInput,
+    useNumberInput,
+    useSelectInput,
+    ValidationFailure,
+} from "../formControls";
+import {
+    Box,
+    Button,
+    Container,
+    Stack,
+    Typography,
+    useMediaQuery,
+} from "@mui/material";
 import CarModel from "../models/CarModel";
 
 export default () => {
@@ -21,6 +34,9 @@ export default () => {
 
     const [ errors, setErrors ] = useState<string[]>([]);
     const [ showSuccess, setShowSuccess ] = useState(false);
+
+    const isMobile = useMediaQuery("(max-width: 600px)");
+    const direction = isMobile ? "column" : "row";
 
     useEffect(() => {
         (async () => {
@@ -50,7 +66,7 @@ export default () => {
             postalCode,
             city,
             longitude,
-            latitude
+            latitude,
         };
 
         const response = await fetch("/api/Car/CreateCar", {
@@ -83,20 +99,40 @@ export default () => {
 
     return (
         <Container>
-            <ul style={{ margin: "1rem", padding: "0", listStyle: "none", color: "red" }}>
-                {errors.map((e, i) => (<li key={i}><Typography>{e}</Typography></li>))}
+            <ul
+                style={{
+                    margin: "1rem",
+                    padding: "0",
+                    listStyle: "none",
+                    color: "red",
+                    fontFamily: "Roboto",
+                }}
+            >
+                {errors.map((e, i) => (
+                    <li key={i}>{e}</li>
+                ))}
             </ul>
-            {nameInput}
-            {descriptionInput}
-            {typeInput}
-            {priceInput}
-            {imageInput}
-            {streetInput}
-            {houseNumberInput}
-            {postalCodeInput}
-            {cityInput}
-            {longitudeInput}
-            {latitudeInput}
+
+            <Stack>
+                {nameInput}
+                {descriptionInput}
+                {typeInput}
+                {priceInput}
+                {imageInput}
+                <Stack direction={direction}>
+                    <Box sx={{ width: "100%" }}> {streetInput}</Box>
+                    <Box sx={{ width: "100%" }}> {houseNumberInput}</Box>
+                </Stack>
+                <Stack direction={direction}>
+                    <Box sx={{ width: "100%" }}> {postalCodeInput}</Box>
+                    <Box sx={{ width: "100%" }}> {cityInput}</Box>
+                </Stack>
+                <Stack direction={direction}>
+                    <Box sx={{ width: "100%" }}> {latitudeInput}</Box>
+                    <Box sx={{ width: "100%" }}> {longitudeInput}</Box>
+                </Stack>
+            </Stack>
+
             <Box sx={{ m: 1.5 }}>
                 <Button type="submit" variant="contained" onClick={handleClick}>Create</Button>
                 {showSuccess && <Typography style={{ display: "inline-flex", marginLeft: "1rem" }}>The car has been created!</Typography>}

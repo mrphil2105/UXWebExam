@@ -29,7 +29,7 @@ export default function OverviewCard(props: Props) {
 
     return (
         <Grid item xs={12} sm={6} md={4}>
-            <Card>
+            <Card >
                 <CardMedia component="img" image={props.car.imageUrl} alt={props.car.name} />
                 <CardContent>
                     <Typography sx={{ mb: 1 }} variant="h5">{props.car.name}</Typography>
