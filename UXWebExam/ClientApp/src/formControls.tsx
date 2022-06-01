@@ -51,3 +51,15 @@ export function useSelectInput(name: string, values: string[], defaultValue = ""
     );
     return [ value, input ];
 }
+
+export function useTextAreaInput(name: string, defaultValue = ""): [ string, JSX.Element ] {
+    const [ value, setValue ] = useState(defaultValue);
+    const input = (
+        <Box sx={{ m: boxMargin }}>
+            <FormControl fullWidth>
+                <TextField multiline type="text" label={name} value={value} onChange={e => setValue(e.target.value)} />
+            </FormControl>
+        </Box>
+    );
+    return [ value, input ];
+}
