@@ -1,7 +1,5 @@
 import React from "react";
 import { MapContainer, TileLayer, Popup, Marker } from "react-leaflet";
-import L from "leaflet";
-import leafletMouseEvent from "leaflet";
 
 import LocationMarker from "./UserLocation";
 import {
