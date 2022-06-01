@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 import Layout from "./components/layout/Layout";
 import Map from "./pages/mapPage";
 import Overview from "./pages/overview";
@@ -12,6 +12,7 @@ import CreateCar from "./pages/createCar";
 import SystemExplained from "./pages/systemExplained";
 
 function App() {
+    const location = useLocation();
     return (
         <Layout>
             <Routes>
@@ -19,14 +20,20 @@ function App() {
                 <Route path="/map" element={<Map />} />
                 <Route path="/overview" element={<Overview />} />
                 <Route path="/create-car" element={<CreateCar />} />
-                <Route path="/reservations" element={
-                    <RequireAuth>
-                        <Reservations />
-                    </RequireAuth>
-                } />
+                <Route
+                    path="/reservations"
+                    element={
+                        <RequireAuth>
+                            <Reservations />
+                        </RequireAuth>
+                    }
+                />
                 <Route path="/profile" element={<Profile />} />
                 <Route path="/help" element={<SystemExplained />} />
-                <Route path={`${ApplicationPath.ApiAuthorizationPrefix}/*`} element={<ApiAuthorizationRoutes />} />
+                <Route
+                    path={`${ApplicationPath.ApiAuthorizationPrefix}/*`}
+                    element={<ApiAuthorizationRoutes />}
+                />
             </Routes>
         </Layout>
     );
