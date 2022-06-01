@@ -4,6 +4,8 @@ namespace UXWebExam.Services;
 
 public interface ICarService
 {
+    Task<CarModel?> GetCarAsync(int id);
+
     Task<List<CarModel>> GetAllAsync();
 
     IEnumerable<string> GetCarImages();
