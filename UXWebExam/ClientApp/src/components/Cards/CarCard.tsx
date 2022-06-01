@@ -11,7 +11,6 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 export default function CarCard({car}:any) {
   return (
     <Card sx={{}}>
-      <ArrowBackIcon/>
       <Typography gutterBottom variant="h4" component="div" padding={1}>
             {car.name}
       </Typography>
