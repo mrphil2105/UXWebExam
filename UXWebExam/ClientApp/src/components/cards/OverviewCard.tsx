@@ -43,8 +43,8 @@ export default function OverviewCard(props: Props) {
                                     style={iconTypographyStyle}><LocationOnIcon /> {props.car.city}</Typography>}
                 </CardContent>
                 <CardActions>
-                    <Link to={"/book/"+props.car.id}>
-                    <Button variant="contained">Book</Button>
+                    <Link to={"/book/"+props.car.id} style={{ textDecoration: 'none' }}>
+                        <Button variant="contained">Book</Button>
                     </Link>
                 </CardActions>
             </Card>

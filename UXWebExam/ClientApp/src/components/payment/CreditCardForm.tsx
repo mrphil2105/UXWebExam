@@ -11,6 +11,7 @@ export default function PaymentForm() {
       <Typography variant="h6" gutterBottom>
         Payment method
       </Typography>
+      <img src={require("../../resources/creditCardTemplate.png")} width="90%"/>
       <Grid container spacing={3}>
         <Grid item xs={12} md={2}>
           <TextField

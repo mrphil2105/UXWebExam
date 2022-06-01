@@ -11,7 +11,6 @@ function Reservations() {
             <Stack spacing={3} sx={{ width: '600px' }}>
                 <h1>Reservations</h1>
                 <h3>Active</h3>
-                <SmallReservationCard reservation={new Reservation(new Car("yo", 200, Type.Electric, "idk"), "hey", "yo")} />
                 <h3>Future</h3>
             </Stack>
         </div>
