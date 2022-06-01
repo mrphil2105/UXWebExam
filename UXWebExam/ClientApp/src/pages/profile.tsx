@@ -48,7 +48,7 @@ const ProfilePicture: React.FC = () => {
                         p: 6,
                         maxWidth: 400,
                         height: "100%",
-                        maxHeight: 500,
+                        maxHeight: 300,
                     }}
                 >
                     <Box
