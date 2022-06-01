@@ -9,6 +9,8 @@ public class CarModel
     [Required]
     public string? Name { get; init; }
 
+    public string? Description { get; init; }
+
     [Required]
     public string? Type { get; init; }
 
