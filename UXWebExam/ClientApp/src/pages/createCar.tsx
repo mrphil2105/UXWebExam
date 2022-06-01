@@ -1,6 +1,6 @@
 import React, { MouseEventHandler, useEffect, useState } from "react";
 import { useTextAreaInput, useTextInput, useNumberInput, useSelectInput, ValidationFailure } from "../formControls";
-import { Box, Button, Container } from "@mui/material";
+import { Box, Button, Container, Typography } from "@mui/material";
 import CarModel from "../models/CarModel";
 
 export default () => {
@@ -20,6 +20,7 @@ export default () => {
     const [ latitude, latitudeInput ] = useNumberInput("Latitude");
 
     const [ errors, setErrors ] = useState<string[]>([]);
+    const [ showSuccess, setShowSuccess ] = useState(false);
 
     useEffect(() => {
         (async () => {
@@ -72,13 +73,18 @@ export default () => {
             });
 
             setErrors(modelErrors);
+        } else {
+            setShowSuccess(true);
+            setTimeout(() => {
+                setShowSuccess(false);
+            }, 3000);
         }
     };
 
     return (
         <Container>
-            <ul style={{ margin: "1rem", padding: "0", listStyle: "none", color: "red", fontFamily: "Roboto" }}>
-                {errors.map((e, i) => (<li key={i}>{e}</li>))}
+            <ul style={{ margin: "1rem", padding: "0", listStyle: "none", color: "red" }}>
+                {errors.map((e, i) => (<li key={i}><Typography>{e}</Typography></li>))}
             </ul>
             {nameInput}
             {descriptionInput}
@@ -93,6 +99,7 @@ export default () => {
             {latitudeInput}
             <Box sx={{ m: 1.5 }}>
                 <Button type="submit" variant="contained" onClick={handleClick}>Create</Button>
+                {showSuccess && <Typography style={{ display: "inline-flex", marginLeft: "1rem" }}>The car has been created!</Typography>}
             </Box>
         </Container>
     );
