@@ -4,10 +4,6 @@ import L from "leaflet";
 import { Marker, Popup, useMap } from "react-leaflet";
 import { LatLng } from "leaflet";
 
-import { Card } from "@mui/material";
-import DirectionsCarIcon from "@mui/icons-material/DirectionsCar";
-import { useLocation } from "react-router-dom";
-
 const LocationMarker = () => {
     const [position, setPosition] = React.useState<LatLng | null>(null);
     const [bbox, setBbox] = React.useState([]);
@@ -34,15 +30,7 @@ const LocationMarker = () => {
 
     return !position ? null : (
         <Marker position={position} icon={customMarker}>
-            <Popup>
-                You are here
-                {/* <br />
-                Map bbox: <br />
-                <b>Southwest lng</b>: {bbox[0]} <br />
-                <b>Southwest lat</b>: {bbox[1]} <br />
-                <b>Northeast lng</b>: {bbox[2]} <br />
-                <b>Northeast lat</b>: {bbox[3]} */}
-            </Popup>
+            <Popup>You are here</Popup>
         </Marker>
     );
 };

@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Routes, useLocation } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import Layout from "./components/layout/Layout";
 import Map from "./pages/mapPage";
 import Overview from "./pages/overview";
@@ -12,7 +12,6 @@ import CreateCar from "./pages/createCar";
 import SystemExplained from "./pages/systemExplained";
 
 function App() {
-    const location = useLocation();
     return (
         <Layout>
             <Routes>

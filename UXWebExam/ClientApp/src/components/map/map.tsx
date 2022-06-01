@@ -1,7 +1,5 @@
 import React from "react";
 import { MapContainer, TileLayer, Popup, Marker } from "react-leaflet";
-import L from "leaflet";
-import leafletMouseEvent from "leaflet";
 import CarModel from "../../models/CarModel";
 import { Link } from "react-router-dom";
 import LocationMarker from "./UserLocation";
@@ -17,10 +15,6 @@ import {
 } from "@mui/material";
 
 const Map: React.FC = () => {
-    function displayInfo(data: any) {
-        console.log(data);
-    }
-
     function getWindowDimensions() {
         const { innerWidth: width, innerHeight: height } = window;
         return {
@@ -68,7 +62,7 @@ const Map: React.FC = () => {
 
                         {cars.map((car) => (
                             <Marker
-                                position={[car.longitude, car.latitude]}
+                                position={[car.latitude, car.longitude]}
                                 eventHandlers={{ click: () => setChosen(car) }}
                             >
                                 <Popup>
