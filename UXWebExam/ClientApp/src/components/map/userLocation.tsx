@@ -31,17 +31,17 @@ const LocationMarker = () => {
         iconSize: [20, 35],
         iconAnchor: [12, 40],
     });
-    L.marker;
 
     return !position ? null : (
         <Marker position={position} icon={customMarker}>
             <Popup>
-                You are here. <br />
+                You are here
+                {/* <br />
                 Map bbox: <br />
                 <b>Southwest lng</b>: {bbox[0]} <br />
                 <b>Southwest lat</b>: {bbox[1]} <br />
                 <b>Northeast lng</b>: {bbox[2]} <br />
-                <b>Northeast lat</b>: {bbox[3]}
+                <b>Northeast lat</b>: {bbox[3]} */}
             </Popup>
         </Marker>
     );
