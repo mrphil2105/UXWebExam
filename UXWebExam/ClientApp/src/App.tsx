@@ -10,6 +10,9 @@ import ApiAuthorizationRoutes from "./components/api-authorization/ApiAuthorizat
 import RequireAuth from "./components/api-authorization/RequireAuth";
 import CreateCar from "./pages/createCar";
 import Help from "./pages/help";
+import Book from "./pages/book";
+import Payment from "./pages/payment";
+import ReservationMade from "./pages/reservationMade";
 
 function App() {
     return (
@@ -24,6 +27,9 @@ function App() {
                         <Reservations />
                     </RequireAuth>
                 } />
+                <Route path="/book/*" element={<Book/>} />
+                <Route path="/payment/*" element={<Payment/>} />
+                <Route path="/reservationMade/*" element={<ReservationMade/>} />
                 <Route path="/profile" element={<Profile />} />
                 <Route path="/help" element={<Help />} />
                 <Route path={`${ApplicationPath.ApiAuthorizationPrefix}/*`} element={<ApiAuthorizationRoutes />} />
