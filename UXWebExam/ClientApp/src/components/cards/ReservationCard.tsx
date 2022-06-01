@@ -24,6 +24,9 @@ export default function ReservationCard(props: Props) {
                 />
                 <CardContent>
                     <Typography variant="body1" color="text.secondary">
+                        <br/>
+                        {props.reservation.car.street} {props.reservation.car.houseNumber}, {props.reservation.car.postalCode} {props.reservation.car.city}
+                        <br/>
                         {props.reservation.car.type}
                         <br />
                         StartDate - {props.reservation.start}
