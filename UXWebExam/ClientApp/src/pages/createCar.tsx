@@ -1,5 +1,5 @@
 import React, { MouseEventHandler, useEffect, useState } from "react";
-import { useTextInput, useNumberInput, useSelectInput, ValidationFailure } from "../formControls";
+import { useTextAreaInput, useTextInput, useNumberInput, useSelectInput, ValidationFailure } from "../formControls";
 import { Box, Button, Container } from "@mui/material";
 import CarModel from "../models/CarModel";
 
@@ -8,6 +8,7 @@ export default () => {
     const [ carImages, setCarImages ] = useState<string[]>([]);
 
     const [ name, nameInput ] = useTextInput("Name");
+    const [ description, descriptionInput ] = useTextAreaInput("Description");
     const [ type, typeInput ] = useSelectInput("Type", carTypes);
     const [ price, priceInput ] = useNumberInput("Price");
     const [ image, imageInput ] = useSelectInput("Image", carImages);
@@ -39,6 +40,7 @@ export default () => {
 
         const car: CarModel = {
             name,
+            description,
             type,
             price,
             imageUrl: image,
@@ -79,6 +81,7 @@ export default () => {
                 {errors.map((e, i) => (<li key={i}>{e}</li>))}
             </ul>
             {nameInput}
+            {descriptionInput}
             {typeInput}
             {priceInput}
             {imageInput}

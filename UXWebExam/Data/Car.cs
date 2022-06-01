@@ -6,6 +6,8 @@ public class Car
 
     public string Name { get; set; } = null!;
 
+    public string Description { get; set; } = null!;
+
     public CarType Type { get; set; }
 
     public decimal Price { get; set; }
