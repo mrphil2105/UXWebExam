@@ -43,13 +43,13 @@ export class LoginMenu extends Component<Props, State> {
         const { isAuthenticated, username } = this.state;
 
         if (!isAuthenticated) {
-            const registerPath = `${ApplicationPath.ApiAuthorizationPrefix}/${ApplicationPath.Register}`;
-            const loginPath = `${ApplicationPath.ApiAuthorizationPrefix}/${ApplicationPath.Login}`;
+            const registerPath = `/${ApplicationPath.ApiAuthorizationPrefix}/${ApplicationPath.Register}`;
+            const loginPath = `/${ApplicationPath.ApiAuthorizationPrefix}/${ApplicationPath.Login}`;
             return this.anonymousView(registerPath, loginPath);
         }
 
         const logoutPath = {
-            pathname: `${ApplicationPath.ApiAuthorizationPrefix}/${ApplicationPath.Logout}`,
+            pathname: `/${ApplicationPath.ApiAuthorizationPrefix}/${ApplicationPath.Logout}`,
             state: { local: true, kebab: 69 }
         };
         return this.authenticatedView(logoutPath);
