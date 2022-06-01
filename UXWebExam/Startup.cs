@@ -29,7 +29,7 @@ public class Startup
             })
             .AddEntityFrameworkStores<AppDbContext>();
 
-        services.AddIdentityServer()
+        services.AddIdentityServer(o => o.IssuerUri = "https://localhost:44429")
             .AddApiAuthorization<AppUser, AppDbContext>();
 
         services.AddAuthentication()
