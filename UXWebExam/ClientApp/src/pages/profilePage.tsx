@@ -1,6 +1,6 @@
 import { Button, Stack, TextField } from "@mui/material";
 import React from "react";
-import CarCard from "../components/Cards/CarCard";
+import CarCard from "../components/cards/CarCard";
 import ProfilePicture from "./profile";
 
 function ProfilePage() {

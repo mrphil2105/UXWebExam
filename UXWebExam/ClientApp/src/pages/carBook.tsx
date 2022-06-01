@@ -1,7 +1,7 @@
 import { Button, Stack } from "@mui/material";
 import React from "react";
 import Calender from "../components/calendar/Calendar";
-import CarCard from "../components/Cards/CarCard";
+import CarCard from "../components/cards/CarCard";
 import CarModel from "../models/CarModel";
 
 interface Props {
