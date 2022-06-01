@@ -11,4 +11,29 @@ public class AppDbContext : ApiAuthorizationDbContext<AppUser>
         IOptions<OperationalStoreOptions> operationalStoreOptions) : base(options, operationalStoreOptions)
     {
     }
+
+    public DbSet<Car> Cars { get; set; } = null!;
+
+    protected override void OnModelCreating(ModelBuilder builder)
+    {
+        base.OnModelCreating(builder);
+
+        // Car
+
+        builder.Entity<Car>()
+            .Property(c => c.Name)
+            .HasMaxLength(100);
+
+        builder.Entity<Car>()
+            .Property(c => c.Street)
+            .HasMaxLength(100);
+
+        builder.Entity<Car>()
+            .Property(c => c.HouseNumber)
+            .HasMaxLength(100);
+
+        builder.Entity<Car>()
+            .Property(c => c.City)
+            .HasMaxLength(100);
+    }
 }

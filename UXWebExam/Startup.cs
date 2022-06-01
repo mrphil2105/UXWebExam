@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.EntityFrameworkCore;
 using UXWebExam.Data;
+using UXWebExam.Services;
 
 namespace UXWebExam;
 
@@ -35,6 +36,8 @@ public class Startup
             .AddIdentityServerJwt();
 
         services.ConfigureApplicationCookie(o => o.LoginPath = "/Identity/Account/Login");
+
+        services.AddScoped<ICarService, CarService>();
 
         var controllersBuilder = services.AddControllersWithViews();
         var razorPagesBuilder = services.AddRazorPages();
@@ -73,5 +76,10 @@ public class Startup
             b.MapRazorPages();
             b.MapFallbackToFile("index.html");
         });
+
+        using var scope = app.ApplicationServices.CreateScope();
+
+        var dbContext = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+        dbContext.Database.Migrate();
     }
 }
