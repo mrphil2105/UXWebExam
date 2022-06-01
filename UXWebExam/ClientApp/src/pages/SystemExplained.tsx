@@ -1,7 +1,5 @@
 import { Button, Stack } from "@mui/material";
 import React from "react";
-import Calender from "../components/Calender/Calender";
-import CarCard from "../components/Cards/CarCard";
 
 function SystemExplained({car}:any) {
     return (

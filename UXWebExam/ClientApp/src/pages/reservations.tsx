@@ -3,7 +3,7 @@ import React from "react";
 import { Car } from "../classes/Car";
 import { Reservation } from "../classes/Reservation";
 import { Type } from "../classes/Car";
-import ReservationCard from "../components/cards/ReservationCard";
+import ReservationCard from "../components/Cards/ReservationCard";
 
 function Reservations() {
     return (
