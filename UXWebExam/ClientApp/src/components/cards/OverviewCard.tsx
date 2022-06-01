@@ -8,6 +8,7 @@ import CardActions from '@mui/material/CardActions';
 import LocalGasStationIcon from "@mui/icons-material/LocalGasStation";
 import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
+import { Link } from "react-router-dom";
 
 interface Props {
     car: CarModel;
@@ -42,7 +43,9 @@ export default function OverviewCard(props: Props) {
                                     style={iconTypographyStyle}><LocationOnIcon /> {props.car.city}</Typography>}
                 </CardContent>
                 <CardActions>
-                    <Button variant="contained">Rent</Button>
+                    <Link to={"/book/"+props.car.id}>
+                    <Button variant="contained">Book</Button>
+                    </Link>
                 </CardActions>
             </Card>
         </Grid>

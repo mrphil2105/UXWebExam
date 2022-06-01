@@ -10,6 +10,7 @@ import ApiAuthorizationRoutes from "./components/api-authorization/ApiAuthorizat
 import RequireAuth from "./components/api-authorization/RequireAuth";
 import CreateCar from "./pages/createCar";
 import Help from "./pages/help";
+import { Book } from "@mui/icons-material";
 
 function App() {
     return (
@@ -24,6 +25,7 @@ function App() {
                         <Reservations />
                     </RequireAuth>
                 } />
+                <Route path="/book/*" element={<Book />} />
                 <Route path="/profile" element={<Profile />} />
                 <Route path="/help" element={<Help />} />
                 <Route path={`${ApplicationPath.ApiAuthorizationPrefix}/*`} element={<ApiAuthorizationRoutes />} />
