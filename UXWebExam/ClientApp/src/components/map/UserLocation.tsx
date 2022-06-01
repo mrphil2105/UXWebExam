@@ -4,10 +4,6 @@ import L from "leaflet";
 import { Marker, Popup, useMap } from "react-leaflet";
 import { LatLng } from "leaflet";
 
-import { Card } from "@mui/material";
-import DirectionsCarIcon from "@mui/icons-material/DirectionsCar";
-import { useLocation } from "react-router-dom";
-
 const LocationMarker = () => {
     const [position, setPosition] = React.useState<LatLng | null>(null);
     const [bbox, setBbox] = React.useState([]);

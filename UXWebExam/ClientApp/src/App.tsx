@@ -9,7 +9,7 @@ import { ApplicationPath } from "./components/api-authorization/ApiAuthorization
 import ApiAuthorizationRoutes from "./components/api-authorization/ApiAuthorizationRoutes";
 import RequireAuth from "./components/api-authorization/RequireAuth";
 import CreateCar from "./pages/createCar";
-import SystemExplained from "./pages/systemExplained";
+import Help from "./pages/help";
 
 function App() {
     return (
@@ -25,7 +25,7 @@ function App() {
                     </RequireAuth>
                 } />
                 <Route path="/profile" element={<Profile />} />
-                <Route path="/help" element={<SystemExplained />} />
+                <Route path="/help" element={<Help />} />
                 <Route path={`${ApplicationPath.ApiAuthorizationPrefix}/*`} element={<ApiAuthorizationRoutes />} />
             </Routes>
         </Layout>
