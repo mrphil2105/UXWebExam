@@ -8,8 +8,8 @@ import Checkbox from '@mui/material/Checkbox';
 export default function PaymentForm() {
   return (
     <React.Fragment>
-      <Typography variant="h6" gutterBottom>
-        Payment method
+      <Typography variant="h4" gutterBottom>
+        Payment
       </Typography>
       <img src={require("../../resources/creditCardTemplate.png")} width="90%"/>
       <Grid container spacing={3}>
