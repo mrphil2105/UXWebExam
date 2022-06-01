@@ -15,6 +15,7 @@ function App() {
     return (
         <Layout>
             <Routes>
+                <Route path="/" element={<Map />} />
                 <Route path="/map" element={<Map />} />
                 <Route path="/overview" element={<Overview />} />
 
