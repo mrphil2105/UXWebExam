@@ -32,6 +32,26 @@ public class CarController : Controller
     }
 
     [HttpGet]
+    public async Task<IActionResult> Search([FromQuery] SearchModel searchModel)
+    {
+        var result = await _carService.SearchAsync(searchModel);
+
+        if (!result.Succeeded)
+        {
+            string? message = null;
+
+            if (result.InvalidDates)
+            {
+                message = "The selected start date exceeds the end date.";
+            }
+
+            return Problem(detail: message, statusCode: 400);
+        }
+
+        return Json(result.Cars);
+    }
+
+    [HttpGet]
     public IActionResult GetCarTypes()
     {
         string[] carTypes = Enum.GetNames<CarType>();

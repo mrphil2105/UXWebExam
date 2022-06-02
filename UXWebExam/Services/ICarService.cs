@@ -8,6 +8,8 @@ public interface ICarService
 
     Task<List<CarModel>> GetAllAsync();
 
+    Task<SearchResult> SearchAsync(SearchModel searchModel);
+
     List<string> GetCarImages();
 
     Task<int> CreateAsync(CarModel carModel);

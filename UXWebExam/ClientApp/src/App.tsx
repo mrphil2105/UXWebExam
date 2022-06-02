@@ -2,8 +2,8 @@ import React from "react";
 import { Route, Routes } from "react-router-dom";
 import Layout from "./components/layout/Layout";
 import Map from "./pages/mapPage";
-import Overview from "./pages/overview";
 import Bookings from "./pages/bookings";
+import Search from "./pages/search";
 import Profile from "./pages/profile";
 import { ApplicationPath } from "./components/api-authorization/ApiAuthorizationConstants";
 import ApiAuthorizationRoutes from "./components/api-authorization/ApiAuthorizationRoutes";
@@ -19,7 +19,7 @@ function App() {
         <Layout>
             <Routes>
                 <Route path="/" element={<Map />} />
-                <Route path="/overview" element={<Overview />} />
+                <Route path="/search" element={<Search />} />
                 <Route path="/create-car" element={<CreateCar />} />
                 <Route path="/bookings" element={
                     <RequireAuth>

@@ -5,6 +5,7 @@ import {
     useNumberInput,
     useSelectInput,
     ValidationFailure,
+    boxPadding,
 } from "../formControls";
 import {
     Box,
@@ -24,7 +25,7 @@ export default () => {
     const [ description, descriptionInput ] = useTextAreaInput("Description");
     const [ type, typeInput ] = useSelectInput("Type", carTypes);
     const [ price, priceInput ] = useNumberInput("Price");
-    const [ image, imageInput ] = useSelectInput("Image", carImages);
+    const [ image, imageInput ] = useSelectInput("Image", carImages, "", true);
     const [ street, streetInput ] = useTextInput("Street");
     const [ houseNumber, houseNumberInput ] = useTextInput("House No.");
     const [ postalCode, postalCodeInput ] = useNumberInput("Postal Code");
@@ -113,25 +114,27 @@ export default () => {
                 ))}
             </ul>
 
-            <Stack>
-                {nameInput}
-                {descriptionInput}
-                {typeInput}
-                {priceInput}
-                {imageInput}
-                <Stack direction={direction}>
-                    <Box sx={{ width: "100%" }}> {streetInput}</Box>
-                    <Box sx={{ width: "100%" }}> {houseNumberInput}</Box>
+            <Box sx={{ mx: -boxPadding }}>
+                <Stack>
+                    {nameInput}
+                    {descriptionInput}
+                    {typeInput}
+                    {priceInput}
+                    {imageInput}
+                    <Stack direction={direction}>
+                        <Box sx={{ width: "100%" }}> {streetInput}</Box>
+                        <Box sx={{ width: "100%" }}> {houseNumberInput}</Box>
+                    </Stack>
+                    <Stack direction={direction}>
+                        <Box sx={{ width: "100%" }}> {postalCodeInput}</Box>
+                        <Box sx={{ width: "100%" }}> {cityInput}</Box>
+                    </Stack>
+                    <Stack direction={direction}>
+                        <Box sx={{ width: "100%" }}> {latitudeInput}</Box>
+                        <Box sx={{ width: "100%" }}> {longitudeInput}</Box>
+                    </Stack>
                 </Stack>
-                <Stack direction={direction}>
-                    <Box sx={{ width: "100%" }}> {postalCodeInput}</Box>
-                    <Box sx={{ width: "100%" }}> {cityInput}</Box>
-                </Stack>
-                <Stack direction={direction}>
-                    <Box sx={{ width: "100%" }}> {latitudeInput}</Box>
-                    <Box sx={{ width: "100%" }}> {longitudeInput}</Box>
-                </Stack>
-            </Stack>
+            </Box>
 
             <Box sx={{ m: 1.5 }}>
                 <Button type="submit" variant="contained" onClick={handleClick}>Create</Button>

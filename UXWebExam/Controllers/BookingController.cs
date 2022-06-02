@@ -25,7 +25,11 @@ public class BookingController : Controller
         {
             string? message = null;
 
-            if (result.HasNoCar)
+            if (result.InvalidDates)
+            {
+                message = "The selected start date exceeds the end date.";
+            }
+            else if (result.HasNoCar)
             {
                 message = "The car has been deleted since you visited this page.";
             }
