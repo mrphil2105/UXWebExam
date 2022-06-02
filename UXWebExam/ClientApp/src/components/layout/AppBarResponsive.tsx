@@ -6,7 +6,6 @@ import {
     IconButton,
     Typography,
     Container,
-    Avatar,
     Button,
     Tooltip,
     Menu,
@@ -28,7 +27,6 @@ const pages = [
     { name: "Help", link: "/help" },
     { name: "My Bookings", link: "/bookings" },
 ];
-const settings = ["Profile", "Account", "Logout"];
 
 const ResponsiveAppBar = () => {
     const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(

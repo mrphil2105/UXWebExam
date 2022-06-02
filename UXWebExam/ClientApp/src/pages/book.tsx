@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
-import { Box, Container, Typography, useMediaQuery } from "@mui/material";
-import { Stack } from "@mui/material";
+import React, {useEffect, useState} from "react";
+import {Box, Container, Typography, useMediaQuery} from "@mui/material";
+import {Stack} from "@mui/material";
 import BookCard from "../components/cards/BookCard";
-import { Button } from "@mui/material";
+import {Button} from "@mui/material";
 import CarModel from "../models/CarModel";
-import { Link } from "react-router-dom";
-import { useCalendarInput } from "../formControls";
+import {Link} from "react-router-dom";
+import {useCalendarInput} from "../formControls";
 import Calendar from "../components/calendar/Calendar";
 import {doNothing} from "@mui/x-date-pickers/internals/utils/utils";
 
@@ -14,8 +14,8 @@ export default function Book() {
     const slashIndex = pathname.lastIndexOf("/");
     const id = pathname.substring(slashIndex + 1, pathname.length);
 
-    const [ isLoading, setIsLoading ] = useState(true);
-    const [ car, setCar ] = useState<CarModel | null>();
+    const [isLoading, setIsLoading] = useState(true);
+    const [car, setCar] = useState<CarModel | null>();
 
     useEffect(() => {
         (async () => {
@@ -33,21 +33,22 @@ export default function Book() {
     if (!car) {
         return (<Container><Typography>No car could be found.</Typography></Container>)
     }
-    
+
     return (
-<       div style={{ display: 'flex', justifyContent: 'center' }}>
-            <Stack spacing={3} sx={{ width: '600px', padding:2 }}>
-                <BookCard car={car} />
-                <br />
-                <div style={{ display: 'flex', justifyContent: 'center' }}>
-                    <Calendar name="Start Time"  onChange={doNothing} value={new Date()}/>
-                    <Calendar name="End Time"  onChange={doNothing} value={new Date()}/>
-                </div>
-                <Typography style={{ display: 'flex', justifyContent: 'center', fontSize: 30 }}>130 kr.</Typography>
-                <Link to={"/payment/"+car.id} style={{ textDecoration: 'none' }}>
-                    <Button variant="contained" fullWidth>Book</Button>
-                </Link>
-            </Stack>
-        </div>
+        <Container>
+            <Box sx={{display: 'flex', justifyContent: 'center'}}>
+                <Stack spacing={3} sx={{width: '600px', padding: 2}}>
+                    <BookCard car={car}/>
+                    <Stack direction="row" spacing={2} sx={{justifyContent: "center"}}>
+                        <Calendar name="Start Time" onChange={doNothing} value={new Date()}/>
+                        <Calendar name="End Time" onChange={doNothing} value={new Date()}/>
+                    </Stack>
+                    <Typography variant="h3" style={{display: 'flex', justifyContent: 'center'}}>130 kr.</Typography> //TODO: tilføj pris calculation
+                    <Link to={"/payment/" + car.id} style={{textDecoration: 'none'}}>
+                        <Button variant="contained" fullWidth>Book</Button>
+                    </Link>
+                </Stack>
+            </Box>
+        </Container>
     );
 }

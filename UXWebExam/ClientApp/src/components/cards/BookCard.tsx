@@ -15,7 +15,7 @@ interface Props {
 
 export default function BookCard(props: Props) {
     return (
-        <Card>
+        <Card sx={{m:2}}>
             <CardHeader title={props.car.name} sx={{ backgroundColor: "primary.main", color: "white" }} />
             <CardMedia component="img" image={props.car.imageUrl} alt={props.car.name} />
             <CardContent>

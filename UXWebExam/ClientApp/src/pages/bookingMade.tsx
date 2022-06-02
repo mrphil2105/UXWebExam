@@ -1,19 +1,19 @@
-import React, { useEffect, useState } from "react";
-import { Container, Typography } from "@mui/material";
-import { Stack } from "@mui/material";
-import { Button } from "@mui/material";
+import React, {useEffect, useState} from "react";
+import {Box, Container, Typography} from "@mui/material";
+import {Stack} from "@mui/material";
+import {Button} from "@mui/material";
 import CarModel from "../models/CarModel";
-import { Link } from "react-router-dom";
+import {Link} from "react-router-dom";
 import BookingCard from "../components/cards/BookingCard";
-import { BookingModel } from "../models/BookingModel";
+import {BookingModel} from "../models/BookingModel";
 
 export default function BookingMade() {
     const pathname = window.location.pathname;
     const slashIndex = pathname.lastIndexOf("/");
     const id = pathname.substring(slashIndex + 1, pathname.length);
 
-    const [ isLoading, setIsLoading ] = useState(true);
-    const [ car, setCar ] = useState<CarModel | null>();
+    const [isLoading, setIsLoading] = useState(true);
+    const [car, setCar] = useState<CarModel | null>();
 
     useEffect(() => {
         (async () => {
@@ -31,24 +31,26 @@ export default function BookingMade() {
     if (!car) {
         return (<Container><Typography>No car could be found.</Typography></Container>)
     }
-    
-    const booking: BookingModel = {car: car, endDate:"2",startDate:"3", id:3}
+
+    const booking: BookingModel = {car: car, endDate: "2", startDate: "3", id: 3}
 
     return (
-        <div style={{ display: 'flex', justifyContent: 'center' }}>
-        <Stack spacing={3} sx={{ width: '600px', padding:2  }}>
-            <Typography gutterBottom variant="h4" >
-                Booking Made!
-            </Typography>
-            <BookingCard booking={booking}  active={true} />
-            <br />
-            <Link to={"/"} style={{ textDecoration: 'none' }} >
-                <Button variant="contained" fullWidth>Book another car</Button>
-            </Link>
-            <Link to={"/bookings" } style={{ textDecoration: 'none' }}>
-                            <Button variant="contained" fullWidth>See all Bookings</Button>
-            </Link>
-        </Stack>
-    </div>
+        <Container>
+            <Box sx={{display: 'flex', justifyContent: 'center'}}>
+                <Stack spacing={3} sx={{width: '600px', padding: 2}}>
+                    <Typography gutterBottom variant="h4">
+                        Booking Made!
+                    </Typography>
+                    <BookingCard booking={booking} active={true}/>
+                    <br/>
+                    <Link to={"/"} style={{textDecoration: 'none'}}>
+                        <Button variant="contained" fullWidth>Book another car</Button>
+                    </Link>
+                    <Link to={"/bookings"} style={{textDecoration: 'none'}}>
+                        <Button variant="contained" fullWidth>See all Bookings</Button>
+                    </Link>
+                </Stack>
+            </Box>
+        </Container>
     );
 }
