@@ -1,9 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { Car } from "../classes/Car";
 import { Container, Typography } from "@mui/material";
 import { Stack } from "@mui/material";
-import CarCard from "../components/cards/CarCard";
-import Calender from "../components/calendar/Calendar";
 import { Button } from "@mui/material";
 import CarModel from "../models/CarModel";
 import CreditCardForm from "../components/payment/CreditCardForm";
