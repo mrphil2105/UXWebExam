@@ -8,11 +8,11 @@ namespace UXWebExam.Controllers;
 [Route("api/[controller]/[action]")]
 [ApiController]
 [Authorize]
-public class BookController : Controller
+public class BookingController : Controller
 {
-    private readonly IBookService _bookService;
+    private readonly IBookingService _bookService;
 
-    public BookController(IBookService bookService)
+    public BookingController(IBookingService bookService)
     {
         _bookService = bookService;
     }
@@ -22,12 +22,12 @@ public class BookController : Controller
     {
         var result = await _bookService.BookCarAsync(bookModel);
 
-        if (result != BookResult.Success)
+        if (result != BookingResult.Success)
         {
             string message = result switch
             {
-                BookResult.NoCar => "The car has been deleted since you visited this page.",
-                BookResult.AlreadyBooked => "The car has already been booked in the selected time period.",
+                BookingResult.NoCar => "The car has been deleted since you visited this page.",
+                BookingResult.AlreadyBooked => "The car has already been booked in the selected time period.",
                 _ => throw new SwitchExpressionException($"Missing switch expression case for value '{result}'.")
             };
 

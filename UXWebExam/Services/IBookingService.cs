@@ -2,9 +2,9 @@ using UXWebExam.Models;
 
 namespace UXWebExam.Services;
 
-public interface IBookService
+public interface IBookingService
 {
-    Task<BookResult> BookCarAsync(BookModel bookModel);
+    Task<BookingResult> BookCarAsync(BookModel bookModel);
 
     Task<List<BookingModel>> GetBookingsAsync();
 }

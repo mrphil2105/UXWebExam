@@ -1,6 +1,6 @@
 namespace UXWebExam.Services;
 
-public enum BookResult
+public enum BookingResult
 {
     Success,
     NoCar,

@@ -7,24 +7,24 @@ using UXWebExam.Models;
 
 namespace UXWebExam.Services;
 
-public class BookService : IBookService
+public class BookingService : IBookingService
 {
     private readonly AppDbContext _dbContext;
     private readonly IHttpContextAccessor _httpContextAccessor;
 
-    public BookService(AppDbContext dbContext, IHttpContextAccessor httpContextAccessor)
+    public BookingService(AppDbContext dbContext, IHttpContextAccessor httpContextAccessor)
     {
         _dbContext = dbContext;
         _httpContextAccessor = httpContextAccessor;
     }
 
-    public async Task<BookResult> BookCarAsync(BookModel bookModel)
+    public async Task<BookingResult> BookCarAsync(BookModel bookModel)
     {
         var car = await _dbContext.Cars.FindAsync(bookModel.CarId);
 
         if (car == null)
         {
-            return BookResult.NoCar;
+            return BookingResult.NoCar;
         }
 
         var existingBookings = await _dbContext.Bookings.Where(b => b.CarId == bookModel.CarId)
@@ -37,7 +37,7 @@ public class BookService : IBookService
                 (startDate >= b.StartDate && startDate <= b.EndDate) ||
                 (endDate <= b.EndDate && endDate >= b.StartDate)))
         {
-            return BookResult.AlreadyBooked;
+            return BookingResult.AlreadyBooked;
         }
 
         string? userId = _httpContextAccessor.HttpContext?.User.FindFirst(ClaimTypes.NameIdentifier)
@@ -55,7 +55,7 @@ public class BookService : IBookService
         _dbContext.Bookings.Add(booking);
         await _dbContext.SaveChangesAsync();
 
-        return BookResult.Success;
+        return BookingResult.Success;
     }
 
     public async Task<List<BookingModel>> GetBookingsAsync()
