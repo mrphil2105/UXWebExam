@@ -17,61 +17,26 @@ public class CarService : ICarService
 
     public async Task<CarModel?> GetCarAsync(int id)
     {
-        var car = await _dbContext.Cars.Include(c => c.User)
-            .FirstOrDefaultAsync(c => c.Id == id);
+        var car = await _dbContext.Cars.FirstOrDefaultAsync(c => c.Id == id);
 
-        if (car == null)
-        {
-            return null;
-        }
-
-        return new CarModel
-        {
-            Id = car.Id,
-            Name = car.Name,
-            Description = car.Description,
-            Type = car.Type.ToString(),
-            Price = car.Price,
-            ImageUrl = car.ImageUrl,
-            Street = car.Street,
-            HouseNumber = car.HouseNumber,
-            PostalCode = car.PostalCode,
-            City = car.City,
-            Longitude = car.Longitude,
-            Latitude = car.Latitude
-        };
+        return car?.ToModel();
     }
 
     public async Task<List<CarModel>> GetAllAsync()
     {
-        var cars = await _dbContext.Cars.Include(c => c.User)
-            .ToListAsync();
+        var cars = await _dbContext.Cars.ToListAsync();
 
-        return cars.Where(c => !c.RentEnd.HasValue || c.RentEnd > DateTimeOffset.Now)
-            .Select(c => new CarModel
-            {
-                Id = c.Id,
-                Name = c.Name,
-                Description = c.Description,
-                Type = c.Type.ToString(),
-                Price = c.Price,
-                ImageUrl = c.ImageUrl,
-                Street = c.Street,
-                HouseNumber = c.HouseNumber,
-                PostalCode = c.PostalCode,
-                City = c.City,
-                Longitude = c.Longitude,
-                Latitude = c.Latitude
-            })
+        return cars.Select(c => c.ToModel())
             .ToList();
     }
 
-    public IEnumerable<string> GetCarImages()
+    public List<string> GetCarImages()
     {
         string directoryPath = Path.Combine(("ClientApp/public" + ImagesPath).Split('/'));
 
         return Directory.EnumerateFiles(directoryPath)
-            .Select(Path.GetFileName)!;
+            .Select(Path.GetFileName)
+            .ToList()!;
     }
 
     public async Task<int> CreateAsync(CarModel carModel)

@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using UXWebExam.Data;
 
@@ -10,9 +11,10 @@ using UXWebExam.Data;
 namespace UXWebExam.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220601152837_RemoveBalance")]
+    partial class RemoveBalance
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "6.0.4");
@@ -362,34 +364,6 @@ namespace UXWebExam.Migrations
                     b.ToTable("AspNetUsers", (string)null);
                 });
 
-            modelBuilder.Entity("UXWebExam.Data.Booking", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("CarId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<DateTimeOffset>("EndDate")
-                        .HasColumnType("TEXT");
-
-                    b.Property<DateTimeOffset>("StartDate")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CarId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("Bookings");
-                });
-
             modelBuilder.Entity("UXWebExam.Data.Car", b =>
                 {
                     b.Property<int>("Id")
@@ -430,6 +404,12 @@ namespace UXWebExam.Migrations
                     b.Property<decimal>("Price")
                         .HasColumnType("TEXT");
 
+                    b.Property<DateTimeOffset?>("RentDate")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTimeOffset?>("RentEnd")
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("Street")
                         .IsRequired()
                         .HasMaxLength(100)
@@ -438,7 +418,12 @@ namespace UXWebExam.Migrations
                     b.Property<int>("Type")
                         .HasColumnType("INTEGER");
 
+                    b.Property<string>("UserId")
+                        .HasColumnType("TEXT");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Cars");
                 });
@@ -494,33 +479,18 @@ namespace UXWebExam.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("UXWebExam.Data.Booking", b =>
+            modelBuilder.Entity("UXWebExam.Data.Car", b =>
                 {
-                    b.HasOne("UXWebExam.Data.Car", "Car")
-                        .WithMany("Bookings")
-                        .HasForeignKey("CarId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("UXWebExam.Data.AppUser", "User")
-                        .WithMany("Bookings")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Car");
+                        .WithMany("Cars")
+                        .HasForeignKey("UserId");
 
                     b.Navigation("User");
                 });
 
             modelBuilder.Entity("UXWebExam.Data.AppUser", b =>
                 {
-                    b.Navigation("Bookings");
-                });
-
-            modelBuilder.Entity("UXWebExam.Data.Car", b =>
-                {
-                    b.Navigation("Bookings");
+                    b.Navigation("Cars");
                 });
 #pragma warning restore 612, 618
         }

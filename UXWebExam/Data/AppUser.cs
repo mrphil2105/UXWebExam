@@ -8,9 +8,7 @@ public class AppUser : IdentityUser
 
     public string LastName { get; set; } = null!;
 
-    public decimal Balance { get; set; }
-
     // Navigation properties
 
-    public ICollection<Car> Cars { get; set; } = null!;
+    public ICollection<Booking> Bookings { get; set; } = null!;
 }

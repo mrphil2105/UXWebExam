@@ -115,7 +115,8 @@ export default class Login extends Component<Props, State> {
     }
 
     private static redirectToRegister() {
-        Login.redirectToApiAuthorizationPath(`${ApplicationPath.IdentityRegisterPath}?${QueryParameterName.ReturnUrl}=${encodeURI(ApplicationPath.Login)}`);
+        const loginPath = `/${ApplicationPath.ApiAuthorizationPrefix}/${ApplicationPath.Login}`;
+        Login.redirectToApiAuthorizationPath(`${ApplicationPath.IdentityRegisterPath}?${QueryParameterName.ReturnUrl}=${encodeURI(loginPath)}`);
     }
 
     private static redirectToProfile() {
