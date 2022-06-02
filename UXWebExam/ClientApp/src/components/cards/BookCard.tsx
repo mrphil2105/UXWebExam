@@ -14,6 +14,32 @@ interface Props {
 }
 
 export default function BookCard(props: Props) {
+    let address: string = "";
+
+    if (props.car.postalCode) {
+        address += props.car.postalCode + " ";
+    }
+
+    if (props.car.city) {
+        address += props.car.city;
+    }
+
+    if (props.car.postalCode) {
+        if (address) {
+            address += ", ";
+        }
+
+        address += props.car.postalCode + " ";
+    }
+
+    if (props.car.city) {
+        if (address && !props.car.postalCode) {
+            address += ", ";
+        }
+
+        address += props.car.city;
+    }
+
     return (
         <Card>
             <CardHeader title={props.car.name} sx={{ backgroundColor: "primary.main", color: "white" }} />
@@ -21,13 +47,13 @@ export default function BookCard(props: Props) {
             <CardContent>
                 <Typography>{props.car.description}</Typography>
                 <Typography color="text.secondary">
-                    <LocationOnIcon />{props.car.street} {props.car.houseNumber}, {props.car.postalCode} {props.car.city}
+                    {address && (<><LocationOnIcon /> {address}</>)}
                 </Typography>
                 <Typography color="text.secondary">
                     <LocalGasStationIcon />{props.car.type}
                 </Typography>
                 <Typography color="text.secondary">
-                    <AttachMoneyIcon />{props.car.price} kr./dagen
+                    <AttachMoneyIcon />{props.car.price} DKK/day
                 </Typography>
             </CardContent>
         </Card>

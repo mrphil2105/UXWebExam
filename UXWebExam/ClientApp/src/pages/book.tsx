@@ -6,23 +6,33 @@ import { Button } from "@mui/material";
 import CarModel from "../models/CarModel";
 import { Link } from "react-router-dom";
 import { useCalendarInput } from "../formControls";
+import { BookModel } from "../models/BookModel";
 
 export default function Book() {
     const pathname = window.location.pathname;
     const slashIndex = pathname.lastIndexOf("/");
     const id = pathname.substring(slashIndex + 1, pathname.length);
 
+    const [ fromDate, fromDateString, fromDateInput ] = useCalendarInput("From");
+    const [ toDate, toDateString, toDateInput ] = useCalendarInput("To");
+
     const [ isLoading, setIsLoading ] = useState(true);
     const [ car, setCar ] = useState<CarModel | null>();
+
+    const isMobile = useMediaQuery("(max-width: 600px)");
+    const direction = isMobile ? "column" : "row";
 
     useEffect(() => {
         (async () => {
             const response = await fetch(`/api/Car/GetCar?id=${id}`);
-            const car: CarModel = await response.json();
-            setCar(car);
-            setIsLoading(false);
+
+            if (response.ok) {
+                const car: CarModel = await response.json();
+                setCar(car);
+                setIsLoading(false);
+            }
         })();
-    }, [])
+    }, []);
 
     if (isLoading) {
         return (<Container><Typography>Loading car...</Typography></Container>);
@@ -32,21 +42,31 @@ export default function Book() {
         return (<Container><Typography>No car could be found.</Typography></Container>)
     }
 
-    // @ts-ignore
+    const bookModel: BookModel = {
+        carId: Number(id),
+        startDate: fromDateString,
+        endDate: toDateString
+    }
+
+    const diffTime = toDate && fromDate && Math.max(toDate.getTime() - fromDate.getTime(), 0);
+    const totalPrice = diffTime ? car.price * ((diffTime / (1000 * 3600 * 24)) + 1) : 0;
+
     return (
-<       div style={{ display: 'flex', justifyContent: 'center' }}>
-            <Stack spacing={3} sx={{ width: '600px', padding:2 }}>
-                <CarCard car={car} />
-                <br />
-                <div style={{ display: 'flex', justifyContent: 'center' }}>
-                    <Calendar name="Start Time"  onChange={doNothing} value={new Date()}/>
-                    <Calendar name="End Time"  onChange={doNothing} value={new Date()}/>
-                </div>
-                <Typography style={{ display: 'flex', justifyContent: 'center', fontSize: 30 }}>130 kr.</Typography>
-                <Link to={"/payment/"+car.id} style={{ textDecoration: 'none' }}>
-                    <Button variant="contained" fullWidth>Book</Button>
+        <Container>
+            <Stack spacing={3}>
+                <BookCard car={car} />
+                <Stack direction={direction}>
+                    <Box sx={{ width: "100%" }}>{fromDateInput}</Box>
+                    <Box sx={{ width: "100%" }}>{toDateInput}</Box>
+                </Stack>
+                <Typography variant="h3" style={{
+                    display: "flex",
+                    justifyContent: "center"
+                }}>{totalPrice.toFixed(2)} DKK</Typography>
+                <Link to={"/payment/" + car.id} state={bookModel}>
+                    <Button disabled={!diffTime} variant="contained" fullWidth>Book</Button>
                 </Link>
             </Stack>
-        </div>
+        </Container>
     );
 }
