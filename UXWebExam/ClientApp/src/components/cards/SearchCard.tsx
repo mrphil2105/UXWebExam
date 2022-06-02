@@ -43,7 +43,7 @@ export default function SearchCard(props: Props) {
                                     style={iconTypographyStyle}><LocationOnIcon /> {props.car.city}</Typography>}
                 </CardContent>
                 <CardActions>
-                    <Link to={"/book/"+props.car.id} style={{ textDecoration: 'none' }}>
+                    <Link to={"/book/"+props.car.id} style={{ textDecoration: "none" }}>
                         <Button variant="contained">Book</Button>
                     </Link>
                 </CardActions>

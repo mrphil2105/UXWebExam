@@ -63,7 +63,7 @@ export default function Book() {
                     display: "flex",
                     justifyContent: "center"
                 }}>{totalPrice.toFixed(2)} DKK</Typography>
-                <Link to={"/payment/" + car.id} state={bookModel}>
+                <Link to={"/payment/" + car.id} state={bookModel} style={{ textDecoration: "none" }}>
                     <Button disabled={!diffTime} variant="contained" fullWidth>Book</Button>
                 </Link>
             </Stack>

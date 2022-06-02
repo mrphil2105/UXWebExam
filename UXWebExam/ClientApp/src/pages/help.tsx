@@ -23,8 +23,8 @@ export default function Help() {
                         If you don't do this you will be charged extra. Once you've the delivered the car, find the
                         booking on the website and press "Deliver".
                     </Typography>
-                    </Box>
-                <Link to="/">
+                </Box>
+                <Link to="/" style={{ textDecoration: "none" }}>
                     <Button variant="contained">Understood</Button>
                 </Link>
             </Stack>
