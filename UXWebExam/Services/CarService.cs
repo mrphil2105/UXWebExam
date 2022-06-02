@@ -23,7 +23,7 @@ public class CarService : ICarService
         return car?.ToModel();
     }
 
-    public async Task<List<CarModel>> GetAllAsync()
+    public async Task<List<CarModel>> GetCarsAsync()
     {
         var cars = await _dbContext.Cars.ToListAsync();
 

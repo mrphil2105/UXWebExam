@@ -6,7 +6,7 @@ public interface ICarService
 {
     Task<CarModel?> GetCarAsync(int id);
 
-    Task<List<CarModel>> GetAllAsync();
+    Task<List<CarModel>> GetCarsAsync();
 
     Task<SearchResult> SearchAsync(SearchModel searchModel);
 

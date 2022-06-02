@@ -29,7 +29,7 @@ const Map: React.FC = () => {
 
     React.useEffect(() => {
         (async () => {
-            const response = await fetch("/api/Car/GetAll");
+            const response = await fetch("/api/Car/GetCars");
             const cars = await response.json();
             setCars(cars);
             setIsLoading(false);

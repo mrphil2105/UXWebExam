@@ -24,9 +24,9 @@ public class CarController : Controller
     }
 
     [HttpGet]
-    public async Task<IActionResult> GetAll()
+    public async Task<IActionResult> GetCars()
     {
-        var cars = await _carService.GetAllAsync();
+        var cars = await _carService.GetCarsAsync();
 
         return Json(cars);
     }
