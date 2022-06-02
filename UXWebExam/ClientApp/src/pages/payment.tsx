@@ -6,8 +6,10 @@ import CarCard from "../components/cards/CarCard";
 import Calender from "../components/calendar/Calendar";
 import { Button } from "@mui/material";
 import CarModel from "../models/CarModel";
+import CreditCardForm from "../components/payment/CreditCardForm";
+import { Link } from "react-router-dom";
 
-export default function Book() {
+export default function payment() {
     const pathname = window.location.pathname;
     const slashIndex = pathname.lastIndexOf("/");
     const id = pathname.substring(slashIndex + 1, pathname.length);
@@ -25,7 +27,7 @@ export default function Book() {
     }, [])
 
     if (isLoading) {
-        return (<Container><Typography>Loading car...</Typography></Container>);
+        return (<Container><Typography>Loading payment...</Typography></Container>);
     }
 
     if (!car) {
@@ -33,17 +35,13 @@ export default function Book() {
     }
 
     return (
-<       div style={{ display: 'flex', justifyContent: 'center' }}>
-            <Stack spacing={3} sx={{ width: '600px' }}>
-                <CarCard car={car} />
-                <br />
-                <div style={{ display: 'flex', justifyContent: 'center' }}>
-                    <Calender name="Start Time" />
-                    <Calender name="End Time" />
-                </div>
-                <p style={{ display: 'flex', justifyContent: 'center', fontSize: 30 }}>130 kr.</p>
-                <Button variant="contained">Book</Button>
-            </Stack>
-        </div>
+        <div style={{ display: 'flex', justifyContent: 'center' }}>
+        <Stack spacing={3} sx={{ width: '600px' }}>
+            <CreditCardForm/>
+            <Link to={"/reservationMade/"+car.id} style={{ textDecoration: 'none' }}>
+                <Button variant="contained" fullWidth>Confirm Payment</Button>
+            </Link>
+        </Stack>
+    </div>
     );
 }

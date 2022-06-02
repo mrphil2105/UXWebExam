@@ -8,6 +8,7 @@ import CardActions from '@mui/material/CardActions';
 import LocalGasStationIcon from "@mui/icons-material/LocalGasStation";
 import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
+import { Link } from "react-router-dom";
 
 interface Props {
     car: CarModel;
@@ -28,7 +29,7 @@ export default function SearchCard(props: Props) {
 
     return (
         <Grid item xs={12} sm={6} md={4}>
-            <Card>
+            <Card >
                 <CardMedia component="img" image={props.car.imageUrl} alt={props.car.name} />
                 <CardContent>
                     <Typography sx={{ mb: 1 }} variant="h5">{props.car.name}</Typography>
@@ -42,7 +43,9 @@ export default function SearchCard(props: Props) {
                                     style={iconTypographyStyle}><LocationOnIcon /> {props.car.city}</Typography>}
                 </CardContent>
                 <CardActions>
-                    <Button variant="contained">Rent</Button>
+                    <Link to={"/book/"+props.car.id} style={{ textDecoration: 'none' }}>
+                        <Button variant="contained">Book</Button>
+                    </Link>
                 </CardActions>
             </Card>
         </Grid>

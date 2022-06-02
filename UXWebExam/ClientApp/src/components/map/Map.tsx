@@ -1,11 +1,13 @@
 import React from "react";
 import { MapContainer, TileLayer, Popup, Marker } from "react-leaflet";
-
+import CarModel from "../../models/CarModel";
+import { Link } from "react-router-dom";
 import LocationMarker from "./UserLocation";
 import {
     Card,
     CardMedia,
     CardContent,
+    Container,
     Typography,
     Box,
     Stack,
@@ -13,10 +15,6 @@ import {
 } from "@mui/material";
 
 const Map: React.FC = () => {
-    function displayInfo(data: any) {
-        console.log(data);
-    }
-
     function getWindowDimensions() {
         const { innerWidth: width, innerHeight: height } = window;
         return {
@@ -24,22 +22,32 @@ const Map: React.FC = () => {
             height,
         };
     }
+    const [chosen, setChosen] = React.useState<CarModel | null>(null);
+    const [isLoading, setIsLoading] = React.useState(true);
+    const [cars, setCars] = React.useState<CarModel[]>([]);
 
-    const [chosen, setChosen] = React.useState<{
-        lat: number;
-        lng: number;
-    } | null>(null);
 
-    const height = getWindowDimensions().height;
+    React.useEffect(() => {
+        (async () => {
+            const response = await fetch("/api/Car/GetAll");
+            const cars = await response.json();
+            setCars(cars);
+            setIsLoading(false);
+        })();
+    }, []);
 
-    return (
-        <Box sx={{ p: 1, width: "100%", height: "100%" }}>
-            <Card sx={{ borderRadius: 5, width: "100%", height: "100%" }}>
-                <CardMedia>
+    return isLoading ? (
+        <Container><Typography>Loading cars...</Typography> </Container>
+    ) : (
+        <Container>
+            <Card sx={{ borderRadius: 5, width: "100%", maxHeight:getWindowDimensions().height*0.9 }}>
+                <CardMedia
+                    sx={{ height: chosen ? getWindowDimensions().height*0.65 : getWindowDimensions().height*0.85 }}
+                >
                     <MapContainer
                         className="markercluster-map"
                         style={{
-                            height: chosen ? height * 0.9 : height * 0.65,
+                            height: "inherit",
                             width: "inherit",
                         }}
                         center={[55.6593764, 12.59083759]}
@@ -50,26 +58,23 @@ const Map: React.FC = () => {
                             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                         />
-
-                        <Marker
-                            position={[55.6593764, 12.5908375]}
-                            eventHandlers={{
-                                click: (e) => {
-                                    setChosen({
-                                        lat: e.target.lat,
-                                        lng: e.target.lng,
-                                    });
-                                    //console.log("marker clicked", e);
-                                },
-                            }}
-                        >
-                            <Popup>
-                                <Stack direction="row" spacing={1}>
-                                    <Typography>{`The address possibly long`}</Typography>
-                                </Stack>
-                            </Popup>
-                        </Marker>
                         <LocationMarker />
+
+                        {cars.map((car) => (
+                            <Marker
+                                position={[car.latitude, car.longitude]}
+                                eventHandlers={{ click: () => setChosen(car)}}
+                            >
+                                <Popup>
+                                    <Typography>
+                                        Address <br/>
+                                        {`${car.street} ${car.houseNumber}, ${car.city}`} <br/>
+                                        Model  <br/>
+                                        {car.name}
+                                    </Typography>
+                                </Popup>
+                            </Marker>
+                        ))}
                     </MapContainer>
                 </CardMedia>
                 {!chosen ? null : (
@@ -80,18 +85,18 @@ const Map: React.FC = () => {
                                 justifyContent="space-between"
                             >
                                 <Typography>
-                                    Address:{" "}
-                                    {`the very long sadfasf sdfaddress`}
+                                    Road: {chosen.street}
                                 </Typography>
-                                <Typography>Price: {`The price`}</Typography>
+                                <Typography>{`Price: ${chosen.price} DKK`}</Typography>
                             </Stack>
-
-                            <Button variant="contained">Order now</Button>
+                            <Link to={`/book/${chosen.id}`} style={{textDecoration: "none"}}>
+                                <Button variant="contained">Book now</Button>
+                            </Link>
                         </Stack>
                     </CardContent>
                 )}
             </Card>
-        </Box>
+        </Container>
     );
 };
 

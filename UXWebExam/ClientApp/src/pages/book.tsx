@@ -6,6 +6,7 @@ import CarCard from "../components/cards/CarCard";
 import Calender from "../components/calendar/Calendar";
 import { Button } from "@mui/material";
 import CarModel from "../models/CarModel";
+import { Link } from "react-router-dom";
 
 export default function Book() {
     const pathname = window.location.pathname;
@@ -42,7 +43,9 @@ export default function Book() {
                     <Calender name="End Time" />
                 </div>
                 <p style={{ display: 'flex', justifyContent: 'center', fontSize: 30 }}>130 kr.</p>
-                <Button variant="contained">Book</Button>
+                <Link to={"/payment/"+car.id} style={{ textDecoration: 'none' }}>
+                    <Button variant="contained" fullWidth>Book</Button>
+                </Link>
             </Stack>
         </div>
     );
