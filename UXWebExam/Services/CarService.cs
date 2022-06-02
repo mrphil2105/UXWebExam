@@ -31,7 +31,7 @@ public class CarService : ICarService
             .ToList();
     }
 
-    public async Task<List<CarModel>?> SearchAsync(SearchModel searchModel)
+    public async Task<SearchResult> SearchAsync(SearchModel searchModel)
     {
         IEnumerable<Car> cars = await _dbContext.Cars.Include(c => c.Bookings)
             .ToListAsync();
@@ -41,9 +41,9 @@ public class CarService : ICarService
         DateTimeOffset.TryParseExact(searchModel.ToDate, "dd/MM/yyyy", CultureInfo.InvariantCulture,
             DateTimeStyles.None, out var toDate);
 
-        if (fromDate > toDate)
+        if (fromDate != default && toDate != default && fromDate > toDate)
         {
-            return null;
+            return new SearchResult { InvalidDates = true };
         }
 
         if (!string.IsNullOrWhiteSpace(searchModel.Term))
@@ -64,8 +64,12 @@ public class CarService : ICarService
                 (fromDate >= b.StartDate && fromDate <= b.EndDate) || (toDate <= b.EndDate && toDate >= b.StartDate)));
         }
 
-        return cars.Select(c => c.ToModel())
-            .ToList();
+        return new SearchResult
+        {
+            Succeeded = true,
+            Cars = cars.Select(c => c.ToModel())
+                .ToList()
+        };
     }
 
     public List<string> GetCarImages()

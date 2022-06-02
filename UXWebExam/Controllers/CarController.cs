@@ -32,11 +32,23 @@ public class CarController : Controller
     }
 
     [HttpGet]
-    public async Task<IActionResult> Search([FromBody] SearchModel searchModel)
+    public async Task<IActionResult> Search([FromQuery] SearchModel searchModel)
     {
-        var cars = await _carService.SearchAsync(searchModel);
+        var result = await _carService.SearchAsync(searchModel);
 
-        return Json(cars);
+        if (!result.Succeeded)
+        {
+            string? message = null;
+
+            if (result.InvalidDates)
+            {
+                message = "The selected start date exceeds the end date.";
+            }
+
+            return Problem(detail: message, statusCode: 400);
+        }
+
+        return Json(result.Cars);
     }
 
     [HttpGet]
