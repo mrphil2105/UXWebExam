@@ -8,10 +8,11 @@ import { Button } from "@mui/material";
 import CarModel from "../models/CarModel";
 import CreditCardForm from "../components/payment/CreditCardForm";
 import { Link } from "react-router-dom";
-import ReservationCard from "../components/cards/ReservationCard";
+import BookingCard from "../components/cards/BookingCard";
 import { Reservation } from "../classes/Reservation";
+import {BookingModel} from "../models/BookingModel";
 
-export default function ReservationMade() {
+export default function BookingMade() {
     const pathname = window.location.pathname;
     const slashIndex = pathname.lastIndexOf("/");
     const id = pathname.substring(slashIndex + 1, pathname.length);
@@ -35,20 +36,22 @@ export default function ReservationMade() {
     if (!car) {
         return (<Container><Typography>No car could be found.</Typography></Container>)
     }
+    
+    const booking: BookingModel = {car: car, endDate:"2",startDate:"3", id:3}
 
     return (
         <div style={{ display: 'flex', justifyContent: 'center' }}>
         <Stack spacing={3} sx={{ width: '600px', padding:2  }}>
             <Typography gutterBottom variant="h4" >
-                Reservation Made!
+                Booking Made!
             </Typography>
-            <ReservationCard reservation={new Reservation(car,"01/05","02/06")} />
+            <BookingCard booking={booking}  active={true} />
             <br />
             <Link to={"/"} style={{ textDecoration: 'none' }} >
                 <Button variant="contained" fullWidth>Book another car</Button>
             </Link>
-            <Link to={"/reservations" } style={{ textDecoration: 'none' }}>
-                            <Button variant="contained" fullWidth>See all Reservations</Button>
+            <Link to={"/bookings" } style={{ textDecoration: 'none' }}>
+                            <Button variant="contained" fullWidth>See all Bookings</Button>
             </Link>
         </Stack>
     </div>
