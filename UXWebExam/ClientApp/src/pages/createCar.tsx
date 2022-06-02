@@ -1,5 +1,12 @@
 import React, { MouseEventHandler, useEffect, useState } from "react";
-import { useTextAreaInput, useTextInput, useNumberInput, useSelectInput, ValidationFailure } from "../formControls";
+import {
+    useTextAreaInput,
+    useTextInput,
+    useNumberInput,
+    useSelectInput,
+    ValidationFailure,
+    boxPadding
+} from "../formControls";
 import { Box, Button, Container } from "@mui/material";
 import CarModel from "../models/CarModel";
 
@@ -80,18 +87,20 @@ export default () => {
             <ul style={{ margin: "1rem", padding: "0", listStyle: "none", color: "red", fontFamily: "Roboto" }}>
                 {errors.map((e, i) => (<li key={i}>{e}</li>))}
             </ul>
-            {nameInput}
-            {descriptionInput}
-            {typeInput}
-            {priceInput}
-            {imageInput}
-            {streetInput}
-            {houseNumberInput}
-            {postalCodeInput}
-            {cityInput}
-            {longitudeInput}
-            {latitudeInput}
-            <Box sx={{ m: 1.5 }}>
+            <Box sx={{ mx: -boxPadding }}>
+                {nameInput}
+                {descriptionInput}
+                {typeInput}
+                {priceInput}
+                {imageInput}
+                {streetInput}
+                {houseNumberInput}
+                {postalCodeInput}
+                {cityInput}
+                {longitudeInput}
+                {latitudeInput}
+            </Box>
+            <Box sx={{ my: boxPadding }}>
                 <Button type="submit" variant="contained" onClick={handleClick}>Create</Button>
             </Box>
         </Container>
