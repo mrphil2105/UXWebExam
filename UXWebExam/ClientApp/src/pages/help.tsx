@@ -7,7 +7,7 @@ export default function Help() {
         <Container>
             <Box sx={{display: "flex", justifyContent: "center"}}>
                 <Stack spacing={3} sx={{width: '600px', padding: 3}}>
-                    <Typography variant="h4" sx={{color: 'primary.dark'}}>How to use website</Typography>
+                    <Typography variant="h3" sx={{color: 'primary.dark'}}>How to use website</Typography>
                     <Box component="span" sx={{p: 2, border: 2, borderColor: 'primary.main', borderRadius: 1}}>
                         <Typography variant="h5">1. Pick a car</Typography>
                         <Typography>Pick a car near you, that you want to drive. You can see cars on a map, or in a list
@@ -28,7 +28,7 @@ export default function Help() {
                         </Typography>
                     </Box>
                     <Link to="/" style={{textDecoration: "none"}}>
-                        <Button variant="contained">Understood</Button>
+                        <Button variant="contained" sx={{bgcolor:"secondary.main",color:"primary.main", borderRadius:10}}>Understood</Button>
                     </Link>
                 </Stack>
             </Box>
