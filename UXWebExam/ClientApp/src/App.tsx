@@ -1,11 +1,10 @@
 import React from "react";
-import { Route, Routes } from "react-router-dom";
+import {Route, Routes} from "react-router-dom";
 import Layout from "./components/layout/Layout";
 import Map from "./pages/mapPage";
 import Bookings from "./pages/bookings";
 import Search from "./pages/search";
-import Profile from "./pages/profile";
-import { ApplicationPath } from "./components/api-authorization/ApiAuthorizationConstants";
+import {ApplicationPath} from "./components/api-authorization/ApiAuthorizationConstants";
 import ApiAuthorizationRoutes from "./components/api-authorization/ApiAuthorizationRoutes";
 import RequireAuth from "./components/api-authorization/RequireAuth";
 import CreateCar from "./pages/createCar";
@@ -18,36 +17,31 @@ function App() {
     return (
         <Layout>
             <Routes>
-                <Route path="/" element={<Map />} />
-                <Route path="/search" element={<Search />} />
-                <Route path="/create-car" element={<CreateCar />} />
+                <Route path="/" element={<Map/>}/>
+                <Route path="/search" element={<Search/>}/>
+                <Route path="/create-car" element={<CreateCar/>}/>
                 <Route path="/bookings" element={
                     <RequireAuth>
-                        <Bookings />
+                        <Bookings/>
                     </RequireAuth>
-                } />
+                }/>
                 <Route path="/book/*" element={
-                <RequireAuth>
-                    <Book/>
-                </RequireAuth>
-                } />
+                    <RequireAuth>
+                        <Book/>
+                    </RequireAuth>
+                }/>
                 <Route path="/payment/*" element={
-                <RequireAuth>
-                    <Payment/>
-                </RequireAuth>
-                    } />
+                    <RequireAuth>
+                        <Payment/>
+                    </RequireAuth>
+                }/>
                 <Route path="/bookingMade/*" element={
-                <RequireAuth>
-                    <BookingMade/>
-                </RequireAuth>
-                    } />
-                <Route path="/profile" element={
-                <RequireAuth>
-                    <Profile />
-                </RequireAuth>
-                } />
-                <Route path="/help" element={<Help />} />
-                <Route path={`${ApplicationPath.ApiAuthorizationPrefix}/*`} element={<ApiAuthorizationRoutes />} />
+                    <RequireAuth>
+                        <BookingMade/>
+                    </RequireAuth>
+                }/>
+                <Route path="/help" element={<Help/>}/>
+                <Route path={`${ApplicationPath.ApiAuthorizationPrefix}/*`} element={<ApiAuthorizationRoutes/>}/>
             </Routes>
         </Layout>
     );

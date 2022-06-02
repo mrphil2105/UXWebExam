@@ -11,17 +11,9 @@ import { BookingModel } from '../../models/BookingModel';
 
 interface Props {
     booking: BookingModel;
-    active: Boolean
 }
 
 export default function BookingCard(props: Props) {
-    let button;
-
-    if (props.active) {
-        button = <Button variant="contained">Deliver</Button>
-    } else {
-        button = <Button variant="contained">Cancel</Button>
-    }
 
     return (
         <Card>
@@ -40,7 +32,6 @@ export default function BookingCard(props: Props) {
                 <Typography variant="body1" color="text.secondary">
                     <EventIcon /> EndDate - {props.booking.endDate}
                 </Typography>
-                {button}
             </CardContent>
         </Card>
     );

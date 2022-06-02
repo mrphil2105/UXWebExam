@@ -41,7 +41,7 @@ export default function BookingMade() {
                     <Typography gutterBottom variant="h4">
                         Booking Made!
                     </Typography>
-                    <BookingCard booking={booking} active={true}/>
+                    <BookingCard booking={booking}/>
                     <br/>
                     <Link to={"/"} style={{textDecoration: 'none'}}>
                         <Button variant="contained" fullWidth>Book another car</Button>
