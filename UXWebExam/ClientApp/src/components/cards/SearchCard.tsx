@@ -20,7 +20,7 @@ const iconTypographyStyle: React.CSSProperties = {
     flexWrap: "wrap"
 };
 
-export default function OverviewCard(props: Props) {
+export default function SearchCard(props: Props) {
     let description = props.car.description;
 
     if (description.length > 100) {

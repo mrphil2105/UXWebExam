@@ -14,6 +14,8 @@ public class AppDbContext : ApiAuthorizationDbContext<AppUser>
 
     public DbSet<Car> Cars { get; set; } = null!;
 
+    public DbSet<Booking> Bookings { get; set; } = null!;
+
     protected override void OnModelCreating(ModelBuilder builder)
     {
         base.OnModelCreating(builder);

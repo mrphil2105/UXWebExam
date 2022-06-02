@@ -29,7 +29,7 @@ public class Startup
             })
             .AddEntityFrameworkStores<AppDbContext>();
 
-        services.AddIdentityServer()
+        services.AddIdentityServer(o => o.IssuerUri = "https://localhost:44429")
             .AddApiAuthorization<AppUser, AppDbContext>();
 
         services.AddAuthentication()
@@ -38,6 +38,7 @@ public class Startup
         services.ConfigureApplicationCookie(o => o.LoginPath = "/Identity/Account/Login");
 
         services.AddScoped<ICarService, CarService>();
+        services.AddScoped<IBookingService, BookingService>();
 
         var controllersBuilder = services.AddControllersWithViews();
         var razorPagesBuilder = services.AddRazorPages();
