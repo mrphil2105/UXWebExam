@@ -63,6 +63,33 @@ public class BookingService : IBookingService
         return new BookingResult { BookingId = booking.Id, Succeeded = true };
     }
 
+    public async Task<BookingModel?> GetBookingAsync(int id)
+    {
+        string? userId = _httpContextAccessor.HttpContext?.User.FindFirst(ClaimTypes.NameIdentifier)
+            ?.Value;
+
+        if (userId == null)
+        {
+            throw new AuthenticationException("The user id for the currently logged in user could not be fetched.");
+        }
+
+        var booking = await _dbContext.Bookings.Include(b => b.Car)
+            .FirstOrDefaultAsync(b => b.Id == id && b.UserId == userId);
+
+        if (booking == null)
+        {
+            return null;
+        }
+
+        return new BookingModel
+        {
+            Id = booking.Id,
+            StartDate = booking.StartDate.ToString("dd/MM/yyyy"),
+            EndDate = booking.EndDate.ToString("dd/MM/yyyy"),
+            Car = booking.Car.ToModel()
+        };
+    }
+
     public async Task<List<BookingModel>> GetBookingsAsync()
     {
         string? userId = _httpContextAccessor.HttpContext?.User.FindFirst(ClaimTypes.NameIdentifier)
