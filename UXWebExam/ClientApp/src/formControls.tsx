@@ -9,12 +9,12 @@ export interface ValidationFailure {
     errors: { [property: string]: string[] }
 }
 
-const boxMargin = 1.5;
+export const boxPadding = 0.75;
 
 export function useTextInput(name: string, defaultValue = ""): [ string, JSX.Element ] {
     const [ value, setValue ] = useState(defaultValue);
     const input = (
-        <Box sx={{ m: boxMargin }}>
+        <Box sx={{ p: boxPadding }}>
             <FormControl fullWidth>
                 <TextField type="text" label={name} value={value} onChange={e => setValue(e.target.value)} />
             </FormControl>
@@ -26,7 +26,7 @@ export function useTextInput(name: string, defaultValue = ""): [ string, JSX.Ele
 export function useNumberInput(name: string, defaultValue = 0): [ number, JSX.Element ] {
     const [ value, setValue ] = useState(defaultValue);
     const input = (
-        <Box sx={{ m: boxMargin }}>
+        <Box sx={{ p: boxPadding }}>
             <FormControl fullWidth>
                 <TextField type="number" label={name} value={value} onChange={e => setValue(Number(e.target.value))} />
             </FormControl>
@@ -38,7 +38,7 @@ export function useNumberInput(name: string, defaultValue = 0): [ number, JSX.El
 export function useSelectInput(name: string, values: string[], defaultValue = ""): [ string, JSX.Element ] {
     const [ value, setValue ] = useState(defaultValue);
     const input = (
-        <Box sx={{ m: boxMargin }}>
+        <Box sx={{ p: boxPadding }}>
             <FormControl fullWidth>
                 <InputLabel>{name}</InputLabel>
                 <Select label={name} value={value} onChange={e => setValue(e.target.value)}>
@@ -55,7 +55,7 @@ export function useSelectInput(name: string, values: string[], defaultValue = ""
 export function useTextAreaInput(name: string, defaultValue = ""): [ string, JSX.Element ] {
     const [ value, setValue ] = useState(defaultValue);
     const input = (
-        <Box sx={{ m: boxMargin }}>
+        <Box sx={{ p: boxPadding }}>
             <FormControl fullWidth>
                 <TextField multiline type="text" label={name} value={value} onChange={e => setValue(e.target.value)} />
             </FormControl>
