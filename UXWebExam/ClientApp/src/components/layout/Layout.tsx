@@ -1,12 +1,13 @@
 import React from "react";
 import AppBarResponsive from "./AppBarResponsive";
+import Style from "./Style";
 
 function Layout(props: any) {
     return (
-        <div>
+        <Style>
             <AppBarResponsive />
             <main>{props.children} </main>
-        </div>
+        </Style>
     );
 }
 

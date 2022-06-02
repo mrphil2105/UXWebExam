@@ -43,8 +43,8 @@ export default function ReservationMade() {
                 Reservation Made!
             </Typography>
             <ReservationCard reservation={new Reservation(car,"01/05","02/06")} />
-            <br /> 
-            <Link to={"/map"} style={{ textDecoration: 'none' }} >
+            <br />
+            <Link to={"/"} style={{ textDecoration: 'none' }} >
                 <Button variant="contained" fullWidth>Book another car</Button>
             </Link>
             <Link to={"/reservations" } style={{ textDecoration: 'none' }}>

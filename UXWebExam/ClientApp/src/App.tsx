@@ -19,7 +19,6 @@ function App() {
         <Layout>
             <Routes>
                 <Route path="/" element={<Map />} />
-                <Route path="/map" element={<Map />} />
                 <Route path="/overview" element={<Overview />} />
                 <Route path="/create-car" element={<CreateCar />} />
                 <Route path="/reservations" element={
@@ -27,10 +26,26 @@ function App() {
                         <Reservations />
                     </RequireAuth>
                 } />
-                <Route path="/book/*" element={<Book/>} />
-                <Route path="/payment/*" element={<Payment/>} />
-                <Route path="/reservationMade/*" element={<ReservationMade/>} />
-                <Route path="/profile" element={<Profile />} />
+                <Route path="/book/*" element={
+                <RequireAuth>
+                    <Book/>
+                </RequireAuth>
+                } />
+                <Route path="/payment/*" element={
+                <RequireAuth>
+                    <Payment/>
+                </RequireAuth>
+                    } />
+                <Route path="/reservationMade/*" element={
+                <RequireAuth>
+                    <ReservationMade/>
+                </RequireAuth>
+                    } />
+                <Route path="/profile" element={
+                <RequireAuth>
+                    <Profile />
+                </RequireAuth>
+                } />
                 <Route path="/help" element={<Help />} />
                 <Route path={`${ApplicationPath.ApiAuthorizationPrefix}/*`} element={<ApiAuthorizationRoutes />} />
             </Routes>

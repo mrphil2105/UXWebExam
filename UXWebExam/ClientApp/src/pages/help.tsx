@@ -21,7 +21,7 @@ export default function Help() {
                         When your reservation starts, you can find the car at the given address.
                         You must deliver the car back to the same address, before your reservation ends.
                         If you don't do this you will be charged extra. Once you've the delivered the car, find the
-                        reservation on the website and press "Finish".
+                        reservation on the website and press "Deliver".
                     </Typography>
                     </Box>
                 <Link to="/">
