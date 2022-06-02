@@ -52,6 +52,6 @@ public class CarController : Controller
     {
         int id = await _carService.CreateAsync(carModel);
 
-        return CreatedAtAction(nameof(CreateCar), new { id }, carModel);
+        return Json(id);
     }
 }

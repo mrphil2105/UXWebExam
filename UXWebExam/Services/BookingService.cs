@@ -24,7 +24,7 @@ public class BookingService : IBookingService
 
         if (car == null)
         {
-            return BookingResult.NoCar;
+            return new BookingResult { HasNoCar = true };
         }
 
         var existingBookings = await _dbContext.Bookings.Where(b => b.CarId == bookModel.CarId)
@@ -37,7 +37,7 @@ public class BookingService : IBookingService
                 (startDate >= b.StartDate && startDate <= b.EndDate) ||
                 (endDate <= b.EndDate && endDate >= b.StartDate)))
         {
-            return BookingResult.AlreadyBooked;
+            return new BookingResult { AlreadyBooked = true };
         }
 
         string? userId = _httpContextAccessor.HttpContext?.User.FindFirst(ClaimTypes.NameIdentifier)
@@ -55,7 +55,7 @@ public class BookingService : IBookingService
         _dbContext.Bookings.Add(booking);
         await _dbContext.SaveChangesAsync();
 
-        return BookingResult.Success;
+        return new BookingResult { BookingId = booking.Id, Succeeded = true };
     }
 
     public async Task<List<BookingModel>> GetBookingsAsync()

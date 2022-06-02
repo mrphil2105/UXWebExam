@@ -1,4 +1,3 @@
-using System.Runtime.CompilerServices;
 using Microsoft.AspNetCore.Authorization;
 using UXWebExam.Models;
 using UXWebExam.Services;
@@ -22,19 +21,23 @@ public class BookingController : Controller
     {
         var result = await _bookService.BookCarAsync(bookModel);
 
-        if (result != BookingResult.Success)
+        if (!result.Succeeded)
         {
-            string message = result switch
+            string? message = null;
+
+            if (result.HasNoCar)
             {
-                BookingResult.NoCar => "The car has been deleted since you visited this page.",
-                BookingResult.AlreadyBooked => "The car has already been booked in the selected time period.",
-                _ => throw new SwitchExpressionException($"Missing switch expression case for value '{result}'.")
-            };
+                message = "The car has been deleted since you visited this page.";
+            }
+            else if (result.AlreadyBooked)
+            {
+                message = "The car has already been booked in the selected time period.";
+            }
 
             return Problem(detail: message, statusCode: 400);
         }
 
-        return Ok();
+        return Json(result.BookingId);
     }
 
     [HttpGet]

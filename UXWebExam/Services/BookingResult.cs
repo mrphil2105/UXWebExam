@@ -1,8 +1,12 @@
 namespace UXWebExam.Services;
 
-public enum BookingResult
+public class BookingResult
 {
-    Success,
-    NoCar,
-    AlreadyBooked
+    public int BookingId { get; init; }
+
+    public bool Succeeded { get; init; }
+
+    public bool HasNoCar { get; init; }
+
+    public bool AlreadyBooked { get; init; }
 }
