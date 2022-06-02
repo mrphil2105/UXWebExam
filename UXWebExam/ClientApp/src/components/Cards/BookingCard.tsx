@@ -28,11 +28,11 @@ export default function BookingCard(props: Props) {
 
     return (
         <Card>
-                <CardHeader title={props.booking.car.name} sx={{ backgroundColor: 'primary.main', color: "white"}}/>
+            <CardHeader title={props.booking.car.name} sx={{ backgroundColor: 'primary.main', color: "white"}}/>
                 <CardMedia component="img" image={props.booking.car.imageUrl} alt={props.booking.car.name} />
                 <CardContent>
+                   
                     <Typography variant="body1" color="text.secondary">
-                        <br/>
                         <LocationOnIcon/>{props.booking.car.street} {props.booking.car.houseNumber}, {props.booking.car.postalCode} {props.booking.car.city}
                         <br/>
                         <LocalGasStationIcon />{props.booking.car.type}
