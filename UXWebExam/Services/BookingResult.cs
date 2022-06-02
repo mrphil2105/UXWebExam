@@ -6,6 +6,8 @@ public class BookingResult
 
     public bool Succeeded { get; init; }
 
+    public bool InvalidDates { get; init; }
+
     public bool HasNoCar { get; init; }
 
     public bool AlreadyBooked { get; init; }

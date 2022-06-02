@@ -33,6 +33,11 @@ public class BookingService : IBookingService
         var startDate = DateTimeOffset.ParseExact(bookModel.StartDate!, "dd/MM/yyyy", CultureInfo.InvariantCulture);
         var endDate = DateTimeOffset.ParseExact(bookModel.EndDate!, "dd/MM/yyyy", CultureInfo.InvariantCulture);
 
+        if (startDate > endDate)
+        {
+            return new BookingResult { InvalidDates = true };
+        }
+
         if (existingBookings.Any(b =>
                 (startDate >= b.StartDate && startDate <= b.EndDate) ||
                 (endDate <= b.EndDate && endDate >= b.StartDate)))
