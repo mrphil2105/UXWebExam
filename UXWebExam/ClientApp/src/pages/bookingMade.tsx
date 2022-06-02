@@ -1,16 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { Car } from "../classes/Car";
 import { Container, Typography } from "@mui/material";
 import { Stack } from "@mui/material";
-import CarCard from "../components/cards/CarCard";
-import Calender from "../components/calendar/Calendar";
 import { Button } from "@mui/material";
 import CarModel from "../models/CarModel";
-import CreditCardForm from "../components/payment/CreditCardForm";
 import { Link } from "react-router-dom";
 import BookingCard from "../components/cards/BookingCard";
-import { Reservation } from "../classes/Reservation";
-import {BookingModel} from "../models/BookingModel";
+import { BookingModel } from "../models/BookingModel";
 
 export default function BookingMade() {
     const pathname = window.location.pathname;

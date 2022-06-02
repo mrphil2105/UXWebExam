@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { Car } from "../classes/Car";
-import { Container, Typography } from "@mui/material";
+import { Box, Container, Typography, useMediaQuery } from "@mui/material";
 import { Stack } from "@mui/material";
-import CarCard from "../components/cards/CarCard";
-import Calendar from "../components/calendar/Calendar";
+import BookCard from "../components/cards/BookCard";
 import { Button } from "@mui/material";
 import CarModel from "../models/CarModel";
 import { Link } from "react-router-dom";
-import {doNothing} from "@mui/x-date-pickers/internals/utils/utils";
+import { useCalendarInput } from "../formControls";
 
 export default function Book() {
     const pathname = window.location.pathname;
