@@ -21,12 +21,8 @@ function Bookings() {
         })();
     }, []);
 
-    const activeBookings = bookings.filter((obj) => {
+    const userBookings = bookings.filter((obj) => {
         return new Date(obj.startDate) < new Date() && new Date(obj.endDate) > new Date();
-    });
-
-    const futureBookings = bookings.filter((obj) => {
-        return new Date(obj.startDate) > new Date();
     });
 
     return (
@@ -34,7 +30,7 @@ function Bookings() {
             <Box sx={{display: "flex", justifyContent: "content"}}>
                 <Stack spacing={3} sx={{width: '600px'}}>
                     <Typography variant="h1">Bookings</Typography>
-                    {activeBookings.map(c => (<BookingCard booking={c} />))}
+                    {userBookings.map(c => (<BookingCard booking={c} />))}
                 </Stack>
             </Box>
         </Container>
