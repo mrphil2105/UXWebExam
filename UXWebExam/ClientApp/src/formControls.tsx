@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Box, FormControl, InputLabel, MenuItem, Select, TextField } from "@mui/material";
+import Calendar from "./components/calendar/Calendar";
 
 export interface ValidationFailure {
     type: string;
@@ -63,4 +64,42 @@ export function useTextAreaInput(name: string, defaultValue = ""): [ string, JSX
         </Box>
     );
     return [ value, input ];
+}
+
+export function useCalendarInput(name: string): [ string, JSX.Element ] {
+    const [ date, setDate ] = useState<Date | null>(null);
+    const [ value, setValue ] = useState("");
+
+    const changeHandler: (newDate: Date | null) => void = (newDate) => {
+        setDate(newDate);
+        setValue(formatDate(newDate));
+    };
+
+    const input = (
+        <Box sx={{ p: boxPadding }}>
+            <FormControl fullWidth>
+                <Calendar name={name} value={date} onChange={changeHandler} />
+            </FormControl>
+        </Box>
+    );
+    return [ value, input ];
+}
+
+function formatDate(date: Date | null) {
+    if (!date) {
+        return "";
+    }
+
+    let month = "" + (date.getMonth() + 1);
+    let day = "" + date.getDate();
+    const year = date.getFullYear();
+
+    if (month.length < 2) {
+        month = "0" + month;
+    }
+    if (day.length < 2) {
+        day = "0" + day;
+    }
+
+    return [ day, month, year ].join("/");
 }
