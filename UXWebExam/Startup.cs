@@ -38,6 +38,7 @@ public class Startup
         services.ConfigureApplicationCookie(o => o.LoginPath = "/Identity/Account/Login");
 
         services.AddScoped<ICarService, CarService>();
+        services.AddScoped<IBookService, BookService>();
 
         var controllersBuilder = services.AddControllersWithViews();
         var razorPagesBuilder = services.AddRazorPages();
