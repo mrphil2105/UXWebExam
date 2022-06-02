@@ -138,7 +138,7 @@ const ResponsiveAppBar = () => {
                             </Menu>
                         </Box>
 
-                            <Box sx={{position:"absolute",left:"30%", height:50, margin:"auto",flexGrow:1 ,  justifyContent:"center" , display:{ xs: "flex", md: "none" }}}>
+                            <Box sx={{position:"absolute",top: "50%",left:"50%",transform: "translate(-50%, -50%)" , height:50,flexGrow: 1 , display:{ xs: "flex", md: "none" }}}>
                         <Link to={"/"}
                             style={{
                                 textDecoration: "none",
