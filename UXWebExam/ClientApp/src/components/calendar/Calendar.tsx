@@ -1,35 +1,26 @@
 import { TextField } from "@mui/material";
-import { DateTimePicker, LocalizationProvider } from "@mui/lab";
-import { useState } from "react";
+import { DatePicker, LocalizationProvider } from "@mui/lab";
 import React from "react";
 import AdapterDateFns from "@mui/lab/AdapterDateFns";
 
-let selectedDateTime: { toDateString: () => any; toTimeString: () => any } | null;
-
 interface Props {
     name: string;
+    value: Date | null;
+    onChange: (value: Date | null) => void;
 }
 
 const Calendar = (props: Props) => {
-    const [ selectedDateTime, setSelectedDateTime ] = useState<Date | null>(null);
-
     return (
         <LocalizationProvider dateAdapter={AdapterDateFns}>
-            <DateTimePicker
+            <DatePicker
                 label={props.name}
-                value={selectedDateTime}
-                onChange={newValue => setSelectedDateTime(newValue)}
+                inputFormat="dd/MM/yyyy"
+                value={props.value}
+                onChange={props.onChange}
                 renderInput={params => <TextField {...params} />}
             />
         </LocalizationProvider>
     );
 }
+
 export default Calendar;
-
-function getDateTime() {
-    if (selectedDateTime != null) {
-        return selectedDateTime.toDateString() + selectedDateTime.toTimeString()
-    }
-
-    return null;
-}
