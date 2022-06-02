@@ -18,7 +18,7 @@ export function useTextInput(name: string, defaultValue = ""): [string, JSX.Elem
         <Box sx={{p: boxPadding}}>
             <FormControl fullWidth>
                 <TextField type="text" label={name} value={value} onChange={e => setValue(e.target.value)}
-                           sx={{borderRadius: 10}}/>
+                           />
             </FormControl>
         </Box>
     );
@@ -31,7 +31,7 @@ export function useNumberInput(name: string, defaultValue = 0): [number, JSX.Ele
         <Box sx={{p: boxPadding}}>
             <FormControl fullWidth>
                 <TextField type="number" label={name} value={value} onChange={e => setValue(Number(e.target.value))}
-                           sx={{borderRadius: 10}}/>
+                           />
             </FormControl>
         </Box>
     );
@@ -44,7 +44,7 @@ export function useSelectInput(name: string, values: string[], defaultValue = ""
         <Box sx={{p: boxPadding}}>
             <FormControl fullWidth>
                 <InputLabel>{name}</InputLabel>
-                <Select sx={{borderRadius: 10}} label={name} value={value} onChange={e => setValue(e.target.value)}>
+                <Select label={name} value={value} onChange={e => setValue(e.target.value)}>
                     {addEmpty && <MenuItem value="">&lt;blank&gt;</MenuItem>}
                     {values.map((v, i) => (
                         <MenuItem key={i} value={v}>{v}</MenuItem>
@@ -61,7 +61,7 @@ export function useTextAreaInput(name: string, defaultValue = ""): [string, JSX.
     const input = (
         <Box sx={{p: boxPadding}}>
             <FormControl fullWidth>
-                <TextField multiline type="text" label={name} value={value} onChange={e => setValue(e.target.value)} sx={{borderRadius:10}}/>
+                <TextField multiline type="text" label={name} value={value} onChange={e => setValue(e.target.value)} />
             </FormControl>
         </Box>
     );
@@ -78,7 +78,7 @@ export function useCalendarInput(name: string): [string, JSX.Element] {
     };
 
     const input = (
-        <Box sx={{p: boxPadding, borderRadius:10}}>
+        <Box sx={{p: boxPadding}}>
             <FormControl fullWidth>
                 <Calendar  name={name} value={date} onChange={changeHandler}/>
             </FormControl>
