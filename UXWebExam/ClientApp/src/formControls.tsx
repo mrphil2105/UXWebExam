@@ -35,13 +35,14 @@ export function useNumberInput(name: string, defaultValue = 0): [ number, JSX.El
     return [ value, input ];
 }
 
-export function useSelectInput(name: string, values: string[], defaultValue = ""): [ string, JSX.Element ] {
+export function useSelectInput(name: string, values: string[], defaultValue = "", addEmpty = false): [ string, JSX.Element ] {
     const [ value, setValue ] = useState(defaultValue);
     const input = (
         <Box sx={{ p: boxPadding }}>
             <FormControl fullWidth>
                 <InputLabel>{name}</InputLabel>
                 <Select label={name} value={value} onChange={e => setValue(e.target.value)}>
+                    {addEmpty && <MenuItem value="">&lt;blank&gt;</MenuItem>}
                     {values.map((v, i) => (
                         <MenuItem key={i} value={v}>{v}</MenuItem>
                     ))}
