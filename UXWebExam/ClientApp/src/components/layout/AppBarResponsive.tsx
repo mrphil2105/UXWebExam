@@ -10,12 +10,16 @@ import {
     Button,
     Tooltip,
     Menu,
-    MenuItem,
+    MenuItem, Stack, useTheme,
 } from "@mui/material";
-import { Link } from "react-router-dom";
-
-import MenuIcon from "@mui/icons-material/Menu";
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import DirectionsCarIcon from "@mui/icons-material/DirectionsCar";
+import MenuIcon from "@mui/icons-material/Menu";
+
+import { Link } from "react-router-dom";
+// @ts-ignore
+import LogoImage from "../../resources/Logo.png";
+
 import { LoginMenu } from "../api-authorization/LoginMenu";
 
 const pages = [
@@ -49,6 +53,8 @@ const ResponsiveAppBar = () => {
         setAnchorElUser(null);
     };
 
+    const theme = useTheme();
+
     return (
         <Box
             sx={{
@@ -63,27 +69,21 @@ const ResponsiveAppBar = () => {
         >
             <AppBar sx={{}}>
                 <Container maxWidth="xl">
-                    <Toolbar disableGutters>
-                        <DirectionsCarIcon
-                            sx={{ display: { xs: "none", md: "flex" }, mr: 1 }}
-                        />
-                        <Typography
-                            variant="h6"
-                            noWrap
-                            component="a"
-                            href="/"
-                            sx={{
-                                mr: 2,
-                                display: { xs: "none", md: "flex" },
-                                fontFamily: "monospace",
-                                fontWeight: 700,
-                                letterSpacing: ".3rem",
-                                color: "inherit",
-                                textDecoration: "none",
-                            }}
+                    <Toolbar disableGutters sx={{justifyContent:"space-betweens"}}>
+
+                        <Link to={"/"}
+                              style={{
+                                  textDecoration: "none",
+                                  color: "inherit",
+                              }}
                         >
-                            BrandName
-                        </Typography>
+                            <Box sx={{ height:50, alignItems:"center", justifyContent:"center", display:{ xs: "none", md: "flex" }}}>
+                                <Stack direction={"row"} spacing={1} sx={{height:50}}>
+                                    <img src={LogoImage} alt="Logo" />
+                                    <Typography noWrap variant={"h3"}>Swifty</Typography>
+                                </Stack>
+                            </Box>
+                        </Link>
 
                         <Box
                             sx={{
@@ -97,7 +97,7 @@ const ResponsiveAppBar = () => {
                                 aria-controls="menu-appbar"
                                 aria-haspopup="true"
                                 onClick={handleOpenNavMenu}
-                                color="inherit"
+                                color="secondary"
                             >
                                 <MenuIcon />
                             </IconButton>
@@ -141,27 +141,21 @@ const ResponsiveAppBar = () => {
                                 <LoginMenu isMobile={true} />
                             </Menu>
                         </Box>
-                        <DirectionsCarIcon
-                            sx={{ display: { xs: "flex", md: "none" }, mr: 1 }}
-                        />
-                        <Typography
-                            variant="h5"
-                            noWrap
-                            component="a"
-                            href="/"
-                            sx={{
-                                mr: 2,
-                                display: { xs: "flex", md: "none" },
-                                flexGrow: 1,
-                                fontFamily: "monospace",
-                                fontWeight: 700,
-                                letterSpacing: ".3rem",
-                                color: "inherit",
+
+                        <Link to={"/"}
+                            style={{
                                 textDecoration: "none",
+                                color: "inherit",
                             }}
                         >
-                            LOGO
-                        </Typography>
+                            <Box sx={{ height:50, margin:"auto", display:{ xs: "flex", md: "none" }}}>
+                                <Stack direction={"row"} spacing={1}>
+                                     <img src={LogoImage} alt="Logo" />
+                                    <Typography noWrap variant={"h3"}>Swifty</Typography>
+                                </Stack>
+                            </Box>
+                        </Link>
+
                         <Box
                             sx={{
                                 flexGrow: 1,
@@ -195,10 +189,9 @@ const ResponsiveAppBar = () => {
                                     onClick={handleOpenUserMenu}
                                     sx={{ p: 0 }}
                                 >
-                                    <Avatar
-                                        alt="Remy Sharp"
-                                        src="/static/images/avatar/2.jpg"
-                                    />
+                                    <Avatar sx={{bgcolor:theme.palette.primary.main}}>
+                                        <AccountCircleIcon sx={{ color:theme.palette.secondary.main , width:"100%", height:"100%"}} />
+                                    </Avatar>
                                 </IconButton>
                             </Tooltip>
                             <Menu
