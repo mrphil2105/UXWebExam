@@ -10,5 +10,5 @@ public class AppUser : IdentityUser
 
     // Navigation properties
 
-    public ICollection<Car> Cars { get; set; } = null!;
+    public ICollection<Booking> Bookings { get; set; } = null!;
 }
