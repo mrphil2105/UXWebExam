@@ -102,7 +102,8 @@ export default () => {
         <Container>
             <ul
                 style={{
-                    margin: "1rem",
+                    marginTop: "2.5rem",
+                    marginBottom: "1rem",
                     padding: "0",
                     listStyle: "none",
                     color: "red",
@@ -136,8 +137,8 @@ export default () => {
                 </Stack>
             </Box>
 
-            <Box sx={{ m: 1.5 }}>
-                <Button type="submit" variant="contained" onClick={handleClick}>Create</Button>
+            <Box sx={{ my: 1 }}>
+                <Button variant="contained" onClick={handleClick}>Create</Button>
                 {showSuccess && <Typography style={{ display: "inline-flex", marginLeft: "1rem" }}>The car has been created!</Typography>}
             </Box>
         </Container>
