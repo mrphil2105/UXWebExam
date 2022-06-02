@@ -9,12 +9,23 @@ import LocalGasStationIcon from "@mui/icons-material/LocalGasStation";
 import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import EventIcon from '@mui/icons-material/Event';
+import { BookingModel } from '../../models/BookingModel';
+
 
 interface Props {
-    reservation: Reservation;
+    reservation: BookingModel;
+    active: Boolean
 }
 
 export default function ReservationCard(props: Props) {
+
+    let button;
+   if (props.active){
+        button=<Button variant="contained">Deliver</Button>
+   }else{
+    button=<Button variant="contained">Cancel</Button>
+   }
+
     return (
         <Card>
                 <Typography gutterBottom variant="h4" component="div" padding={1}>
@@ -33,13 +44,13 @@ export default function ReservationCard(props: Props) {
                         <br/>
                         <LocalGasStationIcon />{props.reservation.car.type}
                         <br />
-                        <EventIcon />StartDate - {props.reservation.start}
+                        <EventIcon /> StartDate - {props.reservation.startDate}
                         <br />
-                        <EventIcon />StartDate - {props.reservation.end}
+                        <EventIcon /> EndDate - {props.reservation.endDate}
                         <br />
                     </Typography>
                     <br />
-                    <Button variant="contained">Deliver</Button>
+                    {button}
                 </CardContent>
         </Card>
     );
