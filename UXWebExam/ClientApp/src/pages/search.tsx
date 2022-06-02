@@ -10,7 +10,7 @@ function Search() {
     const [ carTypes, setCarTypes ] = useState<string[]>([]);
     const [ cars, setCars ] = useState<CarModel[]>([]);
 
-    const [ term, termInput ] = useTextInput("Term");
+    const [ term, termInput ] = useTextInput("Search");
     const [ type, typeInput ] = useSelectInput("Type", carTypes, "", true);
     const [ fromDate, fromDateString, fromDateInput ] = useCalendarInput("From");
     const [ toDate, toDateString, toDateInput ] = useCalendarInput("To");
