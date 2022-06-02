@@ -23,7 +23,7 @@ import LogoImage from "../../resources/Logo.png";
 import { LoginMenu } from "../api-authorization/LoginMenu";
 
 const pages = [
-    { name: "Map", link: "/map" },
+    { name: "Map", link: "/" },
     { name: "Overview", link: "/overview" },
     { name: "Help", link: "/help" },
     { name: "My Reservations", link: "/reservations" },
