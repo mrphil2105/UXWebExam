@@ -6,6 +6,8 @@ import { Button } from "@mui/material";
 import CarModel from "../models/CarModel";
 import { Link } from "react-router-dom";
 import { useCalendarInput } from "../formControls";
+import Calendar from "../components/calendar/Calendar";
+import {doNothing} from "@mui/x-date-pickers/internals/utils/utils";
 
 export default function Book() {
     const pathname = window.location.pathname;
@@ -31,12 +33,11 @@ export default function Book() {
     if (!car) {
         return (<Container><Typography>No car could be found.</Typography></Container>)
     }
-
-    // @ts-ignore
+    
     return (
 <       div style={{ display: 'flex', justifyContent: 'center' }}>
             <Stack spacing={3} sx={{ width: '600px', padding:2 }}>
-                <CarCard car={car} />
+                <BookCard car={car} />
                 <br />
                 <div style={{ display: 'flex', justifyContent: 'center' }}>
                     <Calendar name="Start Time"  onChange={doNothing} value={new Date()}/>
