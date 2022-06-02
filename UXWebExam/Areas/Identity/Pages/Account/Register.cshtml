@@ -5,42 +5,47 @@
     ViewData["Title"] = "Register";
 }
 
-<h1>@ViewData["Title"]</h1>
 
 <form asp-route-returnUrl="@Model.ReturnUrl" method="post">
-    <h2>Create a new account</h2>
-    <hr />
-    <!-- TODO: Add a red color to the validation summary and validation spans -->
-    <div asp-validation-summary="ModelOnly"></div>
-    <div>
-        <label asp-for="Input.FirstName"></label>
-        <input asp-for="Input.FirstName" />
-        <span asp-validation-for="Input.FirstName"></span>
-    </div>
-    <div>
-        <label asp-for="Input.LastName"></label>
-        <input asp-for="Input.LastName" />
-        <span asp-validation-for="Input.LastName"></span>
-    </div>
-    <div>
-        <label asp-for="Input.Email"></label>
-        <input asp-for="Input.Email" />
-        <span asp-validation-for="Input.Email"></span>
-    </div>
-    <div>
-        <label asp-for="Input.Password"></label>
-        <input asp-for="Input.Password" />
-        <span asp-validation-for="Input.Password"></span>
-    </div>
-    <div>
-        <label asp-for="Input.ConfirmPassword"></label>
-        <input asp-for="Input.ConfirmPassword" />
-        <span asp-validation-for="Input.ConfirmPassword"></span>
-    </div>
-    <button type="submit" class="button-good">Register</button>
-    <div>
-        <p>
-            <a asp-page="./Login" asp-route-returnUrl="@Model.ReturnUrl">Login to your account</a>
-        </p>
+    <div class="container">
+        <h2>Create a new account</h2>
+        <div style="text-align: center">
+            <!-- TODO: Add a red color to the validation summary and validation spans -->
+            <div asp-validation-summary="ModelOnly"></div>
+            <div class="form__group">
+                <input asp-for="Input.FirstName" class="form__field" placeholder="First Name"/>
+                <label asp-for="Input.FirstName" class="form__label"></label>
+                <span asp-validation-for="Input.FirstName" class="error"></span>
+            </div>
+            <div class="form__group">
+                <input asp-for="Input.LastName" class="form__field" placeholder="Last name"/>
+                <label asp-for="Input.LastName" class="form__label"></label>
+                <span asp-validation-for="Input.LastName" class="error"></span>
+            </div>
+
+            <div class="form__group">
+                <input asp-for="Input.Email" class="form__field" placeholder="Email"/>
+                <label asp-for="Input.Email" class="form__label"></label>
+                <span asp-validation-for="Input.Email" class="error"></span>
+            </div>
+
+            <div class="form__group">
+                <input asp-for="Input.Password" class="form__field" placeholder="Password"/>
+                <label asp-for="Input.Password" class="form__label"></label>
+                <span asp-validation-for="Input.Password" class="error"></span>
+            </div>
+
+            <div class="form__group">
+                <input asp-for="Input.ConfirmPassword" class="form__field" placeholder="Confirm Password"/>
+                <label asp-for="Input.ConfirmPassword" class="form__label"></label>
+                <span asp-validation-for="Input.ConfirmPassword" class="error"></span>
+            </div>
+            <button type="submit" class="button-good">Register</button>
+            <div class="container">
+                <p>
+                    <a asp-page="./Login" asp-route-returnUrl="@Model.ReturnUrl">Login to your account</a>
+                </p>
+            </div>
+        </div>
     </div>
 </form>

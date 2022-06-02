@@ -37,7 +37,7 @@ const Map: React.FC = () => {
     }, []);
 
     return isLoading ? (
-        <Typography>Loading cars...</Typography>
+        <Container><Typography>Loading cars...</Typography> </Container>
     ) : (
         <Container>
             <Card sx={{ borderRadius: 5, width: "100%", maxHeight:getWindowDimensions().height*0.9 }}>
