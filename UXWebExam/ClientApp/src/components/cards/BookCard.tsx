@@ -27,7 +27,7 @@ export default function BookCard(props: Props) {
                     <LocalGasStationIcon />{props.car.type}
                 </Typography>
                 <Typography color="text.secondary">
-                    <AttachMoneyIcon />{props.car.price} kr./dagen
+                    <AttachMoneyIcon />{props.car.price} kr./day
                 </Typography>
             </CardContent>
         </Card>
