@@ -1,4 +1,4 @@
-import { Stack } from "@mui/material";
+import { Stack ,Typography,Box} from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { BookingModel } from "../models/BookingModel";
 import BookingCard from "../components/cards/BookingCard";
@@ -30,15 +30,15 @@ function Bookings() {
     });
 
     return (
-        <div style={{ display: 'flex', justifyContent: 'center' }}>
+        <Box sx={{display: "flex", justifyContent: "content"}}>
             <Stack spacing={3} sx={{ width: '600px' }}>
-                <h1>Bookings</h1>
-                <h3>Active</h3>
-                 {activeBookings.map(c => (<BookingCard booking={c} active={true}/>))}
-                <h3>Future</h3>
+                <Typography variant="h1">Bookings</Typography>
+                <Typography variant="h3">Active Bookings</Typography>
+                {activeBookings.map(c => (<BookingCard booking={c} active={true}/>))}
+                <Typography variant="h3">Future Bookings</Typography>
                 {futureBookings.map(c => (<BookingCard booking={c} active={false}/>))}
             </Stack>
-        </div>
+        </Box>
     );
 }
 
