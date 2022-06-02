@@ -20,7 +20,7 @@ import { LoginMenu } from "../api-authorization/LoginMenu";
 
 const pages = [
     { name: "Map", link: "/map" },
-    { name: "Overview", link: "/overview" },
+    { name: "Search", link: "/search" },
     { name: "Help", link: "/help" },
     { name: "My Reservations", link: "/reservations" },
 ];
