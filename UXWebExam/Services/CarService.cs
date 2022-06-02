@@ -1,3 +1,4 @@
+using System.Globalization;
 using Microsoft.EntityFrameworkCore;
 using UXWebExam.Data;
 using UXWebExam.Models;
@@ -25,6 +26,43 @@ public class CarService : ICarService
     public async Task<List<CarModel>> GetAllAsync()
     {
         var cars = await _dbContext.Cars.ToListAsync();
+
+        return cars.Select(c => c.ToModel())
+            .ToList();
+    }
+
+    public async Task<List<CarModel>?> SearchAsync(SearchModel searchModel)
+    {
+        IEnumerable<Car> cars = await _dbContext.Cars.Include(c => c.Bookings)
+            .ToListAsync();
+
+        DateTimeOffset.TryParseExact(searchModel.FromDate, "dd/MM/yyyy", CultureInfo.InvariantCulture,
+            DateTimeStyles.None, out var fromDate);
+        DateTimeOffset.TryParseExact(searchModel.ToDate, "dd/MM/yyyy", CultureInfo.InvariantCulture,
+            DateTimeStyles.None, out var toDate);
+
+        if (fromDate > toDate)
+        {
+            return null;
+        }
+
+        if (!string.IsNullOrWhiteSpace(searchModel.Term))
+        {
+            cars = cars.Where(c =>
+                c.Name.Contains(searchModel.Term, StringComparison.InvariantCultureIgnoreCase) ||
+                c.Description.Contains(searchModel.Term, StringComparison.InvariantCultureIgnoreCase));
+        }
+
+        if (Enum.TryParse<CarType>(searchModel.Type, out var type))
+        {
+            cars = cars.Where(c => c.Type == type);
+        }
+
+        if (fromDate != default && toDate != default)
+        {
+            cars = cars.Where(c => !c.Bookings.Any(b =>
+                (fromDate >= b.StartDate && fromDate <= b.EndDate) || (toDate <= b.EndDate && toDate >= b.StartDate)));
+        }
 
         return cars.Select(c => c.ToModel())
             .ToList();

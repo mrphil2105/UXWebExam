@@ -32,6 +32,14 @@ public class CarController : Controller
     }
 
     [HttpGet]
+    public async Task<IActionResult> Search([FromBody] SearchModel searchModel)
+    {
+        var cars = await _carService.SearchAsync(searchModel);
+
+        return Json(cars);
+    }
+
+    [HttpGet]
     public IActionResult GetCarTypes()
     {
         string[] carTypes = Enum.GetNames<CarType>();
