@@ -3,7 +3,7 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import { Button, CardActionArea } from '@mui/material';
+import { Button, CardActionArea, CardHeader } from '@mui/material';
 import { Reservation } from '../../classes/Reservation';
 import LocalGasStationIcon from "@mui/icons-material/LocalGasStation";
 import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
@@ -17,15 +17,8 @@ interface Props {
 export default function ReservationCard(props: Props) {
     return (
         <Card>
-                <Typography gutterBottom variant="h4" component="div" padding={1}>
-                    {props.reservation.car.name}
-                </Typography>
-                <CardMedia
-                    component="img"
-                    height="300"
-                    image={props.reservation.car.imageUrl}
-                    alt={props.reservation.car.imageUrl}
-                />
+                <CardHeader title={props.reservation.car.name} sx={{ backgroundColor: 'primary.main', color: "white"}}/>
+                <CardMedia component="img" image={props.reservation.car.imageUrl} alt={props.reservation.car.name} />
                 <CardContent>
                     <Typography variant="body1" color="text.secondary">
                         <br/>

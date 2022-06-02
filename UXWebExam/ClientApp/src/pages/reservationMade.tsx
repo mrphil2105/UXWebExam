@@ -38,8 +38,8 @@ export default function ReservationMade() {
 
     return (
         <div style={{ display: 'flex', justifyContent: 'center' }}>
-        <Stack spacing={3} sx={{ width: '600px' }}>
-            <Typography gutterBottom variant="h4" component="div" >
+        <Stack spacing={3} sx={{ width: '600px', padding:2  }}>
+            <Typography gutterBottom variant="h4" >
                 Reservation Made!
             </Typography>
             <ReservationCard reservation={new Reservation(car,"01/05","02/06")} />

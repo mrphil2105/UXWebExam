@@ -35,14 +35,14 @@ export default function Book() {
 
     return (
 <       div style={{ display: 'flex', justifyContent: 'center' }}>
-            <Stack spacing={3} sx={{ width: '600px' }}>
+            <Stack spacing={3} sx={{ width: '600px', padding:2 }}>
                 <CarCard car={car} />
                 <br />
                 <div style={{ display: 'flex', justifyContent: 'center' }}>
                     <Calender name="Start Time" />
                     <Calender name="End Time" />
                 </div>
-                <p style={{ display: 'flex', justifyContent: 'center', fontSize: 30 }}>130 kr.</p>
+                <Typography style={{ display: 'flex', justifyContent: 'center', fontSize: 30 }}>130 kr.</Typography>
                 <Link to={"/payment/"+car.id} style={{ textDecoration: 'none' }}>
                     <Button variant="contained" fullWidth>Book</Button>
                 </Link>
