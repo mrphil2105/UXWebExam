@@ -26,7 +26,7 @@ const pages = [
     { name: "Map", link: "/" },
     { name: "Overview", link: "/overview" },
     { name: "Help", link: "/help" },
-    { name: "My Reservations", link: "/reservations" },
+    { name: "My Bookings", link: "/bookings" },
 ];
 const settings = ["Profile", "Account", "Logout"];
 

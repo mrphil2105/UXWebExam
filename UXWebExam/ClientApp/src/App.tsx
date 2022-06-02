@@ -3,7 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import Layout from "./components/layout/Layout";
 import Map from "./pages/mapPage";
 import Overview from "./pages/overview";
-import Reservations from "./pages/reservations";
+import Bookings from "./pages/bookings";
 import Profile from "./pages/profile";
 import { ApplicationPath } from "./components/api-authorization/ApiAuthorizationConstants";
 import ApiAuthorizationRoutes from "./components/api-authorization/ApiAuthorizationRoutes";
@@ -12,7 +12,7 @@ import CreateCar from "./pages/createCar";
 import Help from "./pages/help";
 import Book from "./pages/book";
 import Payment from "./pages/payment";
-import ReservationMade from "./pages/reservationMade";
+import BookingMade from "./pages/bookingMade";
 
 function App() {
     return (
@@ -21,9 +21,9 @@ function App() {
                 <Route path="/" element={<Map />} />
                 <Route path="/overview" element={<Overview />} />
                 <Route path="/create-car" element={<CreateCar />} />
-                <Route path="/reservations" element={
+                <Route path="/bookings" element={
                     <RequireAuth>
-                        <Reservations />
+                        <Bookings />
                     </RequireAuth>
                 } />
                 <Route path="/book/*" element={
@@ -36,9 +36,9 @@ function App() {
                     <Payment/>
                 </RequireAuth>
                     } />
-                <Route path="/reservationMade/*" element={
+                <Route path="/bookingMade/*" element={
                 <RequireAuth>
-                    <ReservationMade/>
+                    <BookingMade/>
                 </RequireAuth>
                     } />
                 <Route path="/profile" element={

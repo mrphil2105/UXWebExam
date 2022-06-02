@@ -1,9 +1,9 @@
 import { Stack } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { BookingModel } from "../models/BookingModel";
-import ReservationCard from "../components/cards/ReservationCard";
+import BookingCard from "../components/cards/BookingCard";
 
-function Reservations() {
+function Bookings() {
 
     const [ bookings, setBookings ] = useState<BookingModel[]>([]);
 
@@ -32,14 +32,14 @@ function Reservations() {
     return (
         <div style={{ display: 'flex', justifyContent: 'center' }}>
             <Stack spacing={3} sx={{ width: '600px' }}>
-                <h1>Reservations</h1>
+                <h1>Bookings</h1>
                 <h3>Active</h3>
-                 {activeBookings.map(c => (<ReservationCard reservation={c} active={true}/>))}
+                 {activeBookings.map(c => (<BookingCard booking={c} active={true}/>))}
                 <h3>Future</h3>
-                {futureBookings.map(c => (<ReservationCard reservation={c} active={false}/>))}
+                {futureBookings.map(c => (<BookingCard booking={c} active={false}/>))}
             </Stack>
         </div>
     );
 }
 
-export default Reservations;
+export default Bookings;

@@ -13,11 +13,11 @@ import { BookingModel } from '../../models/BookingModel';
 
 
 interface Props {
-    reservation: BookingModel;
+    booking: BookingModel;
     active: Boolean
 }
 
-export default function ReservationCard(props: Props) {
+export default function BookingCard(props: Props) {
 
     let button;
    if (props.active){
@@ -29,24 +29,24 @@ export default function ReservationCard(props: Props) {
     return (
         <Card>
                 <Typography gutterBottom variant="h4" component="div" padding={1}>
-                    {props.reservation.car.name}
+                    {props.booking.car.name}
                 </Typography>
                 <CardMedia
                     component="img"
                     height="300"
-                    image={props.reservation.car.imageUrl}
-                    alt={props.reservation.car.imageUrl}
+                    image={props.booking.car.imageUrl}
+                    alt={props.booking.car.imageUrl}
                 />
                 <CardContent>
                     <Typography variant="body1" color="text.secondary">
                         <br/>
-                        <LocationOnIcon/>{props.reservation.car.street} {props.reservation.car.houseNumber}, {props.reservation.car.postalCode} {props.reservation.car.city}
+                        <LocationOnIcon/>{props.booking.car.street} {props.booking.car.houseNumber}, {props.booking.car.postalCode} {props.booking.car.city}
                         <br/>
-                        <LocalGasStationIcon />{props.reservation.car.type}
+                        <LocalGasStationIcon />{props.booking.car.type}
                         <br />
-                        <EventIcon /> StartDate - {props.reservation.startDate}
+                        <EventIcon /> StartDate - {props.booking.startDate}
                         <br />
-                        <EventIcon /> EndDate - {props.reservation.endDate}
+                        <EventIcon /> EndDate - {props.booking.endDate}
                         <br />
                     </Typography>
                     <br />
