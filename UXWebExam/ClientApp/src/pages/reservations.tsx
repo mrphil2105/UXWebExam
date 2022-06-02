@@ -11,6 +11,7 @@ function Reservations() {
         (async () => {
             const response = await fetch("/api/Car/GetBookings");
             const bookings = await response.json();
+            setBookings(bookings)
         })();
     }, []);
 
