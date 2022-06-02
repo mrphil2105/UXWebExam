@@ -41,8 +41,8 @@ export default function BookingMade() {
 
     return (
         <div style={{ display: 'flex', justifyContent: 'center' }}>
-        <Stack spacing={3} sx={{ width: '600px' }}>
-            <Typography gutterBottom variant="h4" component="div" >
+        <Stack spacing={3} sx={{ width: '600px', padding:2  }}>
+            <Typography gutterBottom variant="h4" >
                 Booking Made!
             </Typography>
             <BookingCard booking={booking}  active={true} />

@@ -37,14 +37,14 @@ export default function Book() {
     // @ts-ignore
     return (
 <       div style={{ display: 'flex', justifyContent: 'center' }}>
-            <Stack spacing={3} sx={{ width: '600px' }}>
+            <Stack spacing={3} sx={{ width: '600px', padding:2 }}>
                 <CarCard car={car} />
                 <br />
                 <div style={{ display: 'flex', justifyContent: 'center' }}>
                     <Calendar name="Start Time"  onChange={doNothing} value={new Date()}/>
                     <Calendar name="End Time"  onChange={doNothing} value={new Date()}/>
                 </div>
-                <p style={{ display: 'flex', justifyContent: 'center', fontSize: 30 }}>130 kr.</p>
+                <Typography style={{ display: 'flex', justifyContent: 'center', fontSize: 30 }}>130 kr.</Typography>
                 <Link to={"/payment/"+car.id} style={{ textDecoration: 'none' }}>
                     <Button variant="contained" fullWidth>Book</Button>
                 </Link>
