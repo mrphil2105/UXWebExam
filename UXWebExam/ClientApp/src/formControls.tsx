@@ -66,23 +66,23 @@ export function useTextAreaInput(name: string, defaultValue = ""): [ string, JSX
     return [ value, input ];
 }
 
-export function useCalendarInput(name: string): [ string, JSX.Element ] {
-    const [ date, setDate ] = useState<Date | null>(null);
-    const [ value, setValue ] = useState("");
+export function useCalendarInput(name: string): [ Date | null, string, JSX.Element ] {
+    const [ value, setValue ] = useState<Date | null>(null);
+    const [ valueString, setValueString ] = useState("");
 
     const changeHandler: (newDate: Date | null) => void = (newDate) => {
-        setDate(newDate);
-        setValue(formatDate(newDate));
+        setValue(newDate);
+        setValueString(formatDate(newDate));
     };
 
     const input = (
         <Box sx={{ p: boxPadding }}>
             <FormControl fullWidth>
-                <Calendar name={name} value={date} onChange={changeHandler} />
+                <Calendar name={name} value={value} onChange={changeHandler} />
             </FormControl>
         </Box>
     );
-    return [ value, input ];
+    return [ value, valueString, input ];
 }
 
 function formatDate(date: Date | null) {
