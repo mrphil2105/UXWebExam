@@ -59,18 +59,14 @@ const ResponsiveAppBar = () => {
         <Box
             sx={{
                 position: "relative",
-                bottom: 0,
                 display: "flex",
-                justifyContent: "space-between",
-                alignItems: "center",
                 width: "100%",
                 m: 5,
             }}
         >
             <AppBar sx={{}}>
                 <Container maxWidth="xl">
-                    <Toolbar disableGutters sx={{justifyContent:"space-betweens"}}>
-
+                    <Toolbar disableGutters sx={{justifyContent:"space-between"}}>
                         <Link to={"/"}
                               style={{
                                   textDecoration: "none",
@@ -142,19 +138,19 @@ const ResponsiveAppBar = () => {
                             </Menu>
                         </Box>
 
+                            <Box sx={{position:"absolute",left:"30%", height:50, margin:"auto",flexGrow:1 ,  justifyContent:"center" , display:{ xs: "flex", md: "none" }}}>
                         <Link to={"/"}
                             style={{
                                 textDecoration: "none",
                                 color: "inherit",
                             }}
                         >
-                            <Box sx={{ height:50, margin:"auto", display:{ xs: "flex", md: "none" }}}>
-                                <Stack direction={"row"} spacing={1}>
+                                <Stack direction={"row"} spacing={1} sx={{height:50}}>
                                      <img src={LogoImage} alt="Logo" />
                                     <Typography noWrap variant={"h3"}>Swifty</Typography>
                                 </Stack>
-                            </Box>
                         </Link>
+                            </Box>
 
                         <Box
                             sx={{
