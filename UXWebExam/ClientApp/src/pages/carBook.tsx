@@ -6,6 +6,8 @@ import CarCard from "../components/cards/CarCard";
 import Calender from "../components/calendar/Calendar";
 import { Button } from "@mui/material";
 import CarModel from "../models/CarModel";
+import Calendar from "../components/calendar/Calendar";
+import {doNothing} from "@mui/x-date-pickers/internals/utils/utils";
 
 export default function Book() {
     const pathname = window.location.pathname;
@@ -38,8 +40,8 @@ export default function Book() {
                 <CarCard car={car} />
                 <br />
                 <div style={{ display: 'flex', justifyContent: 'center' }}>
-                    <Calender name="Start Time" />
-                    <Calender name="End Time" />
+                    <Calendar name="Start Time"  onChange={doNothing} value={new Date()}/>
+                    <Calendar name="End Time"  onChange={doNothing} value={new Date()}/>
                 </div>
                 <p style={{ display: 'flex', justifyContent: 'center', fontSize: 30 }}>130 kr.</p>
                 <Button variant="contained">Book</Button>

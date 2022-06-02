@@ -9,37 +9,48 @@ import LocalGasStationIcon from "@mui/icons-material/LocalGasStation";
 import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import EventIcon from '@mui/icons-material/Event';
+import { BookingModel } from '../../models/BookingModel';
+
 
 interface Props {
-    reservation: Reservation;
+    booking: BookingModel;
+    active: Boolean
 }
 
-export default function ReservationCard(props: Props) {
+export default function BookingCard(props: Props) {
+
+    let button;
+   if (props.active){
+        button=<Button variant="contained">Deliver</Button>
+   }else{
+    button=<Button variant="contained">Cancel</Button>
+   }
+
     return (
         <Card>
                 <Typography gutterBottom variant="h4" component="div" padding={1}>
-                    {props.reservation.car.name}
+                    {props.booking.car.name}
                 </Typography>
                 <CardMedia
                     component="img"
                     height="300"
-                    image={props.reservation.car.imageUrl}
-                    alt={props.reservation.car.imageUrl}
+                    image={props.booking.car.imageUrl}
+                    alt={props.booking.car.imageUrl}
                 />
                 <CardContent>
                     <Typography variant="body1" color="text.secondary">
                         <br/>
-                        <LocationOnIcon/>{props.reservation.car.street} {props.reservation.car.houseNumber}, {props.reservation.car.postalCode} {props.reservation.car.city}
+                        <LocationOnIcon/>{props.booking.car.street} {props.booking.car.houseNumber}, {props.booking.car.postalCode} {props.booking.car.city}
                         <br/>
-                        <LocalGasStationIcon />{props.reservation.car.type}
+                        <LocalGasStationIcon />{props.booking.car.type}
                         <br />
-                        <EventIcon />StartDate - {props.reservation.start}
+                        <EventIcon /> StartDate - {props.booking.startDate}
                         <br />
-                        <EventIcon />StartDate - {props.reservation.end}
+                        <EventIcon /> EndDate - {props.booking.endDate}
                         <br />
                     </Typography>
                     <br />
-                    <Button variant="contained">Deliver</Button>
+                    {button}
                 </CardContent>
         </Card>
     );

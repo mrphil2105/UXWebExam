@@ -18,10 +18,10 @@ export default function Help() {
                 <Box component="span" sx={{ p: 2, border: 2,  borderColor:'primary.main',borderRadius: 1 }}>
                     <Typography variant="h5">3. Drive</Typography>
                     <Typography>
-                        When your reservation starts, you can find the car at the given address.
-                        You must deliver the car back to the same address, before your reservation ends.
+                        When your booking starts, you can find the car at the given address.
+                        You must deliver the car back to the same address, before your booking ends.
                         If you don't do this you will be charged extra. Once you've the delivered the car, find the
-                        reservation on the website and press "Deliver".
+                        booking on the website and press "Deliver".
                     </Typography>
                     </Box>
                 <Link to="/">
