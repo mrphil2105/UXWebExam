@@ -73,10 +73,21 @@ const ResponsiveAppBar = () => {
                                   color: "inherit",
                               }}
                         >
-                            <Box sx={{ height:50, alignItems:"center", justifyContent:"center", display:{ xs: "none", md: "flex" }}}>
-                                <Stack direction={"row"} spacing={1} sx={{height:50}}>
-                                    <img src={LogoImage} alt="Logo" />
-                                    <Typography noWrap variant={"h3"}>Swifty</Typography>
+                            <Box sx={{
+                                height: 50,
+                                alignItems: "center",
+                                justifyContent: "center",
+                                display: { xs: "none", md: "flex" }
+                            }}>
+                                <Stack direction="row" spacing={1} sx={{ height: 50,display: "flex",
+                                    alignItems: "center" }}>
+                                    <Box component="img"
+                                        sx={{
+                                            height: 40
+                                        }}
+                                        src={LogoImage}
+                                    />
+                                    <Typography noWrap variant={"h3"} style={{ marginRight: 8 }}>Swifty</Typography>
                                 </Stack>
                             </Box>
                         </Link>
@@ -138,19 +149,33 @@ const ResponsiveAppBar = () => {
                             </Menu>
                         </Box>
 
-                            <Box sx={{position:"absolute",top: "50%",left:"50%",transform: "translate(-50%, -50%)" , height:50,flexGrow: 1 , display:{ xs: "flex", md: "none" }}}>
-                        <Link to={"/"}
-                            style={{
-                                textDecoration: "none",
-                                color: "inherit",
-                            }}
-                        >
-                                <Stack direction={"row"} spacing={1} sx={{height:50}}>
-                                     <img src={LogoImage} alt="Logo" />
+                        <Box sx={{
+                            position: "absolute",
+                            top: "50%",
+                            left: "50%",
+                            transform: "translate(-50%, -50%)",
+                            height: 50,
+                            flexGrow: 1,
+                            display: { xs: "flex", md: "none" }
+                        }}>
+                            <Link to="/"
+                                  style={{
+                                      textDecoration: "none",
+                                      color: "inherit",
+                                  }}
+                            >
+                                <Stack direction={"row"} spacing={1} sx={{ height: 50, display:"flex", alignItems: "center" }}>
+                                    <Box
+                                        component="img"
+                                        sx={{
+                                            height: 40
+                                        }}
+                                        src={LogoImage}
+                                    />
                                     <Typography noWrap variant={"h3"}>Swifty</Typography>
                                 </Stack>
-                        </Link>
-                            </Box>
+                            </Link>
+                        </Box>
 
                         <Box
                             sx={{
