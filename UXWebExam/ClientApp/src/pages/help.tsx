@@ -21,8 +21,8 @@ export default function Help() {
                     <Typography variant="h5">3. Drive</Typography>
                     <Typography>
                         When your booking starts, you can find the car at the given address.
-                        You must deliver the car back to the same address, before your booking ends. Otherwise you’ll be
-                        deducted for additonal time. 
+                        You must return the car to the same address, before your booking ends. Otherwise you’ll be
+                        deducted for additonal time and get a fine. 
                     </Typography>
                 </Box>
                 <Link to="/" style={{ textDecoration: "none" }}>
