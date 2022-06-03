@@ -96,10 +96,10 @@ a:hover {
 }
 
 .form__field:focus ~ .form__label {
-    color: #009788;
+    color: #5069f7;
 }
 
 .form__field:focus {
     padding-bottom: 6px;
-    border-bottom: 2px solid #009788;
+    border-bottom: 2px solid #5069f7;
 }
