@@ -1,7 +1,7 @@
 import React from "react";
 import {Route, Routes} from "react-router-dom";
 import Layout from "./components/layout/Layout";
-import Map from "./pages/mapPage";
+import Index from "./pages/index";
 import Bookings from "./pages/bookings";
 import Search from "./pages/search";
 import {ApplicationPath} from "./components/api-authorization/ApiAuthorizationConstants";
@@ -17,7 +17,7 @@ function App() {
     return (
         <Layout>
             <Routes>
-                <Route path="/" element={<Map/>}/>
+                <Route path="/" element={<Index/>}/>
                 <Route path="/search" element={<Search/>}/>
                 <Route path="/create-car" element={<CreateCar/>}/>
                 <Route path="/bookings" element={

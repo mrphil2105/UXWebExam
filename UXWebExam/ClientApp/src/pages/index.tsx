@@ -2,7 +2,7 @@ import React from "react";
 import Map from "../components/map/Map";
 import { Container } from "@mui/material";
 
-const MapPage: React.FC = () => {
+const Index = () => {
     return (
         <Container>
             <Map />
@@ -10,4 +10,4 @@ const MapPage: React.FC = () => {
     );
 };
 
-export default MapPage;
+export default Index;
