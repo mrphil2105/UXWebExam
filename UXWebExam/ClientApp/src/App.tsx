@@ -11,7 +11,7 @@ import CreateCar from "./pages/createCar";
 import Help from "./pages/help";
 import Book from "./pages/book";
 import Payment from "./pages/payment";
-import BookingMade from "./pages/bookingMade";
+import BookingCreated from "./pages/bookingCreated";
 
 function App() {
     return (
@@ -35,9 +35,9 @@ function App() {
                         <Payment/>
                     </RequireAuth>
                 }/>
-                <Route path="/bookingMade/*" element={
+                <Route path="/booking-created/*" element={
                     <RequireAuth>
-                        <BookingMade/>
+                        <BookingCreated/>
                     </RequireAuth>
                 }/>
                 <Route path="/help" element={<Help/>}/>

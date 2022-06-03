@@ -13,21 +13,54 @@ interface Props {
     car: CarModel;
 }
 
+const iconTypographyStyle: React.CSSProperties = {
+    display: "flex",
+    alignItems: "center",
+    flexWrap: "wrap",
+    gap: 5
+};
+
 export default function BookCard(props: Props) {
+    let address: string = "";
+
+    if (props.car.postalCode) {
+        address += props.car.postalCode + " ";
+    }
+
+    if (props.car.city) {
+        address += props.car.city;
+    }
+
+    if (props.car.postalCode) {
+        if (address) {
+            address += ", ";
+        }
+
+        address += props.car.postalCode + " ";
+    }
+
+    if (props.car.city) {
+        if (address && !props.car.postalCode) {
+            address += ", ";
+        }
+
+        address += props.car.city;
+    }
+
     return (
-        <Card sx={{m:2}}>
+        <Card>
             <CardHeader title={props.car.name} sx={{ backgroundColor: "primary.main", color: "white" }} />
             <CardMedia component="img" image={props.car.imageUrl} alt={props.car.name} />
             <CardContent>
                 <Typography>{props.car.description}</Typography>
-                <Typography color="text.secondary">
-                    <LocationOnIcon />{props.car.street} {props.car.houseNumber}, {props.car.postalCode} {props.car.city}
+                <Typography color="text.secondary" style={iconTypographyStyle}>
+                    {address && (<><LocationOnIcon /> {address}</>)}
                 </Typography>
-                <Typography color="text.secondary">
-                    <LocalGasStationIcon />{props.car.type}
+                <Typography color="text.secondary" style={iconTypographyStyle}>
+                    <LocalGasStationIcon /> {props.car.type}
                 </Typography>
-                <Typography color="text.secondary">
-                    <AttachMoneyIcon />{props.car.price} kr./day
+                <Typography color="text.secondary" style={iconTypographyStyle}>
+                    <AttachMoneyIcon /> {props.car.price} DKK/day
                 </Typography>
             </CardContent>
         </Card>

@@ -1,30 +1,38 @@
-import React, {useEffect, useState} from "react";
-import {Box, Container, Typography, useMediaQuery} from "@mui/material";
-import {Stack} from "@mui/material";
+import React, { useEffect, useState } from "react";
+import { Box, Container, Typography, useMediaQuery } from "@mui/material";
+import { Stack } from "@mui/material";
 import BookCard from "../components/cards/BookCard";
-import {Button} from "@mui/material";
+import { Button } from "@mui/material";
 import CarModel from "../models/CarModel";
-import {Link} from "react-router-dom";
-import {useCalendarInput} from "../formControls";
-import Calendar from "../components/calendar/Calendar";
-import {doNothing} from "@mui/x-date-pickers/internals/utils/utils";
+import { Link } from "react-router-dom";
+import { useCalendarInput } from "../formControls";
+import { BookModel } from "../models/BookModel";
 
 export default function Book() {
     const pathname = window.location.pathname;
     const slashIndex = pathname.lastIndexOf("/");
     const id = pathname.substring(slashIndex + 1, pathname.length);
 
-    const [isLoading, setIsLoading] = useState(true);
-    const [car, setCar] = useState<CarModel | null>();
+    const [ fromDate, fromDateString, fromDateInput ] = useCalendarInput("From");
+    const [ toDate, toDateString, toDateInput ] = useCalendarInput("To");
+
+    const [ isLoading, setIsLoading ] = useState(true);
+    const [ car, setCar ] = useState<CarModel | null>();
+
+    const isMobile = useMediaQuery("(max-width: 600px)");
+    const direction = isMobile ? "column" : "row";
 
     useEffect(() => {
         (async () => {
             const response = await fetch(`/api/Car/GetCar?id=${id}`);
-            const car: CarModel = await response.json();
-            setCar(car);
-            setIsLoading(false);
+
+            if (response.ok) {
+                const car: CarModel = await response.json();
+                setCar(car);
+                setIsLoading(false);
+            }
         })();
-    }, [])
+    }, []);
 
     if (isLoading) {
         return (<Container><Typography>Loading car...</Typography></Container>);
@@ -34,21 +42,34 @@ export default function Book() {
         return (<Container><Typography>No car could be found.</Typography></Container>)
     }
 
+    const bookModel: BookModel = {
+        carId: Number(id),
+        startDate: fromDateString,
+        endDate: toDateString
+    }
+
+    const diffTime = toDate && fromDate && Math.max(toDate.getTime() - fromDate.getTime(), 0);
+    const totalPrice = diffTime ? car.price * ((diffTime / (1000 * 3600 * 24)) + 1) : 0;
+
     return (
         <Container>
-            <Box sx={{display: 'flex', justifyContent: 'center'}}>
-                <Stack spacing={3} sx={{width: '600px', padding: 2}}>
-                    <BookCard car={car}/>
-                    <Stack direction="row" spacing={2} sx={{justifyContent: "center"}}>
-                        <Calendar name="Start Time" onChange={doNothing} value={new Date()}/>
-                        <Calendar name="End Time" onChange={doNothing} value={new Date()}/>
+            <div style={{ display: "flex", justifyContent: "center" }}>
+                <Stack spacing={3} sx={{ width: "600px" }}>
+                    <BookCard car={car} />
+                    <Stack direction={direction}>
+                        <Box sx={{ width: "100%" }}>{fromDateInput}</Box>
+                        <Box sx={{ width: "100%" }}>{toDateInput}</Box>
                     </Stack>
-                    <Typography variant="h3" style={{display: 'flex', justifyContent: 'center'}}>130 kr.</Typography> //TODO: tilføj pris calculation
-                    <Link to={"/payment/" + car.id} style={{textDecoration: 'none'}}>
-                        <Button variant="contained" sx={{bgcolor:"secondary.main",color:"black", borderRadius:10}} fullWidth>Book</Button>
+                    <Typography variant="h3" style={{
+                        display: "flex",
+                        justifyContent: "center"
+                    }}>{totalPrice.toFixed(2)} DKK</Typography>
+                    <Link to={"/payment/" + car.id} state={bookModel}
+                          style={{ pointerEvents: !diffTime ? "none" : "auto", textDecoration: "none" }}>
+                        <Button disabled={!diffTime} variant="contained" fullWidth>Book</Button>
                     </Link>
                 </Stack>
-            </Box>
+            </div>
         </Container>
     );
 }

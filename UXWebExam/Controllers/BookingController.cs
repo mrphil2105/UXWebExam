@@ -45,6 +45,14 @@ public class BookingController : Controller
     }
 
     [HttpGet]
+    public async Task<IActionResult> GetBooking(int id)
+    {
+        var booking = await _bookService.GetBookingAsync(id);
+
+        return Json(booking);
+    }
+
+    [HttpGet]
     public async Task<IActionResult> GetBookings()
     {
         var bookings = await _bookService.GetBookingsAsync();

@@ -10,10 +10,10 @@ function Search() {
     const [ carTypes, setCarTypes ] = useState<string[]>([]);
     const [ cars, setCars ] = useState<CarModel[]>([]);
 
-    const [ term, termInput ] = useTextInput("Term");
+    const [ term, termInput ] = useTextInput("Search");
     const [ type, typeInput ] = useSelectInput("Type", carTypes, "", true);
-    const [ fromDate, fromDateInput ] = useCalendarInput("From");
-    const [ toDate, toDateInput ] = useCalendarInput("To");
+    const [ fromDate, fromDateString, fromDateInput ] = useCalendarInput("From");
+    const [ toDate, toDateString, toDateInput ] = useCalendarInput("To");
 
     const [ timeoutId, setTimeoutId ] = useState<ReturnType<typeof setTimeout> | null>(null);
     const [ error, setError ] = useState<string | null>(null);
@@ -34,8 +34,8 @@ function Search() {
         const searchModel: Record<string, string> = {
             term,
             type,
-            fromDate,
-            toDate
+            fromDateString,
+            toDateString
         };
 
         const response = await fetch("/api/Car/Search?" + new URLSearchParams(searchModel), {
@@ -66,7 +66,7 @@ function Search() {
             await loadCars();
         }, 1000);
         setTimeoutId(newTimeoutId);
-    }, [ term, type, fromDate, toDate ]);
+    }, [ term, type, fromDateString, toDateString ]);
 
     let resultsElement: JSX.Element;
 
@@ -79,7 +79,11 @@ function Search() {
     } else {
         resultsElement = (
             <Grid container spacing={1.5}>
-                {cars.map(c => (<SearchCard key={c.id} car={c} />))}
+                {cars.map(c => (
+                    <Grid key={c.id} item xs={12} sm={6} md={4}>
+                        <SearchCard car={c} />
+                    </Grid>
+                ))}
             </Grid>
         );
     }
