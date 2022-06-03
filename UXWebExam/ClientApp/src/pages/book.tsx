@@ -66,7 +66,7 @@ export default function Book() {
                     }}>{totalPrice.toFixed(2)} DKK</Typography>
                     <Link to={"/payment/" + car.id} state={bookModel}
                           style={{ pointerEvents: !diffTime ? "none" : "auto", textDecoration: "none" }}>
-                        <Button disabled={!diffTime} variant="contained" fullWidth>Book</Button>
+                        <Button disabled={!diffTime} variant="contained" fullWidth sx={{bgcolor:"secondary.main",color:"black", borderRadius:10}}>Book</Button>
                     </Link>
                 </Stack>
             </div>

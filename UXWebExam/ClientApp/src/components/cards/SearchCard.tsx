@@ -47,7 +47,7 @@ export default function SearchCard(props: Props) {
             </CardContent>
             <CardActions>
                 <Link to={"/book/" + props.car.id} style={{ textDecoration: "none" }}>
-                    <Button variant="contained">Book</Button>
+                    <Button variant="contained" sx={{bgcolor:"secondary.main",color:"black", borderRadius:10}}>Book</Button>
                 </Link>
             </CardActions>
         </Card>

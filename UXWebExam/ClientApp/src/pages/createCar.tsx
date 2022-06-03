@@ -138,7 +138,7 @@ export default () => {
             </Box>
 
             <Box sx={{ my: 1 }}>
-                <Button variant="contained" onClick={handleClick}>Create</Button>
+                <Button variant="contained" onClick={handleClick} sx={{bgcolor:"secondary.main",color:"black", borderRadius:10}}>Create</Button>
                 {showSuccess && <Typography style={{ display: "inline-flex", marginLeft: "1rem" }}>The car has been created!</Typography>}
             </Box>
         </Container>

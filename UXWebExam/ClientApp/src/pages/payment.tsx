@@ -76,7 +76,7 @@ export default function Payment() {
             <div style={{ display: "flex", justifyContent: "center" }}>
                 <Stack spacing={3} sx={{ width: "600px" }}>
                     <CreditCardForm onInvalidation={invalidationHandler} />
-                    <Button disabled={!canConfirm} variant="contained" fullWidth onClick={handleClick}>Confirm Payment</Button>
+                    <Button disabled={!canConfirm} variant="contained" fullWidth onClick={handleClick}  sx={{bgcolor:"secondary.main",color:"black", borderRadius:10}}>Confirm Payment</Button>
                     {error && <Typography style={{ color: "red" }}>{error}</Typography>}
                 </Stack>
             </div>
