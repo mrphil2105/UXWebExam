@@ -100,9 +100,10 @@ export default () => {
 
     return (
         <Container>
+            <Typography variant="h3">Create car</Typography>
             <ul
                 style={{
-                    marginTop: "2.5rem",
+                    marginTop: "1rem",
                     marginBottom: "1rem",
                     padding: "0",
                     listStyle: "none",

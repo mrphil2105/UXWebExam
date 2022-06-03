@@ -90,6 +90,7 @@ function Search() {
 
     return (
         <Container>
+            <Typography gutterBottom variant="h3">Search</Typography>
             <Box sx={{ mx: -boxPadding, mb: 1 }}>
                 <Stack direction={direction}>
                     <Box sx={{ width: "100%" }}>{termInput}</Box>
