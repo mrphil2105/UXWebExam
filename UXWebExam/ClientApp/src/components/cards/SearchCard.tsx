@@ -30,7 +30,7 @@ export default function SearchCard(props: Props) {
 
     return (
         <Card>
-            <CardMedia component="img" image={props.car.imageUrl} alt={props.car.name} />
+            <CardMedia component="img" image={props.car.imageUrl} alt={props.car.name} sx={{height:200}} />
             <CardContent>
                 <Typography sx={{ mb: 1 }} variant="h5">{props.car.name}</Typography>
                 <Typography>{description}</Typography>
