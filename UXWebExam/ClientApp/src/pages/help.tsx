@@ -6,7 +6,7 @@ export default function Help() {
     return (
         <Container>
             <Box sx={{display: "flex", justifyContent: "center"}}>
-                <Stack spacing={3} sx={{width: '600px', padding: 3}}>
+                <Stack spacing={3} sx={{width: '600px', padding: 1}}>
                     <Typography variant="h3" sx={{color:'primary.dark'}}>How to use website</Typography>
                 <Box component="span" sx={{ p: 2, border: 2,  borderColor:'primary.main',borderRadius: 1 }}>
                     <Typography variant="h5">1. Pick a car</Typography>
