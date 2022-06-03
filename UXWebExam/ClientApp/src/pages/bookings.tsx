@@ -1,4 +1,4 @@
-import {Typography, Box, Container,Grid} from "@mui/material";
+import {Typography, Box, Container, Grid} from "@mui/material";
 import React, {useEffect, useState} from "react";
 import {BookingModel} from "../models/BookingModel";
 import BookingCard from "../components/cards/BookingCard";
@@ -27,16 +27,15 @@ function Bookings() {
 
     return (
         <Container>
-            <Box sx={{display: "flex", justifyContent: "content"}}>
-                    <Typography variant="h2">Bookings</Typography>
-                <Grid container spacing={1.5}>
-                    {userBookings.map(c => (
-                        <Grid item xs={12} sm={6} md={4}>
-                            <BookingCard booking={c} />
-                        </Grid>
-                    ))}
-                </Grid>
-            </Box>
+            <Typography variant="h2">Bookings</Typography>
+            <Grid container spacing={1.5}>
+                {userBookings.map(c => (
+                    <Grid item xs={12} sm={6} md={4}>
+                        <BookingCard booking={c}/>
+                    </Grid>
+                ))}
+            </Grid>
+
         </Container>
     );
 }

@@ -28,7 +28,7 @@ export default function Help() {
                         </Typography>
                     </Box>
                     <Link to="/" style={{textDecoration: "none"}}>
-                        <Button variant="contained" sx={{bgcolor:"secondary.main",color:"primary.main", borderRadius:10}}>Understood</Button>
+                        <Button variant="contained" sx={{bgcolor:"secondary.main",color:"black", borderRadius:10}}>Understood</Button>
                     </Link>
                 </Stack>
             </Box>

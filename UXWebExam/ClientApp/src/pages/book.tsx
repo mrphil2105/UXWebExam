@@ -45,7 +45,7 @@ export default function Book() {
                     </Stack>
                     <Typography variant="h3" style={{display: 'flex', justifyContent: 'center'}}>130 kr.</Typography> //TODO: tilføj pris calculation
                     <Link to={"/payment/" + car.id} style={{textDecoration: 'none'}}>
-                        <Button variant="contained" fullWidth>Book</Button>
+                        <Button variant="contained" sx={{bgcolor:"secondary.main",color:"black", borderRadius:10}} fullWidth>Book</Button>
                     </Link>
                 </Stack>
             </Box>

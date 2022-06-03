@@ -37,7 +37,7 @@ export default function payment() {
                 <Stack spacing={3} sx={{width: '600px', padding: 2}}>
                     <CreditCardForm/>
                     <Link to={"/bookingMade/" + car.id} style={{textDecoration: 'none'}}>
-                        <Button variant="contained" fullWidth>Confirm Payment</Button>
+                        <Button sx={{bgcolor:"secondary.main", color:"black", borderRadius:10}} variant="contained"  fullWidth>Confirm Payment</Button>
                     </Link>
                 </Stack>
             </Box>

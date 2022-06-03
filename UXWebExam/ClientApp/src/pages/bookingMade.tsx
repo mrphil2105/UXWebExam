@@ -44,10 +44,10 @@ export default function BookingMade() {
                     <BookingCard booking={booking}/>
                     <br/>
                     <Link to={"/"} style={{textDecoration: 'none'}}>
-                        <Button variant="contained" fullWidth>Book another car</Button>
+                        <Button variant="contained" fullWidth sx={{bgcolor:"secondary.main",color:"black", borderRadius:10}}>Book another car</Button>
                     </Link>
                     <Link to={"/bookings"} style={{textDecoration: 'none'}}>
-                        <Button variant="contained" fullWidth>See all Bookings</Button>
+                        <Button variant="contained" fullWidth sx={{bgcolor:"secondary.main",color:"black", borderRadius:10}}>See all Bookings</Button>
                     </Link>
                 </Stack>
             </Box>
