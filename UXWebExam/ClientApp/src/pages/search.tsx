@@ -80,8 +80,8 @@ function Search() {
         resultsElement = (
             <Grid container spacing={1.5}>
                 {cars.map(c => (
-                    <Grid item xs={12} sm={6} md={4}>
-                        <SearchCard key={c.id} car={c} />
+                    <Grid key={c.id} item xs={12} sm={6} md={4}>
+                        <SearchCard car={c} />
                     </Grid>
                 ))}
             </Grid>
