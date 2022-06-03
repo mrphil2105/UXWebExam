@@ -60,8 +60,8 @@ const Map: React.FC = () => {
                         />
                         <LocationMarker />
 
-                        {cars.map((car) => (
-                            <Marker
+                        {cars.map(car => (
+                            <Marker key={car.id}
                                 position={[car.latitude, car.longitude]}
                                 eventHandlers={{ click: () => setChosen(car)}}
                             >

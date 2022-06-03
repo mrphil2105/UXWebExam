@@ -29,9 +29,9 @@ function Bookings() {
         <Container>
             <Typography variant="h2">Bookings</Typography>
             <Grid container spacing={1.5}>
-                {userBookings.map(c => (
-                    <Grid item xs={12} sm={6} md={4}>
-                        <BookingCard booking={c}/>
+                {userBookings.map(b => (
+                    <Grid key={b.id} item xs={12} sm={6} md={4}>
+                        <BookingCard booking={b}/>
                     </Grid>
                 ))}
             </Grid>

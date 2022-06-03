@@ -126,6 +126,7 @@ const ResponsiveAppBar = () => {
                             >
                                 {pages.map((page) => (
                                     <Link
+                                        key={page.name}
                                         to={page.link}
                                         style={{
                                             textDecoration: "none",
@@ -133,7 +134,6 @@ const ResponsiveAppBar = () => {
                                         }}
                                     >
                                         <MenuItem
-                                            key={page.name}
                                             onClick={handleCloseNavMenu}
                                             href={page.link}
                                         >
@@ -183,11 +183,11 @@ const ResponsiveAppBar = () => {
                         >
                             {pages.map((page) => (
                                 <Link
+                                    key={page.name}
                                     to={page.link}
                                     style={{ textDecoration: "none" }}
                                 >
                                     <Button
-                                        key={page.name}
                                         onClick={handleCloseNavMenu}
                                         sx={{
                                             my: 2,
