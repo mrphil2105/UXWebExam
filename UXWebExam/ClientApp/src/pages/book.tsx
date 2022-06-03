@@ -53,20 +53,23 @@ export default function Book() {
 
     return (
         <Container>
-            <Stack spacing={3}>
-                <BookCard car={car} />
-                <Stack direction={direction}>
-                    <Box sx={{ width: "100%" }}>{fromDateInput}</Box>
-                    <Box sx={{ width: "100%" }}>{toDateInput}</Box>
+            <div style={{ display: "flex", justifyContent: "center" }}>
+                <Stack spacing={3} sx={{ width: "600px" }}>
+                    <BookCard car={car} />
+                    <Stack direction={direction}>
+                        <Box sx={{ width: "100%" }}>{fromDateInput}</Box>
+                        <Box sx={{ width: "100%" }}>{toDateInput}</Box>
+                    </Stack>
+                    <Typography variant="h3" style={{
+                        display: "flex",
+                        justifyContent: "center"
+                    }}>{totalPrice.toFixed(2)} DKK</Typography>
+                    <Link to={"/payment/" + car.id} state={bookModel}
+                          style={{ pointerEvents: !diffTime ? "none" : "auto", textDecoration: "none" }}>
+                        <Button disabled={!diffTime} variant="contained" fullWidth>Book</Button>
+                    </Link>
                 </Stack>
-                <Typography variant="h3" style={{
-                    display: "flex",
-                    justifyContent: "center"
-                }}>{totalPrice.toFixed(2)} DKK</Typography>
-                <Link to={"/payment/" + car.id} state={bookModel} style={{ textDecoration: "none" }}>
-                    <Button disabled={!diffTime} variant="contained" fullWidth>Book</Button>
-                </Link>
-            </Stack>
+            </div>
         </Container>
     );
 }
