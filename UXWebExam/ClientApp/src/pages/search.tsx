@@ -34,8 +34,8 @@ function Search() {
         const searchModel: Record<string, string> = {
             term,
             type,
-            fromDateString,
-            toDateString
+            fromDate: fromDateString,
+            toDate: toDateString
         };
 
         const response = await fetch("/api/Car/Search?" + new URLSearchParams(searchModel), {
