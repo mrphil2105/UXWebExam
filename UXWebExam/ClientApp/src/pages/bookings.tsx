@@ -1,12 +1,11 @@
-import {Typography, Box, Container, Grid} from "@mui/material";
-import React, {useEffect, useState} from "react";
-import {BookingModel} from "../models/BookingModel";
+import { Typography, Container, Grid } from "@mui/material";
+import React, { useEffect, useState } from "react";
+import { BookingModel } from "../models/BookingModel";
 import BookingCard from "../components/cards/BookingCard";
 import authService from "../components/api-authorization/AuthorizeService";
 
 function Bookings() {
-
-    const [bookings, setBookings] = useState<BookingModel[]>([]);
+    const [ bookings, setBookings ] = useState<BookingModel[]>([]);
 
     useEffect(() => {
         (async () => {
@@ -23,15 +22,15 @@ function Bookings() {
 
     return (
         <Container>
-            <Typography variant="h2">Bookings</Typography>
+            <Typography gutterBottom variant="h3">Bookings</Typography>
             <Grid container spacing={1.5}>
                 {bookings.map(b => (
                     <Grid key={b.id} item xs={12} sm={6} md={4}>
-                        <BookingCard booking={b}/>
+                        <BookingCard booking={b} />
                     </Grid>
                 ))}
             </Grid>
-
+            {bookings.length === 0 && <Typography sx={{ mt: 1 }}>You have no bookings.</Typography>}
         </Container>
     );
 }
