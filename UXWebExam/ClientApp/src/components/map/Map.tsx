@@ -14,14 +14,7 @@ import {
     Button,
 } from "@mui/material";
 
-const Map: React.FC = () => {
-    function getWindowDimensions() {
-        const { innerWidth: width, innerHeight: height } = window;
-        return {
-            width,
-            height,
-        };
-    }
+const Map = () => {
     const [chosen, setChosen] = React.useState<CarModel | null>(null);
     const [isLoading, setIsLoading] = React.useState(true);
     const [cars, setCars] = React.useState<CarModel[]>([]);
@@ -40,9 +33,9 @@ const Map: React.FC = () => {
         <Container><Typography>Loading cars...</Typography> </Container>
     ) : (
         <Container>
-            <Card sx={{ borderRadius: 5, width: "100%", maxHeight:getWindowDimensions().height*0.9 }}>
+            <Card sx={{ borderRadius: 5, width: "100%", maxHeight: "calc(100vh * 0.9)" }}>
                 <CardMedia
-                    sx={{ height: chosen ? getWindowDimensions().height*0.65 : getWindowDimensions().height*0.85 }}
+                    sx={{ height: chosen ? "calc(100vh * 0.65)" : "calc(100vh * 0.85)" }}
                 >
                     <MapContainer
                         className="markercluster-map"
