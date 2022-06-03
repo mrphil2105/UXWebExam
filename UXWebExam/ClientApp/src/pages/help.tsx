@@ -9,20 +9,19 @@ export default function Help() {
                 <Stack spacing={3} sx={{width: '600px', padding: 1}}>
                     <Typography variant="h3" sx={{color:'primary.dark'}}>How to use website</Typography>
                 <Box component="span" sx={{ p: 2, border: 2,  borderColor:'primary.main',borderRadius: 1 }}>
-                    <Typography variant="h5">1. Pick a car</Typography>
-                    <Typography>Pick a car near you, that you want to drive. You can see cars on a map, or in a list of cars.</Typography>
+                    <Typography variant="h5">1. Find</Typography>
+                    <Typography>You can find bookable cars near your current location on our map, or you can find them via the search page.
+                    </Typography>
                 </Box>
                 <Box component="span" sx={{ p: 2, border: 2,  borderColor:'primary.main',borderRadius: 1 }}>
                     <Typography variant="h5">2. Book</Typography>
                     <Typography>Once you have picked a car, you can book it between a given start and end date and time.</Typography>
                 </Box>
                 <Box component="span" sx={{ p: 2, border: 2,  borderColor:'primary.main',borderRadius: 1 }}>
-                    <Typography variant="h5">3. Drive</Typography>
+                    <Typography variant="h5">3. Deliver</Typography>
                     <Typography>
-                        When your booking starts, you can find the car at the given address.
-                        You must deliver the car back to the same address, before your booking ends.
-                        If you don't do this you will be charged extra. Once you've the delivered the car, find the
-                        booking on the website and press "Deliver".
+                        You must deliver the car back to the same address, before your booking ends, else you’ll be
+                        deducted for additonal time. 
                     </Typography>
                 </Box>
                 <Link to="/" style={{ textDecoration: "none" }}>
