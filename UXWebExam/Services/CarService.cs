@@ -68,6 +68,7 @@ public class CarService : ICarService
         {
             Succeeded = true,
             Cars = cars.Select(c => c.ToModel())
+                .OrderBy(c => c.Name)
                 .ToList()
         };
     }
