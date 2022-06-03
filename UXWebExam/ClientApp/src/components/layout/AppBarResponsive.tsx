@@ -6,7 +6,6 @@ import {
     IconButton,
     Typography,
     Container,
-    Avatar,
     Button,
     Tooltip,
     Menu,
@@ -28,7 +27,6 @@ const pages = [
     { name: "Help", link: "/help" },
     { name: "My Bookings", link: "/bookings" },
 ];
-const settings = ["Profile", "Account", "Logout"];
 
 const ResponsiveAppBar = () => {
     const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
@@ -128,6 +126,7 @@ const ResponsiveAppBar = () => {
                             >
                                 {pages.map((page) => (
                                     <Link
+                                        key={page.name}
                                         to={page.link}
                                         style={{
                                             textDecoration: "none",
@@ -135,7 +134,6 @@ const ResponsiveAppBar = () => {
                                         }}
                                     >
                                         <MenuItem
-                                            key={page.name}
                                             onClick={handleCloseNavMenu}
                                             href={page.link}
                                         >
@@ -185,11 +183,11 @@ const ResponsiveAppBar = () => {
                         >
                             {pages.map((page) => (
                                 <Link
+                                    key={page.name}
                                     to={page.link}
                                     style={{ textDecoration: "none" }}
                                 >
                                     <Button
-                                        key={page.name}
                                         onClick={handleCloseNavMenu}
                                         sx={{
                                             my: 2,
