@@ -29,26 +29,27 @@ export default function SearchCard(props: Props) {
     }
 
     return (
-        <Grid item xs={12} sm={6} md={4}>
-            <Card >
-                <CardMedia component="img" image={props.car.imageUrl} alt={props.car.name} />
-                <CardContent>
-                    <Typography sx={{ mb: 1 }} variant="h5">{props.car.name}</Typography>
-                    <Typography>{description}</Typography>
-                    <Typography color="text.secondary"
-                                style={iconTypographyStyle}><LocalGasStationIcon /> {props.car.type}</Typography>
-                    <Typography color="text.secondary"
-                                style={iconTypographyStyle}><AttachMoneyIcon /> {props.car.price} DKK/day</Typography>
-                    {props.car.city &&
-                        <Typography color="text.secondary"
-                                    style={iconTypographyStyle}><LocationOnIcon /> {props.car.city}</Typography>}
-                </CardContent>
-                <CardActions>
-                    <Link to={"/book/"+props.car.id} style={{ textDecoration: "none" }}>
-                        <Button variant="contained">Book</Button>
-                    </Link>
-                </CardActions>
-            </Card>
-        </Grid>
+        <Card>
+            <CardMedia component="img" image={props.car.imageUrl} alt={props.car.name} />
+            <CardContent>
+                <Typography sx={{ mb: 1 }} variant="h5">{props.car.name}</Typography>
+                <Typography>{description}</Typography>
+                <Typography color="text.secondary" style={iconTypographyStyle}>
+                    <LocalGasStationIcon /> {props.car.type}
+                </Typography>
+                <Typography color="text.secondary" style={iconTypographyStyle}>
+                    <AttachMoneyIcon /> {props.car.price} DKK/day
+                </Typography>
+                {props.car.city &&
+                    <Typography color="text.secondary" style={iconTypographyStyle}>
+                        <LocationOnIcon /> {props.car.city}
+                    </Typography>}
+            </CardContent>
+            <CardActions>
+                <Link to={"/book/" + props.car.id} style={{ textDecoration: "none" }}>
+                    <Button variant="contained">Book</Button>
+                </Link>
+            </CardActions>
+        </Card>
     );
 }

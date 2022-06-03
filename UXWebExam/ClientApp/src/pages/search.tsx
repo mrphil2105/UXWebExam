@@ -79,7 +79,11 @@ function Search() {
     } else {
         resultsElement = (
             <Grid container spacing={1.5}>
-                {cars.map(c => (<SearchCard key={c.id} car={c} />))}
+                {cars.map(c => (
+                    <Grid item xs={12} sm={6} md={4}>
+                        <SearchCard key={c.id} car={c} />
+                    </Grid>
+                ))}
             </Grid>
         );
     }
