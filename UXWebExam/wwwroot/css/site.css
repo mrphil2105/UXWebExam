@@ -1,4 +1,4 @@
-/*taken from https://getcssscan.com/css-buttons-examples (button9)*/
+
 
 html {
     font-family: Arial;
@@ -14,6 +14,7 @@ html {
     justify-content: center;
 }
 
+/*taken from https://getcssscan.com/css-buttons-examples (button9)*/
 .button-good {
     appearance: button;
     backface-visibility: hidden;
@@ -54,6 +55,7 @@ a:hover {
     text-decoration: underline;
 }
 
+/* forms taken from https://codepen.io/vescoyez/pen/wMyRLP */
 .form__field {
     font-family: inherit;
     width: 100%;
