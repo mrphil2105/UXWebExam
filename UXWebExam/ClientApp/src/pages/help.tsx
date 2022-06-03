@@ -18,9 +18,10 @@ export default function Help() {
                     <Typography>Once you have picked a car, you can book it between a given start and end date and time.</Typography>
                 </Box>
                 <Box component="span" sx={{ p: 2, border: 2,  borderColor:'primary.main',borderRadius: 1 }}>
-                    <Typography variant="h5">3. Deliver</Typography>
+                    <Typography variant="h5">3. Drive</Typography>
                     <Typography>
-                        You must deliver the car back to the same address, before your booking ends, else you’ll be
+                        When your booking starts, you can find the car at the given address.
+                        You must deliver the car back to the same address, before your booking ends. Otherwise you’ll be
                         deducted for additonal time. 
                     </Typography>
                 </Box>
