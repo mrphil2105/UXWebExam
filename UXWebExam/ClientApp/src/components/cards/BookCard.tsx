@@ -23,12 +23,12 @@ const iconTypographyStyle: React.CSSProperties = {
 export default function BookCard(props: Props) {
     let address: string = "";
 
-    if (props.car.postalCode) {
-        address += props.car.postalCode + " ";
+    if (props.car.street) {
+        address += props.car.street + " ";
     }
 
-    if (props.car.city) {
-        address += props.car.city;
+    if (props.car.houseNumber) {
+        address += props.car.houseNumber;
     }
 
     if (props.car.postalCode) {
