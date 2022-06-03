@@ -29,7 +29,7 @@ export default function PaymentForm(props: Props) {
                      marginLeft: "auto",
                      marginRight: "auto"
                  }}
-                 src={require("../../resources/creditCardTemplate.png")}
+                 src={require("../../resources/creditCard.png")}
             />
 
             <Stack direction={direction} sx={{ mx: -boxPadding }}>
