@@ -13,6 +13,13 @@ interface Props {
     car: CarModel;
 }
 
+const iconTypographyStyle: React.CSSProperties = {
+    display: "flex",
+    alignItems: "center",
+    flexWrap: "wrap",
+    gap: 5
+};
+
 export default function BookCard(props: Props) {
     let address: string = "";
 
@@ -46,14 +53,14 @@ export default function BookCard(props: Props) {
             <CardMedia component="img" image={props.car.imageUrl} alt={props.car.name} />
             <CardContent>
                 <Typography>{props.car.description}</Typography>
-                <Typography color="text.secondary">
+                <Typography color="text.secondary" style={iconTypographyStyle}>
                     {address && (<><LocationOnIcon /> {address}</>)}
                 </Typography>
-                <Typography color="text.secondary">
-                    <LocalGasStationIcon />{props.car.type}
+                <Typography color="text.secondary" style={iconTypographyStyle}>
+                    <LocalGasStationIcon /> {props.car.type}
                 </Typography>
-                <Typography color="text.secondary">
-                    <AttachMoneyIcon />{props.car.price} DKK/day
+                <Typography color="text.secondary" style={iconTypographyStyle}>
+                    <AttachMoneyIcon /> {props.car.price} DKK/day
                 </Typography>
             </CardContent>
         </Card>

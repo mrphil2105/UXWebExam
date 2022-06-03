@@ -17,7 +17,8 @@ interface Props {
 const iconTypographyStyle: React.CSSProperties = {
     display: "flex",
     alignItems: "center",
-    flexWrap: "wrap"
+    flexWrap: "wrap",
+    gap: 5
 };
 
 export default function SearchCard(props: Props) {
