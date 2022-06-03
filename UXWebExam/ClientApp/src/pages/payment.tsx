@@ -56,7 +56,7 @@ export default function Payment() {
 
         if (response.ok) {
             const bookingId: number = await response.json();
-            return navigate("/booking-made/" + bookingId);
+            return navigate("/booking-created/" + bookingId);
         } else {
             const problem: ProblemDetails = await response.json();
             setError(problem.detail! || problem.title!);
