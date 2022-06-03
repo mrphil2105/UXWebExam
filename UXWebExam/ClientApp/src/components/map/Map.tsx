@@ -87,7 +87,7 @@ const Map = () => {
                                 <Typography>
                                     Road: {chosen.street}
                                 </Typography>
-                                <Typography>{`Price: ${chosen.price} DKK`}</Typography>
+                                <Typography>{`Price: ${chosen.price} DKK/day`}</Typography>
                             </Stack>
                             <Link to={`/book/${chosen.id}`} style={{textDecoration: "none"}}>
                                 <Button variant="contained" sx={{bgcolor:"secondary.main",color:"black", borderRadius:10,'&:hover': {bgcolor:"secondary.dark"}}}>Book now</Button>
