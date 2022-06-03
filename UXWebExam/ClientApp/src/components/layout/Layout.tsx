@@ -6,7 +6,7 @@ function Layout(props: any) {
     return (
         <Style>
             <AppBarResponsive />
-            <main>{props.children} </main>
+            <main>{props.children}</main>
         </Style>
     );
 }
