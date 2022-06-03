@@ -21,15 +21,11 @@ function Bookings() {
         })();
     }, []);
 
-    const userBookings = bookings.filter((obj) => {
-        return new Date(obj.startDate) < new Date() && new Date(obj.endDate) > new Date();
-    });
-
     return (
         <Container>
             <Typography variant="h2">Bookings</Typography>
             <Grid container spacing={1.5}>
-                {userBookings.map(b => (
+                {bookings.map(b => (
                     <Grid key={b.id} item xs={12} sm={6} md={4}>
                         <BookingCard booking={b}/>
                     </Grid>
