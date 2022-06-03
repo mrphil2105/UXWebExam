@@ -44,10 +44,10 @@ export default function BookingCreated() {
                     <Typography variant="h3">Booking Created!</Typography>
                     <BookingCard booking={booking} />
                     <Link to="/search" style={{ textDecoration: "none" }}>
-                        <Button variant="contained" fullWidth sx={{bgcolor:"secondary.main",color:"black", borderRadius:10}}>Book another car</Button>
+                        <Button variant="contained" fullWidth sx={{bgcolor:"secondary.main",color:"black", borderRadius:10,'&:hover': {bgcolor:"secondary.dark"}}}>Book another car</Button>
                     </Link>
                     <Link to="/bookings" style={{ textDecoration: "none" }}>
-                        <Button variant="contained" fullWidth sx={{bgcolor:"secondary.main",color:"black", borderRadius:10}}>See all Bookings</Button>
+                        <Button variant="contained" fullWidth sx={{bgcolor:"secondary.main",color:"black", borderRadius:10,'&:hover': {bgcolor:"secondary.dark"}}}>See all Bookings</Button>
                     </Link>
                 </Stack>
             </div>

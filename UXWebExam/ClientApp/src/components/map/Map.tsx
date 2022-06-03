@@ -83,7 +83,7 @@ const Map = () => {
                                 <Typography>{`Price: ${chosen.price} DKK`}</Typography>
                             </Stack>
                             <Link to={`/book/${chosen.id}`} style={{textDecoration: "none"}}>
-                                <Button variant="contained" sx={{bgcolor:"secondary.main",color:"black", borderRadius:10}}>Book now</Button>
+                                <Button variant="contained" sx={{bgcolor:"secondary.main",color:"black", borderRadius:10,'&:hover': {bgcolor:"secondary.dark"}}}>Book now</Button>
                             </Link>
                         </Stack>
                     </CardContent>

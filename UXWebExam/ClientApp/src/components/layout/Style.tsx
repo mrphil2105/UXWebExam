@@ -17,6 +17,7 @@ const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({
             },
             secondary: {
                 main: "#fbed00",
+                dark: "#c7bc00",
             },
         },
         typography: {
