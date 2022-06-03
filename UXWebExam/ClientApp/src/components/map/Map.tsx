@@ -14,6 +14,13 @@ import {
     Button,
 } from "@mui/material";
 
+/**
+ * This component is responsible for rendering the map.
+ * the map is rendered with the help of the react-leaflet library.
+ * source: https://react-leaflet.js.org/
+ */
+
+
 const Map = () => {
     const [chosen, setChosen] = React.useState<CarModel | null>(null);
     const [isLoading, setIsLoading] = React.useState(true);
